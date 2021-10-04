@@ -3,16 +3,20 @@
     <div class="app-layout" :style="{fontSize:size+'rem'}">
         <div class="app-header">
             <div class="app-toolbar">
+                <div class="app-menu" @click="refresh()" v-if="canBack"><span class="material-icons">arrow_back</span></div>
                 <div class="app-menu" v-if="menu">
                     <span class="material-icons" @click="showPlaylists()">menu</span>
                 </div>
                 <div class="app-title">Learning games</div>
                 <div class="app-buttons">
-                    <div @click="refresh()"><span class="material-icons">refresh</span></div>
+                    <div class="app-menu" @click="restart()" v-if="canBack"><span class="material-icons">refresh</span></div>
+                    <div @click="home()"><span class="material-icons">home</span></div>
                 </div>
             </div>
         </div>
-        <div is="app-content" :appdata="appData" :section="mainSection" :level="level" ref="content" ></div>
+        <transition-group name="fade">
+            <div is="app-content" v-if="mainSection" @status="status($event)" :appdata="appData" :section="mainSection" :level="level" ref="content" :key="current"></div>
+        </transition-group>
         <div class="app-message" id="app-message"></div>
         <div class="app-footer"></div>
     </div>
@@ -41,116 +45,29 @@
         template: '#app-layout-template',
         data: function(){
             return {
-                size: 1,
+                size: 1.2,
                 menu: false,
                 level: 0,
                 appData: {},
-                mainSection: {
-                    title: "Tabla del 2",
-                    description: "Ejercicios de la tabla del 2",
-                    slides: [
-                        {
-                            title: "2 x 1",
-                            options: [
-                                {label:1},
-                                {label:2},
-                                {label:4}
-                            ],
-                            answer: 2
-                        },
-                        {
-                            title: "2 x 2",
-                            options: [
-                                {label:2},
-                                {label:3},
-                                {label:4}
-                            ],
-                            answer: 4
-                        }/**/,
-                        {
-                            title: "2 x 3",
-                            options: [
-                                {label:6},
-                                {label:5},
-                                {label:2}
-                            ],
-                            answer: 6
-                        },
-                        {
-                            title: "2 x 4",
-                            options: [
-                                {label:6},
-                                {label:8},
-                                {label:4}
-                            ],
-                            answer:8 
-                        },
-                        {
-                            title: "2 x 5",
-                            options: [
-                                {label:7},
-                                {label:25},
-                                {label:10}
-                            ],
-                            answer:10
-                        },
-                        {
-                            title: "2 x 6",
-                            options: [
-                                {label:16},
-                                {label:12},
-                                {label:10}
-                            ],
-                            answer:12 
-                        },
-                        {
-                            title: "2 x 7",
-                            options: [
-                                {label:9},
-                                {label:12},
-                                {label:14}
-                            ],
-                            answer:14 
-                        },
-                        {
-                            title: "2 x 8",
-                            options: [
-                                {label:16},
-                                {label:10},
-                                {label:28}
-                            ],
-                            answer:16
-                        },
-                        {
-                            title: "2 x 9",
-                            options: [
-                                {label:12},
-                                {label:18},
-                                {label:29}
-                            ],
-                            answer:18 
-                        },
-                        {
-                            title: "2 x 10",
-                            options: [
-                                {label:20},
-                                {label:12},
-                                {label:10}
-                            ],
-                            answer:20 
-                        }/* */
-                    ],
-                } 
+                currentStatus: '',
+                current: 'home',
+                mainSection: null
             }
         },
         props: { 
         },
         created:function(){
-            var self = this       
+            var self = this
+            window.addEventListener('hashchange', function(){
+                self.loadHash()
+            }, function (err) {
+                self.load(self.current)
+            })
         },
         mounted:function(){
-            window.app=this;
-            var self = this;
+            window.app=this
+            var self = this
+            this.loadHash()
             var applayout=document.getElementById('applayout');
             applayout.addEventListener("scroll",function(ev){
                 var scrollTop = applayout.scrollTop;
@@ -171,8 +88,41 @@
             }
         },
         methods: {
+            loadHash: function() {
+                var id = document.location.hash.replace('#', '')
+                if (id!=''){
+                    this.load(id)
+                } else {
+                    this.load(this.current)
+                }
+            },
+            status: function (status){
+                console.log('status', status)
+                this.currentStatus=status
+            },
+            home: function() {
+                document.location="#home"
+                this.currentStatus=''
+            },
+            load: function(id) {
+                var self = this
+                loadData("data/"+id+".json?"+(new Date()).getTime(), function(data){
+                    self.mainSection = JSON.parse(data)
+                    self.current = id
+                    self.level=0
+                })
+            },
             refresh: function () {
                 this.$refs.content.menu()
+                this.currentStatus=''
+            },
+            restart: function () {
+                this.$refs.content.restart()
+            }
+        },
+        computed:{
+            canBack: function () {
+                return this.current!='home' && this.currentStatus!=''
             }
         }
     });

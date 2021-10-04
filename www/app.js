@@ -49,6 +49,9 @@ var loadData=function(url,callback, error){
             }
             else{
                 if (!window.cordova){
+                    if (error) {
+                        error("Error loading")
+                    }
                     return;
                 }
                 var file=cordova.file.applicationDirectory+"www/"+url;

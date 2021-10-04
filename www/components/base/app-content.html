@@ -1,24 +1,12 @@
 <!-- text-template -->
 <script type="text/x-template" id="app-content-template">
     <div class="app-content">
-        <h1>{{section.title}}</h1>
+        <h1 v-if="position!=-3">{{section.title}}</h1>
         <transition-group name="fade">
         <div class="option-container levels" :key="'levels'" v-if="currentLevel==0">
-            <div class="option" @click="start(1)">
-                <div>Level 1</div>
-                <div class="levelstars"><span v-if="levelStars[0]>=1">⭐️</span><span v-if="levelStars[0]>=2">⭐️</span><span v-if="levelStars[0]>=3">⭐️</span></div>
-            </div>
-            <div class="option" @click="start(2)">
-                <div>Level 2</div>
-                <div class="levelstars"><span v-if="levelStars[1]>=1">⭐️</span><span v-if="levelStars[1]>=2">⭐️</span><span v-if="levelStars[1]>=3">⭐️</span></div>
-            </div>
-            <div class="option" @click="start(3)">
-                <div>Level 3</div>
-                <div class="levelstars"><span v-if="levelStars[2]>=1">⭐️</span><span v-if="levelStars[2]>=2">⭐️</span><span v-if="levelStars[2]>=3">⭐️</span></div>
-            </div>
-            <div class="option" @click="start(4)">
-                <div>Level 4</div>
-                <div class="levelstars"><span v-if="levelStars[3]>=1">⭐️</span><span v-if="levelStars[3]>=2">⭐️</span><span v-if="levelStars[3]>=3">⭐️</span></div>
+            <div v-for="(level, idx) in section.levels" :key="level.label" class="option" @click="start(idx+1)">
+                <div>{{level.label}}</div>
+                <div class="levelstars"><span v-if="levelStars[idx]>=1">⭐️</span><span v-if="levelStars[idx]>=2">⭐️</span><span v-if="levelStars[idx]>=3">⭐️</span></div>
             </div>
         </div>
         <div v-for="(slide,idx) in currentSlides" :key="idx" v-show="idx==position">
@@ -40,7 +28,7 @@
                 <div class="stars"><span v-if="stars>=1">⭐️</span><span v-if="stars>=2">⭐️</span><span v-if="stars>=3">⭐️</span></div>
             </div>
         </div>
-        <div v-if="position>=0"><span class="timer" v-if="this.timer">{{timerSeconds}}</span> {{position+1}} / {{total}}</div>
+        <div class="status" v-if="position>=0">{{position+1}} / {{total}} <span class="timer" v-if="this.timer">{{timerSeconds}}</span></div>
     </div>
 </script>
 <script type="text/javascript">
@@ -79,10 +67,21 @@ Vue.component('app-content', {
             this.currentLevel = 0
             this.position = -1
         },
+        restart: function() {
+            this.position = -3
+            setTimeout(function(self){
+                self.start(self.currentLevel)
+            },1000,this)
+        },
         start: function (level) {
+            var levelData = this.section.levels[level-1]
+            if (levelData.hash){
+                document.location.hash="#"+levelData.hash
+                return
+            }
             this.position = -1
-            this.sorted = (level==1 || level==3)
-            this.timer = (level==3 || level==4)
+            this.sorted = levelData.sorted
+            this.timer = levelData.timer
             this.currentLevel = level
             this.correct = 0
             this.errors = 0
@@ -95,25 +94,27 @@ Vue.component('app-content', {
                 this.currentSlides = tmpSlides
             }
             this.nextSlide()
+            this.$emit('status','started')
         },
         nextSlide: function () {
             clearInterval(this.timerProc)
             if (this.position + 1 == this.currentSlides.length){
                 this.endSection()
                 this.position=-1
+                this.$emit('status','finish')
                 return
             }
+            this.$emit('status','next')
             this.position++
-            this.timerSeconds=5
             this.$forceUpdate()
             if (this.timer){
+                this.timerSeconds=this.timer
                 this.timerProc=setInterval(function (self) {
                     self.timerSeconds--
                     if (self.timerSeconds==0){
                         self.nextSlide()
                     }
                 },1000, this)
-
             }
         },
         endSection: function () {
@@ -134,7 +135,7 @@ Vue.component('app-content', {
             this.levelStars[this.currentLevel-1] = Math.max(this.stars, this.levelStars[this.position])
             setTimeout(function(self){
                 self.currentLevel = 0
-            },1000, this)
+            },3000, this)
         },
         verifyOption: function(slide, idx){
             var option = slide.options[idx]
@@ -151,7 +152,7 @@ Vue.component('app-content', {
                 clearInterval(this.timerProc)
                 setTimeout(function () {
                     self.nextSlide()
-                },2000)
+                },800)
             } else {
                 this.errors++
                 currentOptions[idx].result = 2
@@ -209,7 +210,7 @@ Vue.component('app-content', {
     background-color: #fdd;
 }
 .results{
-    font-size: 2em;
+    font-size: 1.2em;
 }
 .stars{
     font-size: 3rem;
@@ -227,8 +228,15 @@ Vue.component('app-content', {
     display: inline-block;
     width: 1.4em;
     height: 1.4em;
+    font-size: 1.5em;
     border: 2px solid #44C;
+    background-color: #eee;
     color: #44C;
     border-radius: 99% 99%;
+    text-align:center;
+}
+.status{
+    text-align: right;
+    padding: 8px;
 }
 </style>

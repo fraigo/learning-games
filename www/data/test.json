@@ -1,0 +1,68 @@
+{
+    "title": "Test",
+    "description": "Test item",
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 2",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 3",
+            "sorted": true,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 4",
+            "sorted": false,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 5",
+            "sorted": true,
+            "timer": 3
+        },
+        {
+            "label": "Nivel 6",
+            "sorted": false,
+            "timer": 3
+        }
+    ],
+    "slides": [
+        {
+            "title": "2 x 1",
+            "options": [
+                {
+                    "label": 1
+                },
+                {
+                    "label": 2
+                },
+                {
+                    "label": 4
+                }
+            ],
+            "answer": 2
+        },
+        {
+            "title": "2 x 2",
+            "options": [
+                {
+                    "label": 2
+                },
+                {
+                    "label": 3
+                },
+                {
+                    "label": 4
+                }
+            ],
+            "answer": 4
+        }
+    ]
+}
