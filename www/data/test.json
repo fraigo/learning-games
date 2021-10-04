@@ -1,4 +1,5 @@
 {
+    "id": "test",
     "title": "Test",
     "description": "Test item",
     "levels": [
@@ -63,6 +64,21 @@
                 }
             ],
             "answer": 4
+        },
+        {
+            "title": "2 x 3",
+            "options": [
+                {
+                    "label": 6
+                },
+                {
+                    "label": 5
+                },
+                {
+                    "label": 2
+                }
+            ],
+            "answer": 6
         }
     ]
 }

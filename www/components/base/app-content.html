@@ -6,7 +6,7 @@
         <div class="option-container levels" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :key="level.label" class="option" @click="start(idx+1)">
                 <div>{{level.label}}</div>
-                <div class="levelstars"><span v-if="levelStars[idx]>=1">⭐️</span><span v-if="levelStars[idx]>=2">⭐️</span><span v-if="levelStars[idx]>=3">⭐️</span></div>
+                <div class="levelstars"><span v-if="levelData.levelStars[idx]>=1">⭐️</span><span v-if="levelData.levelStars[idx]>=2">⭐️</span><span v-if="levelData.levelStars[idx]>=3">⭐️</span></div>
             </div>
         </div>
         <div v-for="(slide,idx) in currentSlides" :key="idx" v-show="idx==position">
@@ -49,7 +49,9 @@ Vue.component('app-content', {
             currentLevel: 0,
             timerLength: 5000,
             timerSeconds: 0,
-            levelStars: []
+            levelData: {
+                levelStars: []
+            },
         }
     },
     props: { 
@@ -60,9 +62,20 @@ Vue.component('app-content', {
         for (var index = 0; index < 10; index++) {
             this.orders.push(Math.floor(Math.random() * 10))
         }
-        console.log(this.orders)
+        var levelData = localStorage.getItem('leveldata_'+this.section.id)
+        if (levelData && levelData != '') {
+            this.levelData = JSON.parse(levelData)
+        }
+        for (var index = 0; index < this.section.levels.length; index++) {
+            if (!this.levelData.levelStars[index]) {
+                this.levelData.levelStars[index]=0
+            }
+        }
     },
     methods: {
+        save: function() {
+            localStorage.setItem('leveldata_'+this.section.id, JSON.stringify(this.levelData))
+        },
         menu: function() {
             this.currentLevel = 0
             this.position = -1
@@ -120,6 +133,8 @@ Vue.component('app-content', {
         endSection: function () {
             var points = (this.correct-this.errors)
             this.score = points/this.total
+            console.log('score', points, this.score)
+            this.stars = 0
             if (this.score == 1){
                 this.stars = 3
             }
@@ -129,10 +144,11 @@ Vue.component('app-content', {
             else if (this.score > 0.3){
                 this.stars = 1
             }
-            if (!this.levelStars[this.position]){
-                this.levelStars[this.position]=0
+            if (!this.levelData.levelStars[this.currentLevel-1]){
+                this.levelData.levelStars[this.currentLevel-1]=0
             }
-            this.levelStars[this.currentLevel-1] = Math.max(this.stars, this.levelStars[this.position])
+            this.levelData.levelStars[this.currentLevel-1] = Math.max(this.stars, this.levelData.levelStars[this.position])
+            this.save()
             setTimeout(function(self){
                 self.currentLevel = 0
             },3000, this)

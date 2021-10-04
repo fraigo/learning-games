@@ -1,4 +1,5 @@
 {
+    "id": "tabla3",
     "title": "Tabla del 3",
     "description": "Ejercicios de la tabla del 3",
     "levels": [
@@ -35,25 +36,10 @@
     ],
     "slides": [
         {
-            "title": "2 x 1",
+            "title": "3 x 1",
             "options": [
                 {
                     "label": 1
-                },
-                {
-                    "label": 2
-                },
-                {
-                    "label": 4
-                }
-            ],
-            "answer": 2
-        },
-        {
-            "title": "2 x 2",
-            "options": [
-                {
-                    "label": 2
                 },
                 {
                     "label": 3
@@ -62,13 +48,28 @@
                     "label": 4
                 }
             ],
-            "answer": 4
+            "answer": 3
         },
         {
-            "title": "2 x 3",
+            "title": "3 x 2",
             "options": [
                 {
+                    "label": 2
+                },
+                {
+                    "label": 3
+                },
+                {
                     "label": 6
+                }
+            ],
+            "answer": 6
+        },
+        {
+            "title": "3 x 3",
+            "options": [
+                {
+                    "label": 9
                 },
                 {
                     "label": 5
@@ -77,25 +78,25 @@
                     "label": 2
                 }
             ],
-            "answer": 6
+            "answer": 9
         },
         {
-            "title": "2 x 4",
+            "title": "3 x 4",
             "options": [
                 {
                     "label": 6
                 },
                 {
-                    "label": 8
+                    "label": 12
                 },
                 {
                     "label": 4
                 }
             ],
-            "answer": 8
+            "answer": 12
         },
         {
-            "title": "2 x 5",
+            "title": "3 x 5",
             "options": [
                 {
                     "label": 7
@@ -104,28 +105,28 @@
                     "label": 25
                 },
                 {
-                    "label": 10
+                    "label": 15
                 }
             ],
-            "answer": 10
+            "answer": 15
         },
         {
-            "title": "2 x 6",
+            "title": "3 x 6",
             "options": [
                 {
                     "label": 16
                 },
                 {
-                    "label": 12
+                    "label": 18
                 },
                 {
                     "label": 10
                 }
             ],
-            "answer": 12
+            "answer": 18
         },
         {
-            "title": "2 x 7",
+            "title": "3 x 7",
             "options": [
                 {
                     "label": 9
@@ -134,16 +135,16 @@
                     "label": 12
                 },
                 {
-                    "label": 14
+                    "label": 21
                 }
             ],
-            "answer": 14
+            "answer": 21
         },
         {
-            "title": "2 x 8",
+            "title": "3 x 8",
             "options": [
                 {
-                    "label": 16
+                    "label": 24
                 },
                 {
                     "label": 10
@@ -152,28 +153,28 @@
                     "label": 28
                 }
             ],
-            "answer": 16
+            "answer": 24
         },
         {
-            "title": "2 x 9",
+            "title": "3 x 9",
             "options": [
                 {
                     "label": 12
                 },
                 {
-                    "label": 18
+                    "label": 27
                 },
                 {
                     "label": 29
                 }
             ],
-            "answer": 18
+            "answer": 27
         },
         {
-            "title": "2 x 10",
+            "title": "3 x 10",
             "options": [
                 {
-                    "label": 20
+                    "label": 30
                 },
                 {
                     "label": 12
@@ -182,7 +183,7 @@
                     "label": 10
                 }
             ],
-            "answer": 20
+            "answer": 30
         }
     ]
 }
