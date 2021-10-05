@@ -1,0 +1,190 @@
+{
+    "id": "tabla6",
+    "title": "Tabla del 6",
+    "description": "Ejercicios de la tabla del 6",
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 2",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 3",
+            "sorted": true,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 4",
+            "sorted": false,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 5",
+            "sorted": true,
+            "timer": 3
+        },
+        {
+            "label": "Nivel 6",
+            "sorted": false,
+            "timer": 3
+        }
+    ],
+    "slides": [
+        {
+            "title": "6 x 1",
+            "options": [
+                {
+                    "label": 12
+                },
+                {
+                    "label": 60
+                },
+                {
+                    "label": 6
+                }
+            ],
+            "answer": 6
+        },
+        {
+            "title": "6 x 2",
+            "options": [
+                {
+                    "label": 12
+                },
+                {
+                    "label": 14
+                },
+                {
+                    "label": 16
+                }
+            ],
+            "answer": 12
+        },
+        {
+            "title": "6 x 3",
+            "options": [
+                {
+                    "label": 18
+                },
+                {
+                    "label": 16
+                },
+                {
+                    "label": 22
+                }
+            ],
+            "answer": 18
+        },
+        {
+            "title": "6 x 4",
+            "options": [
+                {
+                    "label": 26
+                },
+                {
+                    "label": 22
+                },
+                {
+                    "label": 24
+                }
+            ],
+            "answer": 24
+
+        },
+        {
+            "title": "6 x 5",
+            "options": [
+                {
+                    "label": 32
+                },
+                {
+                    "label": 42
+                },
+                {
+                    "label": 30
+                }
+            ],
+            "answer": 30
+        },
+        {
+            "title": "6 x 6",
+            "options": [
+                {
+                    "label": 28
+                },
+                {
+                    "label": 42
+                },
+                {
+                    "label": 36
+                }
+            ],
+            "answer": 36
+        },
+        {
+            "title": "6 x 7",
+            "options": [
+                {
+                    "label": 42
+                },
+                {
+                    "label": 44
+                },
+                {
+                    "label": 38
+                }
+            ],
+            "answer": 42
+        },
+        {
+            "title": "6 x 8",
+            "options": [
+                {
+                    "label": 56
+                },
+                {
+                    "label": 58
+                },
+                {
+                    "label": 48
+                }
+            ],
+            "answer": 48
+        },
+        {
+            "title": "6 x 9",
+            "options": [
+                {
+                    "label": 54
+                },
+                {
+                    "label": 64
+                },
+                {
+                    "label": 63
+                }
+            ],
+            "answer": 54
+        },
+        {
+            "title": "6 x 10",
+            "options": [
+                {
+                    "label": 60
+                },
+                {
+                    "label": 66
+                },
+                {
+                    "label": 56
+                }
+            ],
+            "answer": 60
+        }
+    ]
+}

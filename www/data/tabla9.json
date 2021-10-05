@@ -1,0 +1,190 @@
+{
+    "id": "tabla9",
+    "title": "Tabla del 9",
+    "description": "Ejercicios de la tabla del 9",
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 2",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 3",
+            "sorted": true,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 4",
+            "sorted": false,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 5",
+            "sorted": true,
+            "timer": 3
+        },
+        {
+            "label": "Nivel 6",
+            "sorted": false,
+            "timer": 3
+        }
+    ],
+    "slides": [
+        {
+            "title": "9 x 1",
+            "options": [
+                {
+                    "label": 9
+                },
+                {
+                    "label": 18
+                },
+                {
+                    "label": 19
+                }
+            ],
+            "answer": 9
+        },
+        {
+            "title": "9 x 2",
+            "options": [
+                {
+                    "label": 17
+                },
+                {
+                    "label": 18
+                },
+                {
+                    "label": 16
+                }
+            ],
+            "answer": 18
+        },
+        {
+            "title": "9 x 3",
+            "options": [
+                {
+                    "label": 27
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 30
+                }
+            ],
+            "answer": 27
+        },
+        {
+            "title": "9 x 4",
+            "options": [
+                {
+                    "label": 36
+                },
+                {
+                    "label": 37
+                },
+                {
+                    "label": 34
+                }
+            ],
+            "answer": 36
+
+        },
+        {
+            "title": "9 x 5",
+            "options": [
+                {
+                    "label": 55
+                },
+                {
+                    "label": 47
+                },
+                {
+                    "label": 45
+                }
+            ],
+            "answer": 45
+        },
+        {
+            "title": "9 x 6",
+            "options": [
+                {
+                    "label": 66
+                },
+                {
+                    "label": 36
+                },
+                {
+                    "label": 54
+                }
+            ],
+            "answer": 54
+        },
+        {
+            "title": "9 x 7",
+            "options": [
+                {
+                    "label": 63
+                },
+                {
+                    "label": 73
+                },
+                {
+                    "label": 53
+                }
+            ],
+            "answer": 63
+        },
+        {
+            "title": "9 x 8",
+            "options": [
+                {
+                    "label": 88
+                },
+                {
+                    "label": 78
+                },
+                {
+                    "label": 72
+                }
+            ],
+            "answer": 72
+        },
+        {
+            "title": "9 x 9",
+            "options": [
+                {
+                    "label": 99
+                },
+                {
+                    "label": 91
+                },
+                {
+                    "label": 81
+                }
+            ],
+            "answer": 81
+        },
+        {
+            "title": "9 x 10",
+            "options": [
+                {
+                    "label": 910
+                },
+                {
+                    "label": 90
+                },
+                {
+                    "label": 99
+                }
+            ],
+            "answer": 90
+        }
+    ]
+}
