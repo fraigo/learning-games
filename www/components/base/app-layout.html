@@ -121,6 +121,9 @@
                     self.current = self.mainSection.id
                     self.level=0
                     self.loading = false
+                }, function(err){
+                    self.showMessage("Connection error")
+                    self.loading = false
                 })
             },
             load: function(id) {
