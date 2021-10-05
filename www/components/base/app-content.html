@@ -162,14 +162,18 @@ Vue.component('app-content', {
             var option = slide.options[idx]
             var answer = slide.answer
             var self = this
-            var currentOptions=this.currentSlides[this.position].options
+            var currentOptions=this.currentSlides[this.position].options      
             if (currentOptions[idx].result>0){
+                return
+            }
+            if  (slide.locked == true) {
                 return
             }
             console.log(option.label, answer)
             if (option.label == answer) {
                 currentOptions[idx].result = 1
                 this.correct++
+                slide.locked = true
                 clearInterval(this.timerProc)
                 setTimeout(function () {
                     self.nextSlide()
@@ -304,6 +308,7 @@ Vue.component('app-content', {
     box-sizing: border-box;
     position:absolute;
     bottom: 0;
+    left:0;
     width:100%;
 }
 @media (max-width: 720px) {
