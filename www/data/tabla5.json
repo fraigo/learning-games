@@ -1,0 +1,189 @@
+{
+    "id": "tabla5",
+    "title": "Tabla del 5",
+    "description": "Ejercicios de la tabla del 5",
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 2",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 3",
+            "sorted": true,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 4",
+            "sorted": false,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 5",
+            "sorted": true,
+            "timer": 3
+        },
+        {
+            "label": "Nivel 6",
+            "sorted": false,
+            "timer": 3
+        }
+    ],
+    "slides": [
+        {
+            "title": "5 x 1",
+            "options": [
+                {
+                    "label": 5
+                },
+                {
+                    "label": 6
+                },
+                {
+                    "label": 4
+                }
+            ],
+            "answer": 5
+        },
+        {
+            "title": "5 x 2",
+            "options": [
+                {
+                    "label": 7
+                },
+                {
+                    "label": 10
+                },
+                {
+                    "label": 5
+                }
+            ],
+            "answer": 10
+        },
+        {
+            "title": "5 x 3",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 5
+                },
+                {
+                    "label": 15
+                }
+            ],
+            "answer": 15
+        },
+        {
+            "title": "5 x 4",
+            "options": [
+                {
+                    "label": 9
+                },
+                {
+                    "label": 12
+                },
+                {
+                    "label": 20
+                }
+            ],
+            "answer": 20
+        },
+        {
+            "title": "5 x 5",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 52
+                }
+            ],
+            "answer": 25
+        },
+        {
+            "title": "5 x 6",
+            "options": [
+                {
+                    "label": 30
+                },
+                {
+                    "label": 12
+                },
+                {
+                    "label": 11
+                }
+            ],
+            "answer": 30
+        },
+        {
+            "title": "5 x 7",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 35
+                },
+                {
+                    "label": 15
+                }
+            ],
+            "answer": 35
+        },
+        {
+            "title": "5 x 8",
+            "options": [
+                {
+                    "label": 54
+                },
+                {
+                    "label": 40
+                },
+                {
+                    "label": 44
+                }
+            ],
+            "answer": 40
+        },
+        {
+            "title": "5 x 9",
+            "options": [
+                {
+                    "label": 45
+                },
+                {
+                    "label": 54
+                },
+                {
+                    "label": 55
+                }
+            ],
+            "answer": 45
+        },
+        {
+            "title": "5 x 10",
+            "options": [
+                {
+                    "label": 30
+                },
+                {
+                    "label": 50
+                },
+                {
+                    "label": 25
+                }
+            ],
+            "answer": 50
+        }
+    ]
+}

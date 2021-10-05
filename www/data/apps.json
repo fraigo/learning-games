@@ -12,8 +12,20 @@
             "hash": "tabla3"
         },
         {
+            "label": "Tabla del 4",
+            "hash": "tabla4"
+        },
+        {
+            "label": "Tabla del 5",
+            "hash": "tabla5"
+        },
+        {
             "label": "Tabla del 7",
             "hash": "tabla7"
+        },
+        {
+            "label": "Tabla del 10",
+            "hash": "tabla10"
         }
     ],
     "slides": []
