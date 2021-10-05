@@ -18,7 +18,7 @@
             <div is="app-content" v-if="mainSection" @status="status($event)" :appdata="appData" :section="mainSection" :level="level" ref="content" :key="current"></div>
         </transition-group>
         <div class="app-message" id="app-message"></div>
-        <div class="app-footer"></div>
+        <div class="app-footer">{{baseUrl}}</div>
     </div>
 </script>
 <script type="text/javascript">
@@ -51,6 +51,7 @@
                 appData: {},
                 currentStatus: '',
                 current: 'home',
+                baseUrl: 'data/',
                 mainSection: null
             }
         },
@@ -107,18 +108,22 @@
             home: function() {
                 document.location="#home"
                 this.currentStatus=''
+                this.baseUrl="data/"
             },
             loadUrl: function(url) {
                 var self = this
                 loadData(url+"?"+(new Date()).getTime(), function(data){
                     self.mainSection = JSON.parse(data)
+                    var urlParts = url.split("/")
+                    urlParts.pop()
+                    self.baseUrl = urlParts.join("/")+"/"
                     self.current = self.mainSection.id
                     self.level=0
                 })
             },
             load: function(id) {
                 var self = this
-                this.loadUrl("data/"+id+".json")
+                this.loadUrl(this.baseUrl+id+".json")
             },
             refresh: function () {
                 this.$refs.content.menu()
@@ -220,6 +225,12 @@ body[scrolling='1'] .player-top{
     left: 0;
     z-index: 20;
 }
+.app-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 8px;
+}
 .close-popup{
     position: absolute;
     right: 12px;
@@ -245,11 +256,16 @@ body[scrolling='1'] .player-top{
     font-size: 1em;
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s;
+  transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter{
   opacity: 0;
   font-size: 8px;
+}
+.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  font-size: 8px;
+  display: none;
 }
 @media (prefers-color-scheme: dark) {
     .app-layout{

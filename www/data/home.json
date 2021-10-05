@@ -4,12 +4,12 @@
     "description": "",
     "levels": [
         {
-            "label": "Tabla del 2",
-            "hash": "tabla2"
+            "label": "Local",
+            "hash": "apps"
         },
         {
-            "label": "Tabla del 3",
-            "hash": "tabla3"
+            "label": "Online",
+            "url": "https://fraigo.github.io/learning-games/www/data/apps.json"
         }
     ],
     "slides": []

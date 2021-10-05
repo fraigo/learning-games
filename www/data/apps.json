@@ -1,0 +1,16 @@
+{
+    "id": "home",
+    "title": "Inicio",
+    "description": "",
+    "levels": [
+        {
+            "label": "Tabla del 2",
+            "hash": "tabla2"
+        },
+        {
+            "label": "Tabla del 3",
+            "hash": "tabla3"
+        }
+    ],
+    "slides": []
+}
