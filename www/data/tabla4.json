@@ -42,7 +42,7 @@
                     "label": 5
                 },
                 {
-                    "label": 6
+                    "label": 14
                 },
                 {
                     "label": 4
@@ -54,7 +54,7 @@
             "title": "4 x 2",
             "options": [
                 {
-                    "label": 7
+                    "label": 12
                 },
                 {
                     "label": 8
@@ -69,7 +69,7 @@
             "title": "4 x 3",
             "options": [
                 {
-                    "label": 10
+                    "label": 43
                 },
                 {
                     "label": 12
@@ -99,7 +99,7 @@
             "title": "4 x 5",
             "options": [
                 {
-                    "label": 10
+                    "label": 15
                 },
                 {
                     "label": 45
@@ -117,7 +117,7 @@
                     "label": 24
                 },
                 {
-                    "label": 23
+                    "label": 10
                 },
                 {
                     "label": 46
@@ -144,46 +144,46 @@
             "title": "4 x 8",
             "options": [
                 {
-                    "label": 52
+                    "label": 32
                 },
                 {
-                    "label": 50
+                    "label": 12
                 },
                 {
                     "label": 48
                 }
             ],
-            "answer": 52
+            "answer": 32
         },
         {
             "title": "4 x 9",
             "options": [
                 {
-                    "label": 56
+                    "label": 36
                 },
                 {
-                    "label": 54
+                    "label": 49
                 },
                 {
-                    "label": 50
+                    "label": 13
                 }
             ],
-            "answer": 56
+            "answer": 36
         },
         {
             "title": "4 x 10",
             "options": [
                 {
-                    "label": 55
+                    "label": 41
                 },
                 {
-                    "label": 50
+                    "label": 40
                 },
                 {
-                    "label": 60
+                    "label": 14
                 }
             ],
-            "answer": 60
+            "answer": 40
         }
     ]
 }
