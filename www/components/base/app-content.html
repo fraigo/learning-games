@@ -186,6 +186,18 @@ Vue.component('app-content', {
         },
         levelStyle: function(level) {
             var baseStyle = this.section.levelStyle ? JSON.parse(JSON.stringify(this.section.levelStyle)) : {}
+            if (this.section.levelImage) {
+                baseStyle.backgroundImage = 'url("'+ this.section.levelImage  + '")'
+                baseStyle.backgroundSize = "cover"
+                baseStyle.backgorundRepeat = "no-repeat"
+
+            }
+            if (level.image) {
+                baseStyle.backgroundImage = 'url("'+ level.image  + '")'
+                baseStyle.backgroundSize = "cover"
+                baseStyle.backgorundRepeat = "no-repeat"
+
+            }
             if (level.style) {
                 for (var key in level.style) {
                     baseStyle[key] = level.style[key]
@@ -196,6 +208,16 @@ Vue.component('app-content', {
         optionStyle: function(option, idx) {
             var baseStyle = this.section.optionStyle ? JSON.parse(JSON.stringify(this.section.optionStyle)) : {}
             baseStyle["order"]=this.orders[idx]
+            if (this.section.optionImage) {
+                baseStyle.backgroundImage = 'url("'+ this.section.optionImage  + '")'
+                baseStyle.backgroundSize = "cover"
+                baseStyle.backgorundRepeat = "no-repeat"
+            }
+            if (option.image) {
+                baseStyle.backgroundImage = 'url("'+ option.image  + '")'
+                baseStyle.backgroundSize = "cover"
+                baseStyle.backgorundRepeat = "no-repeat"
+            }
             if (option.style) {
                 for (var key in option.style) {
                     baseStyle[key] = option.style[key]
