@@ -1,0 +1,190 @@
+{
+    "id": "tabla7",
+    "title": "Tabla del 7",
+    "description": "Ejercicios de la tabla del 7",
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 2",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 3",
+            "sorted": true,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 4",
+            "sorted": false,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 5",
+            "sorted": true,
+            "timer": 3
+        },
+        {
+            "label": "Nivel 6",
+            "sorted": false,
+            "timer": 3
+        }
+    ],
+    "slides": [
+        {
+            "title": "7 x 1",
+            "options": [
+                {
+                    "label": 8
+                },
+                {
+                    "label": 14
+                },
+                {
+                    "label": 7
+                }
+            ],
+            "answer": 7
+        },
+        {
+            "title": "7 x 2",
+            "options": [
+                {
+                    "label": 11
+                },
+                {
+                    "label": 21
+                },
+                {
+                    "label": 14
+                }
+            ],
+            "answer": 14
+        },
+        {
+            "title": "7 x 3",
+            "options": [
+                {
+                    "label": 19
+                },
+                {
+                    "label": 21
+                },
+                {
+                    "label": 23
+                }
+            ],
+            "answer": 21
+        },
+        {
+            "title": "7 x 4",
+            "options": [
+                {
+                    "label": 44
+                },
+                {
+                    "label": 24
+                },
+                {
+                    "label": 28
+                }
+            ],
+            "answer": 28
+
+        },
+        {
+            "title": "7 x 5",
+            "options": [
+                {
+                    "label": 45
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 35
+                }
+            ],
+            "answer": 35
+        },
+        {
+            "title": "7 x 6",
+            "options": [
+                {
+                    "label": 32
+                },
+                {
+                    "label": 42
+                },
+                {
+                    "label": 36
+                }
+            ],
+            "answer": 42
+        },
+        {
+            "title": "7 x 7",
+            "options": [
+                {
+                    "label": 49
+                },
+                {
+                    "label": 61
+                },
+                {
+                    "label": 51
+                }
+            ],
+            "answer": 49
+        },
+        {
+            "title": "7 x 8",
+            "options": [
+                {
+                    "label": 57
+                },
+                {
+                    "label": 64
+                },
+                {
+                    "label": 56
+                }
+            ],
+            "answer": 56
+        },
+        {
+            "title": "7 x 9",
+            "options": [
+                {
+                    "label": 67
+                },
+                {
+                    "label": 64
+                },
+                {
+                    "label": 63
+                }
+            ],
+            "answer": 63
+        },
+        {
+            "title": "7 x 10",
+            "options": [
+                {
+                    "label": 70
+                },
+                {
+                    "label": 77
+                },
+                {
+                    "label": 67
+                }
+            ],
+            "answer": 70
+        }
+    ]
+}
