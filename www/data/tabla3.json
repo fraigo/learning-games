@@ -60,7 +60,7 @@
                     "label": 3
                 },
                 {
-                    "label": 6
+                    "label": 5
                 }
             ],
             "answer": 6
@@ -72,10 +72,10 @@
                     "label": 9
                 },
                 {
-                    "label": 5
+                    "label": 3
                 },
                 {
-                    "label": 2
+                    "label": 6
                 }
             ],
             "answer": 9
@@ -90,7 +90,7 @@
                     "label": 12
                 },
                 {
-                    "label": 4
+                    "label": 7
                 }
             ],
             "answer": 12
@@ -99,7 +99,7 @@
             "title": "3 x 5",
             "options": [
                 {
-                    "label": 7
+                    "label": 8
                 },
                 {
                     "label": 25
@@ -114,13 +114,13 @@
             "title": "3 x 6",
             "options": [
                 {
-                    "label": 16
+                    "label": 9
                 },
                 {
                     "label": 18
                 },
                 {
-                    "label": 10
+                    "label": 12
                 }
             ],
             "answer": 18
@@ -129,10 +129,10 @@
             "title": "3 x 7",
             "options": [
                 {
-                    "label": 9
+                    "label": 10
                 },
                 {
-                    "label": 12
+                    "label": 14
                 },
                 {
                     "label": 21
@@ -147,10 +147,10 @@
                     "label": 24
                 },
                 {
-                    "label": 10
+                    "label": 11
                 },
                 {
-                    "label": 28
+                    "label": 16
                 }
             ],
             "answer": 24
@@ -177,10 +177,10 @@
                     "label": 30
                 },
                 {
-                    "label": 12
+                    "label": 13
                 },
                 {
-                    "label": 10
+                    "label": 33
                 }
             ],
             "answer": 30
