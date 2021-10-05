@@ -93,6 +93,10 @@ Vue.component('app-content', {
                 document.location.hash="#"+levelData.hash
                 return
             }
+            if (levelData.url){
+                document.location.hash="#"+levelData.url
+                return
+            }
             this.position = -1
             this.sorted = levelData.sorted
             this.timer = levelData.timer

@@ -60,8 +60,6 @@
             var self = this
             window.addEventListener('hashchange', function(){
                 self.loadHash()
-            }, function (err) {
-                self.load(self.current)
             })
         },
         mounted:function(){
@@ -91,7 +89,11 @@
             loadHash: function() {
                 var id = document.location.hash.replace('#', '')
                 if (id!=''){
-                    this.load(id)
+                    if (id.startsWith("http")){
+                        this.loadUrl(id)
+                    } else {
+                        this.load(id)
+                    }
                 } else {
                     this.load(this.current)
                 }
@@ -106,13 +108,17 @@
                 document.location="#home"
                 this.currentStatus=''
             },
-            load: function(id) {
+            loadUrl: function(url) {
                 var self = this
-                loadData("data/"+id+".json?"+(new Date()).getTime(), function(data){
+                loadData(url+"?"+(new Date()).getTime(), function(data){
                     self.mainSection = JSON.parse(data)
-                    self.current = id
+                    self.current = self.mainSection.id
                     self.level=0
                 })
+            },
+            load: function(id) {
+                var self = this
+                this.loadUrl("data/"+id+".json")
             },
             refresh: function () {
                 this.$refs.content.menu()
