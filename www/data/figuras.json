@@ -1,0 +1,26 @@
+{
+    "id": "figuras",
+    "title": "Figuras Geométricas",
+    "description": "",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#444"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC"
+    },
+    "levels": [
+        {
+            "label": "Que figura es?",
+            "hash": "quefigura1"
+        },
+        {
+            "label": "Que figura es (palabras)?",
+            "hash": "quefigura2"
+        }
+    ],
+    "slides": []
+}

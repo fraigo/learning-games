@@ -6,6 +6,10 @@
         {
             "label": "Tablas de Multiplicar",
             "hash": "tablas"
+        },
+        {
+            "label": "Figuras geométricas",
+            "hash": "figuras"
         }
     ],
     "slides": []

@@ -1,0 +1,169 @@
+{
+    "id": "quefigura2",
+    "title": "Figuras Geométricas",
+    "description": "",
+    "parent": "figuras",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#444"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FF8",
+        "fontSize": "3em"
+    },
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true
+        }
+    ],
+    "slides": [
+      {
+        "title": "Circulo",
+        "options": [
+            {
+                "label": "🔴"
+            },
+            {
+                "label": "⬛️"
+            },
+            {
+                "label": "🔺"
+            },
+            {
+              "label": "✉️"
+            },
+            {
+                "label": "🥚"
+            },
+            {
+                "label": "♦️"
+            }
+      ],
+        "answer": "🔴"
+      },
+      {
+        "title": "Ovalo",
+        "options": [
+            {
+                "label": "🔴"
+            },
+            {
+                "label": "⬛️"
+            },
+            {
+                "label": "🔺"
+            },
+            {
+              "label": "✉️"
+            },
+            {
+                "label": "🥚"
+            },
+            {
+                "label": "♦️"
+            }
+      ],
+        "answer": "🥚"
+      },
+      {
+        "title": "Triangulo",
+        "options": [
+            {
+                "label": "🔴"
+            },
+            {
+                "label": "⬛️"
+            },
+            {
+                "label": "🔺"
+            },
+            {
+              "label": "✉️"
+            },
+            {
+                "label": "🥚"
+            },
+            {
+                "label": "♦️"
+            }
+      ],
+        "answer": "🔺"
+      },
+      {
+        "title": "Rectangulo",
+        "options": [
+            {
+                "label": "🔴"
+            },
+            {
+                "label": "⬛️"
+            },
+            {
+                "label": "🔺"
+            },
+            {
+              "label": "✉️"
+            },
+            {
+                "label": "🥚"
+            },
+            {
+                "label": "♦️"
+            }
+      ],
+        "answer": "✉️"
+      },
+      {
+        "title": "Cuadrado",
+        "options": [
+            {
+                "label": "🔴"
+            },
+            {
+                "label": "⬛️"
+            },
+            {
+                "label": "🔺"
+            },
+            {
+              "label": "✉️"
+            },
+            {
+                "label": "🥚"
+            },
+            {
+                "label": "♦️"
+            }
+      ],
+        "answer": "⬛️"
+      },
+      {
+        "title": "Rombo",
+        "options": [
+            {
+                "label": "🔴"
+            },
+            {
+                "label": "⬛️"
+            },
+            {
+                "label": "🔺"
+            },
+            {
+              "label": "✉️"
+            },
+            {
+                "label": "🥚"
+            },
+            {
+                "label": "♦️"
+            }
+      ],
+        "answer": "♦️"
+      }
+    ]
+}
