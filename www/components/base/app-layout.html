@@ -3,7 +3,7 @@
     <div class="app-layout" :style="{fontSize:size+'rem'}">
         <div class="app-header">
             <div class="app-toolbar">
-                <div class="app-menu" @click="refresh()" :title="parentSection? parentSection.id : currentState.id" v-if="canBack"><span class="material-icons">arrow_back</span></div>
+                <div class="app-menu" @click="refresh()" :title="parentSection? parentSection.title : currentState.title" v-if="canBack"><span class="material-icons">arrow_back</span></div>
                 <div class="app-menu" v-if="menu">
                     <span class="material-icons" @click="showPlaylists()">menu</span>
                 </div>
