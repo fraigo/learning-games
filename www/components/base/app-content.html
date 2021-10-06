@@ -219,7 +219,10 @@ Vue.component('app-content', {
             baseStyle["order"]=this.orders[idx]
             var bg = this.section.optionCover ? this.section.optionCover : option.cover
             if (bg) {
-                baseStyle.backgroundImage = 'url("'+ bg  + '")'
+                if (!bg.startsWith("http")){
+                    bg=this.baseurl+bg
+                }
+                baseStyle.backgroundImage = 'url("'+ this.baseurl + bg  + '")'
                 baseStyle.backgroundSize = "cover"
                 baseStyle.backgorundRepeat = "no-repeat"
             }
@@ -235,8 +238,12 @@ Vue.component('app-content', {
         },
         imageStyle: function(item){
             var style = this.section.imageStyle ? JSON.parse(JSON.stringify(this.section.imageStyle)) : {}
-            if (item.image){
-                style.backgroundImage= 'url("'+ item.image  + '")'
+            var bg = item.image
+            if (bg){
+                if (!bg.startsWith("http")){
+                    bg=this.baseurl+bg
+                }
+                style.backgroundImage= 'url("'+ bg  + '")'
                 style.backgroundSize='contain'
                 style.backgroundRepeat='no-repeat'
                 style.backgroundPosition='center center'
