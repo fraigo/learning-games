@@ -1,0 +1,190 @@
+{
+    "id": "tabla8",
+    "title": "Tabla del 8",
+    "description": "Ejercicios de la tabla del 8",
+    "parent": "tablas",
+    "levels": [
+        {
+            "label": "Nivel 1",
+            "sorted": true,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 2",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "Nivel 3",
+            "sorted": true,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 4",
+            "sorted": false,
+            "timer": 7
+        },
+        {
+            "label": "Nivel 5",
+            "sorted": true,
+            "timer": 3
+        },
+        {
+            "label": "Nivel 6",
+            "sorted": false,
+            "timer": 3
+        }
+    ],
+    "slides": [
+        {
+            "title": "8 x 1",
+            "options": [
+                {
+                    "label": 7
+                },
+                {
+                    "label": 18
+                },
+                {
+                    "label": 8
+                }
+            ],
+            "answer":8
+        },
+        {
+            "title": "8 x 2",
+            "options": [
+                {
+                    "label": 8
+                },
+                {
+                    "label": 18
+                },
+                {
+                    "label": 16
+                }
+            ],
+            "answer": 16
+        },
+        {
+            "title": "8 x 3",
+            "options": [
+                {
+                    "label": 26
+                },
+                {
+                    "label": 18
+                },
+                {
+                    "label": 24
+                }
+            ],
+            "answer": 24
+        },
+        {
+            "title": "8 x 4",
+            "options": [
+                {
+                    "label": 32
+                },
+                {
+                    "label": 40
+                },
+                {
+                    "label": 34
+                }
+            ],
+            "answer": 32
+        },
+        {
+            "title": "8 x 5",
+            "options": [
+                {
+                    "label": 40
+                },
+                {
+                    "label": 35
+                },
+                {
+                    "label": 50
+                }
+            ],
+            "answer": 40
+        },
+        {
+            "title": "8 x 6",
+            "options": [
+                {
+                    "label": 56
+                },
+                {
+                    "label": 64
+                },
+                {
+                    "label": 48
+                }
+            ],
+            "answer": 48
+        },
+        {
+            "title": "8 x 7",
+            "options": [
+                {
+                    "label": 54
+                },
+                {
+                    "label": 64
+                },
+                {
+                    "label": 56
+                }
+            ],
+            "answer": 56
+        },
+        {
+            "title": "8 x 8",
+            "options": [
+                {
+                    "label": 54
+                },
+                {
+                    "label": 64
+                },
+                {
+                    "label": 66
+                }
+            ],
+            "answer": 64
+        },
+        {
+            "title": "8 x 9",
+            "options": [
+                {
+                    "label": 88
+                },
+                {
+                    "label": 82
+                },
+                {
+                    "label": 72
+                }
+            ],
+            "answer": 72
+        },
+        {
+            "title": "8 x 10",
+            "options": [
+                {
+                    "label": 88
+                },
+                {
+                    "label": 80
+                },
+                {
+                    "label": 75
+                }
+            ],
+            "answer": 80
+        }
+    ]
+}
