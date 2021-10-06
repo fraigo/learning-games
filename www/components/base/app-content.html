@@ -2,6 +2,7 @@
 <script type="text/x-template" id="app-content-template">
     <div class="app-content" :style="sectionStyle()">
         <h1 v-if="position!=-3">{{section.title}}</h1>
+        <div class="section-image" :style="imageStyle(section)"></div>
         <transition-group name="fade">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1)">
@@ -12,7 +13,7 @@
         <div v-for="(slide,idx) in currentSlides" :key="slide.title" v-show="idx==position">
             <div>
                 <h2 :style="titleStyle">{{slide.title}}</h2>
-                <div class="title-image" :style="imageStyle"></div>
+                <div class="title-image" :style="imageStyle(slide)"></div>
                 <div class="option-container">
                     <div class="option" :result="option.result" :key="idx1" @click="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
                         {{option.label}}
@@ -232,8 +233,16 @@ Vue.component('app-content', {
         titleStyle: function(){
             return this.section.titleStyle
         },
-        imageStyle: function(){
-            return this.section.imageStyle
+        imageStyle: function(item){
+            var style = this.section.imageStyle ? JSON.parse(JSON.stringify(this.section.imageStyle)) : {}
+            if (item.image){
+                style.backgroundImage= 'url("'+ item.image  + '")'
+                style.backgroundSize='contain'
+                style.backgroundRepeat='no-repeat'
+                style.backgroundPosition='center center'
+                style.height="25vh";
+            }
+            return style
         }
     },
     computed:{
@@ -248,6 +257,10 @@ Vue.component('app-content', {
 .app-content{
     padding: 8px;
     text-align: center;
+}
+.app-content h1{
+    font-size: 2.5em;
+    margin: 0.2em 0;
 }
 .app-content h2{
     font-size: 2.5em;
@@ -363,10 +376,18 @@ Vue.component('app-content', {
     left:0;
     width:100%;
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
+    .app-content h1, .app-content h2{
+        font-size: 1.5em;
+    }
+}
+@media (max-width: 400px) {
     .levels{
-        max-width: 400px;
+        max-width: 380px;
         margin: 0 auto;
+    }
+    .levels .option{
+        font-size: 1rem;
     }
 }
 </style>
