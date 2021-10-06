@@ -92,11 +92,11 @@ Vue.component('app-content', {
         start: function (level) {
             var levelData = this.section.levels[level-1]
             if (levelData.hash){
-                document.location.hash="#"+levelData.hash
+                this.$emit('url',levelData.hash)
                 return
             }
             if (levelData.url){
-                document.location.hash="#"+levelData.url
+                this.$emit('url',levelData.url)
                 return
             }
             this.position = -1

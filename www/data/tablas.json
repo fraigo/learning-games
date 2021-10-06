@@ -2,6 +2,7 @@
     "id": "home",
     "title": "Tablas de multiplicar",
     "description": "",
+    "parent" : "apps",
     "style": {
         "backgroundImage": "url(img/bg-math.jpg)",
         "color": "#444"

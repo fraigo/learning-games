@@ -3,7 +3,7 @@
     <div class="app-layout" :style="{fontSize:size+'rem'}">
         <div class="app-header">
             <div class="app-toolbar">
-                <div class="app-menu" @click="refresh()" v-if="canBack"><span class="material-icons">arrow_back</span></div>
+                <div class="app-menu" @click="refresh()" :title="parentSection? parentSection.id : currentState.id" v-if="canBack"><span class="material-icons">arrow_back</span></div>
                 <div class="app-menu" v-if="menu">
                     <span class="material-icons" @click="showPlaylists()">menu</span>
                 </div>
@@ -15,7 +15,8 @@
             </div>
         </div>
         <transition-group name="fade" tag="div" class="app-main">
-            <div is="app-content" v-if="mainSection" @state="state($event)" @status="status($event)"
+            <div is="app-content" v-if="mainSection" 
+                @state="state($event)" @status="status($event)" @url="setHash($event)"
                 :appdata="appData" :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
                 ref="content" :key="current"></div>
             <div class="app-message" v-if="message" :key="message"><div >{{message}}</div></div>
@@ -92,6 +93,15 @@
                 }, 5000, this)
                 this.$forceUpdate()
             },
+            setHash: function(url){
+                if (url.startsWith('http')){
+                    document.location="#"+url
+                } else if (this.baseUrl.startsWith('http')){
+                    document.location="#"+this.baseUrl+(url)+".json"
+                } else {
+                    document.location="#"+this.baseUrl+(url)
+                }
+            },
             loadHash: function() {
                 var id = document.location.hash.replace('#', '')
                 if (id!=''){
@@ -148,8 +158,8 @@
                 this.loadUrl(this.baseUrl+id+".json")
             },
             refresh: function () {
-                this.$refs.content.menu()
                 this.currentState=''
+                this.setHash(this.parentSection? this.parentSection.id : this.currentState.id)
             },
             restart: function () {
                 this.$refs.content.restart()
@@ -157,7 +167,7 @@
         },
         computed:{
             canBack: function () {
-                return this.current!='home' && this.currentState!=''
+                return (this.current!='home' && this.currentState!='') || this.parentSection
             }
         }
     });
