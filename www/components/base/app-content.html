@@ -11,7 +11,8 @@
         </div>
         <div v-for="(slide,idx) in currentSlides" :key="slide.title" v-show="idx==position">
             <div>
-                <h2>{{slide.title}}</h2>
+                <h2 :style="titleStyle">{{slide.title}}</h2>
+                <div class="title-image" :style="imageStyle"></div>
                 <div class="option-container">
                     <div class="option" :result="option.result" :key="idx1" @click="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
                         {{option.label}}
@@ -227,6 +228,12 @@ Vue.component('app-content', {
                 }
             }
             return baseStyle
+        },
+        titleStyle: function(){
+            return this.section.titleStyle
+        },
+        imageStyle: function(){
+            return this.section.imageStyle
         }
     },
     computed:{
@@ -296,7 +303,8 @@ Vue.component('app-content', {
     width: 16vw;
     height: 16vw;
 }
-.levels[count='6'] .option{
+.levels[count='6'] .option,
+.levels[count='9'] .option{
     width: 26vw;
     height: 26vw;
 }
@@ -305,7 +313,11 @@ Vue.component('app-content', {
     width: 20vw;
     height: 20vw;
 }
-.levels[count='9'] .option,
+.levels[count='9'] .option{
+    width: 26vw;
+    height: 26vw;
+    max-height: 22vh;
+}
 .levels[count='10'] .option{
     width: 19vw;
     height: 19vw;
