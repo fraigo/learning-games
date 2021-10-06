@@ -172,8 +172,9 @@ Vue.component('app-content', {
             if  (slide.locked == true) {
                 return
             }
-            console.log(option.label, answer)
-            if (option.label == answer) {
+            console.log(option.label, option.value, answer)
+            var response = option.value ? option.value : option.label
+            if (response == answer) {
                 currentOptions[idx].result = 1
                 this.correct++
                 slide.locked = true
@@ -298,6 +299,16 @@ Vue.component('app-content', {
 .levels[count='6'] .option{
     width: 26vw;
     height: 26vw;
+}
+.levels[count='7'] .option,
+.levels[count='8'] .option{
+    width: 20vw;
+    height: 20vw;
+}
+.levels[count='9'] .option,
+.levels[count='10'] .option{
+    width: 19vw;
+    height: 19vw;
 }
 .levels .option > div:first-child{
     padding-top: 8%;
