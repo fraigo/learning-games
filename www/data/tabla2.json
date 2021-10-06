@@ -2,6 +2,7 @@
     "id": "tabla2",
     "title": "Tabla del 2",
     "description": "Ejercicios de la tabla del 2",
+    "parent": "tablas",
     "levels": [
         {
             "label": "Nivel 1",

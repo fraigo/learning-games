@@ -1,39 +1,11 @@
 {
     "id": "home",
-    "title": "Inicio",
+    "title": "Apps",
     "description": "",
     "levels": [
         {
-            "label": "Tabla del 2",
-            "hash": "tabla2"
-        },
-        {
-            "label": "Tabla del 3",
-            "hash": "tabla3"
-        },
-        {
-            "label": "Tabla del 4",
-            "hash": "tabla4"
-        },
-        {
-            "label": "Tabla del 5",
-            "hash": "tabla5"
-        },
-        {
-            "label": "Tabla del 6",
-            "hash": "tabla6"
-        },
-        {
-            "label": "Tabla del 7",
-            "hash": "tabla7"
-        },
-        {
-            "label": "Tabla del 9",
-            "hash": "tabla9"
-        },
-        {
-            "label": "Tabla del 10",
-            "hash": "tabla10"
+            "label": "Tablas de Multiplicar",
+            "hash": "tablas"
         }
     ],
     "slides": []

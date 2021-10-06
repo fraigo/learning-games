@@ -14,12 +14,14 @@
                 </div>
             </div>
         </div>
-        <transition-group name="fade">
-            <div is="app-content" v-if="mainSection" @status="status($event)" :appdata="appData" :section="mainSection" :level="level" ref="content" :key="current"></div>
+        <transition-group name="fade" tag="div" class="app-main">
+            <div is="app-content" v-if="mainSection" @state="state($event)" @status="status($event)"
+                :appdata="appData" :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
+                ref="content" :key="current"></div>
             <div class="app-message" v-if="message" :key="message"><div >{{message}}</div></div>
             <div class="loading" v-if="loading" :key="loading"><img src="img/loading.png"></div>
         </transition-group>
-        <div class="app-footer">{{baseUrl}}</div>
+        <div class="app-footer">{{currentStatus}}</div>
     </div>
 </script>
 <script type="text/javascript">
@@ -39,12 +41,15 @@
                 menu: false,
                 level: 0,
                 appData: {},
-                currentStatus: '',
+                currentState: '',
                 current: 'home',
                 baseUrl: 'data/',
                 message: null,
                 loading: false,
-                mainSection: null
+                currentStatus: '',
+                mainSection: null,
+                cacheId: (new Date()).getTime(),
+                parentSection: null
             }
         },
         props: { 
@@ -99,28 +104,40 @@
                     this.load(this.current)
                 }
             },
-            status: function (status){
-                if (status == 'finish') {
-                    status = ''
+            status: function(status){
+                this.currentStatus = status
+            },
+            state: function (state){
+                if (state == 'finish') {
+                    state = ''
+                    this.currentStatus = ''
                 }
-                this.currentStatus=status
+                this.currentState=state
             },
             home: function() {
                 document.location="#home"
-                this.currentStatus=''
+                this.currentState=''
+                this.currentStatus = ''
                 this.baseUrl="data/"
             },
             loadUrl: function(url) {
                 var self = this
                 this.loading = true
-                loadData(url+"?"+(new Date()).getTime(), function(data){
+                loadData(url+"?"+this.cacheId, function(data){
                     self.mainSection = JSON.parse(data)
+                    self.parentSection = null
                     var urlParts = url.split("/")
                     urlParts.pop()
                     self.baseUrl = urlParts.join("/")+"/"
                     self.current = self.mainSection.id
                     self.level=0
                     self.loading = false
+                    if (self.mainSection.parent){
+                        console.log('loading',self.baseUrl+self.mainSection.parent+".json")
+                        loadData(self.baseUrl+self.mainSection.parent+".json", function (data) {
+                            self.parentSection = JSON.parse(data)
+                        })                            
+                    }
                 }, function(err){
                     self.showMessage("Connection error")
                     self.loading = false
@@ -132,7 +149,7 @@
             },
             refresh: function () {
                 this.$refs.content.menu()
-                this.currentStatus=''
+                this.currentState=''
             },
             restart: function () {
                 this.$refs.content.restart()
@@ -140,7 +157,7 @@
         },
         computed:{
             canBack: function () {
-                return this.current!='home' && this.currentStatus!=''
+                return this.current!='home' && this.currentState!=''
             }
         }
     });
@@ -170,6 +187,14 @@
     position: fixed;
     top: -2px;
     z-index: 10;
+}
+.app-main{
+    flex:1;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+.app-main > div{
+    height: 100%;
 }
 .app-toolbar{
     display: flex;
@@ -236,7 +261,8 @@ body[scrolling='1'] .player-top{
     bottom: 0;
     width: 100%;
     padding: 8px;
-    font-size: 8px;
+    box-sizing: border-box;
+    height: 2em;
 }
 .close-popup{
     position: absolute;
@@ -274,22 +300,22 @@ body[scrolling='1'] .player-top{
 }
 .loading img{
     -webkit-animation-name: spin;
-    -webkit-animation-duration: 4000ms;
+    -webkit-animation-duration: 5000ms;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
 
     -moz-animation-name: spin;
-    -moz-animation-duration: 4000ms;
+    -moz-animation-duration: 5000ms;
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: linear;
 
     -ms-animation-name: spin;
-    -ms-animation-duration: 4000ms;
+    -ms-animation-duration: 5000ms;
     -ms-animation-iteration-count: infinite;
     -ms-animation-timing-function: linear;
 
     animation-name: spin;
-    animation-duration: 4000ms;
+    animation-duration: 5000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }

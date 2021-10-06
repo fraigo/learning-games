@@ -1,6 +1,6 @@
 <!-- text-template -->
 <script type="text/x-template" id="app-content-template">
-    <div class="app-content">
+    <div class="app-content" :style="sectionStyle()">
         <h1 v-if="position!=-3">{{section.title}}</h1>
         <transition-group name="fade">
         <div class="option-container levels" :key="'levels'" v-if="currentLevel==0">
@@ -28,7 +28,7 @@
                 <div class="stars"><span v-if="stars>=1">⭐️</span><span v-if="stars>=2">⭐️</span><span v-if="stars>=3">⭐️</span></div>
             </div>
         </div>
-        <div class="status" v-if="position>=0">{{position+1}} / {{total}} <span class="timer" :seconds="timerSeconds" v-if="this.timer">{{timerSeconds}}</span></div>
+        <div class="status" v-if="position>=0"><span class="timer" :seconds="timerSeconds" v-if="this.timer">{{timerSeconds}}</span></div>
     </div>
 </script>
 <script type="text/javascript">
@@ -55,7 +55,9 @@ Vue.component('app-content', {
         }
     },
     props: { 
-        section: Object
+        section: Object,
+        parent: Object,
+        baseurl: String
     },
     mounted:function(){
         this.total = this.section.slides.length
@@ -112,17 +114,17 @@ Vue.component('app-content', {
                 this.currentSlides = tmpSlides
             }
             this.nextSlide()
-            this.$emit('status','started')
+            this.$emit('state','started')
         },
         nextSlide: function () {
             clearInterval(this.timerProc)
             if (this.position + 1 == this.currentSlides.length){
                 this.endSection()
                 this.position=-1
-                this.$emit('status','finish')
+                this.$emit('state','finish')
                 return
             }
-            this.$emit('status','next')
+            this.$emit('state','next')
             this.position++
             this.$forceUpdate()
             if (this.timer){
@@ -134,6 +136,7 @@ Vue.component('app-content', {
                     }
                 },1000, this)
             }
+            this.$emit('status',(this.position+1) + " / " + this.total)
         },
         endSection: function () {
             var points = (this.correct-this.errors)
@@ -184,19 +187,21 @@ Vue.component('app-content', {
             }
             this.$forceUpdate()
         },
+        sectionStyle: function() {
+            return this.section.style?this.section.style:(this.parent&&this.parent.style)
+        },
         levelStyle: function(level) {
-            var baseStyle = this.section.levelStyle ? JSON.parse(JSON.stringify(this.section.levelStyle)) : {}
-            if (this.section.levelImage) {
-                baseStyle.backgroundImage = 'url("'+ this.section.levelImage  + '")'
+            var section = this.section
+            var parentStyle = (this.parent && this.parent.levelStyle) ? this.parent.levelStyle : {}
+            var baseStyle = section.levelStyle ? JSON.parse(JSON.stringify(section.levelStyle)) : JSON.parse(JSON.stringify(parentStyle))
+            var bg = section.levelCover ? section.levelCover : level.cover
+            if (bg) {
+                if (!bg.startsWith("http")){
+                    bg=this.baseurl+bg
+                }
+                baseStyle.backgroundImage = 'url("'+ bg  + '")'
                 baseStyle.backgroundSize = "cover"
                 baseStyle.backgorundRepeat = "no-repeat"
-
-            }
-            if (level.image) {
-                baseStyle.backgroundImage = 'url("'+ level.image  + '")'
-                baseStyle.backgroundSize = "cover"
-                baseStyle.backgorundRepeat = "no-repeat"
-
             }
             if (level.style) {
                 for (var key in level.style) {
@@ -206,15 +211,12 @@ Vue.component('app-content', {
             return baseStyle
         },
         optionStyle: function(option, idx) {
-            var baseStyle = this.section.optionStyle ? JSON.parse(JSON.stringify(this.section.optionStyle)) : {}
+            var parentStyle = (this.parent && this.parent.optionStyle) ? this.parent.optionStyle : {}
+            var baseStyle = this.section.optionStyle ? JSON.parse(JSON.stringify(this.section.optionStyle)) : parentStyle
             baseStyle["order"]=this.orders[idx]
-            if (this.section.optionImage) {
-                baseStyle.backgroundImage = 'url("'+ this.section.optionImage  + '")'
-                baseStyle.backgroundSize = "cover"
-                baseStyle.backgorundRepeat = "no-repeat"
-            }
-            if (option.image) {
-                baseStyle.backgroundImage = 'url("'+ option.image  + '")'
+            var bg = this.section.optionCover ? this.section.optionCover : option.cover
+            if (bg) {
+                baseStyle.backgroundImage = 'url("'+ bg  + '")'
                 baseStyle.backgroundSize = "cover"
                 baseStyle.backgorundRepeat = "no-repeat"
             }
@@ -236,7 +238,6 @@ Vue.component('app-content', {
 </script>
 <style>
 .app-content{
-    margin-top: 1.6em;
     padding: 8px;
     text-align: center;
 }
@@ -288,9 +289,11 @@ Vue.component('app-content', {
     position: relative;
 }
 .levels .option{
-    font-size: 1.2em;
+    font-size: 1em;
     flex-direction: column;
     justify-content: flex-start;
+    width: 16vw;
+    height: 16vw;
 }
 .levels .option > div:first-child{
     padding-top: 8%;
@@ -306,10 +309,10 @@ Vue.component('app-content', {
 }
 .timer{
     display: inline-block;
-    width: 1.4em;
-    height: 1.4em;
-    line-height: 1.4em;
-    font-size: 1.4em;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    font-size: 2em;
     border: 2px solid #44C;
     background-color: #eee;
     color: #44C;

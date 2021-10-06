@@ -2,6 +2,7 @@
     "id": "tabla5",
     "title": "Tabla del 5",
     "description": "Ejercicios de la tabla del 5",
+    "parent": "tablas",
     "levels": [
         {
             "label": "Nivel 1",

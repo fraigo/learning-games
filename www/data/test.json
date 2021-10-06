@@ -2,10 +2,15 @@
     "id": "test",
     "title": "Test",
     "description": "Test item",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#444"
+    },
     "levelStyle": {
         "backgroundColor": "#FFE",
         "color": "#400"
     },
+    "levelCover": "../img/bg-math.jpg",
     "levels": [
         {
             "label": "Nivel 1",
