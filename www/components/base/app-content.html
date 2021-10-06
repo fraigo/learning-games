@@ -3,7 +3,7 @@
     <div class="app-content" :style="sectionStyle()">
         <h1 v-if="position!=-3">{{section.title}}</h1>
         <transition-group name="fade">
-        <div class="option-container levels" :key="'levels'" v-if="currentLevel==0">
+        <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1)">
                 <div>{{level.label}}</div>
                 <div class="levelstars"><span v-if="levelData.levelStars[idx]>=1">⭐️</span><span v-if="levelData.levelStars[idx]>=2">⭐️</span><span v-if="levelData.levelStars[idx]>=3">⭐️</span></div>
@@ -270,12 +270,12 @@ Vue.component('app-content', {
     padding: 0 8px;
 }
 .option-container .option[result='1']{
-    border: 2px solid green;
+    border: 4px solid green;
     color: green;
     background-color: #dfd;
 }
 .option-container .option[result='2']{
-    border: 2px solid red;
+    border: 4px solid red;
     color: red;
     background-color: #fdd;
 }
@@ -294,6 +294,10 @@ Vue.component('app-content', {
     justify-content: flex-start;
     width: 16vw;
     height: 16vw;
+}
+.levels[count='6'] .option{
+    width: 26vw;
+    height: 26vw;
 }
 .levels .option > div:first-child{
     padding-top: 8%;
