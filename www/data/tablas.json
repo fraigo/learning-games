@@ -5,7 +5,7 @@
     "parent" : "apps",
     "style": {
         "backgroundImage": "url(img/bg-math.jpg)",
-        "color": "#444"
+        "color": "#222"
     },
     "levelStyle": {
         "backgroundColor": "#FFE"

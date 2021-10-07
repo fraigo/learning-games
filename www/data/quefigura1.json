@@ -25,145 +25,181 @@
         "title": "Circulo",
         "options": [
             {
-                "label": "🔴"
+                "cover": "../img/shapes/circle.svg",
+                "value": "circle"
             },
             {
-                "label": "⬛️"
+                "cover": "../img/shapes/square.svg",
+                "value": "square"
             },
             {
-                "label": "🔺"
+                "cover": "../img/shapes/triangle.svg",
+                "value": "triangle"
             },
             {
-              "label": "✉️"
+                "cover": "../img/shapes/rectangle.svg",
+                "value": "rectangle"
             },
             {
-                "label": "🏈"
+                "cover": "../img/shapes/oval.svg",
+                "value": "oval"
             },
             {
-                "label": "♦️"
+                "cover": "../img/shapes/diamond.svg",
+                "value": "diamond"
             }
       ],
-        "answer": "🔴"
+        "answer": "circle"
       },
       {
         "title": "Ovalo",
         "options": [
             {
-                "label": "🔴"
+                "cover": "../img/shapes/circle.svg",
+                "value": "circle"
             },
             {
-                "label": "⬛️"
+                "cover": "../img/shapes/square.svg",
+                "value": "square"
             },
             {
-                "label": "🔺"
+                "cover": "../img/shapes/triangle.svg",
+                "value": "triangle"
             },
             {
-              "label": "✉️"
+                "cover": "../img/shapes/rectangle.svg",
+                "value": "rectangle"
             },
             {
-                "label": "🏈"
+                "cover": "../img/shapes/oval.svg",
+                "value": "oval"
             },
             {
-                "label": "♦️"
+                "cover": "../img/shapes/diamond.svg",
+                "value": "diamond"
             }
       ],
-        "answer": "🏈"
+        "answer": "oval"
       },
       {
         "title": "Triangulo",
         "options": [
             {
-                "label": "🔴"
+                "cover": "../img/shapes/circle.svg",
+                "value": "circle"
             },
             {
-                "label": "⬛️"
+                "cover": "../img/shapes/square.svg",
+                "value": "square"
             },
             {
-                "label": "🔺"
+                "cover": "../img/shapes/triangle.svg",
+                "value": "triangle"
             },
             {
-              "label": "✉️"
+                "cover": "../img/shapes/rectangle.svg",
+                "value": "rectangle"
             },
             {
-                "label": "🏈"
+                "cover": "../img/shapes/oval.svg",
+                "value": "oval"
             },
             {
-                "label": "♦️"
+                "cover": "../img/shapes/diamond.svg",
+                "value": "diamond"
             }
       ],
-        "answer": "🔺"
+        "answer": "triangle"
       },
       {
         "title": "Rectangulo",
         "options": [
             {
-                "label": "🔴"
+                "cover": "../img/shapes/circle.svg",
+                "value": "circle"
             },
             {
-                "label": "⬛️"
+                "cover": "../img/shapes/square.svg",
+                "value": "square"
             },
             {
-                "label": "🔺"
+                "cover": "../img/shapes/triangle.svg",
+                "value": "triangle"
             },
             {
-              "label": "✉️"
+                "cover": "../img/shapes/rectangle.svg",
+                "value": "rectangle"
             },
             {
-                "label": "🏈"
+                "cover": "../img/shapes/oval.svg",
+                "value": "oval"
             },
             {
-                "label": "♦️"
+                "cover": "../img/shapes/diamond.svg",
+                "value": "diamond"
             }
       ],
-        "answer": "✉️"
+        "answer": "rectangle"
       },
       {
         "title": "Cuadrado",
         "options": [
             {
-                "label": "🔴"
+                "cover": "../img/shapes/circle.svg",
+                "value": "circle"
             },
             {
-                "label": "⬛️"
+                "cover": "../img/shapes/square.svg",
+                "value": "square"
             },
             {
-                "label": "🔺"
+                "cover": "../img/shapes/triangle.svg",
+                "value": "triangle"
             },
             {
-              "label": "✉️"
+                "cover": "../img/shapes/rectangle.svg",
+                "value": "rectangle"
             },
             {
-                "label": "🏈"
+                "cover": "../img/shapes/oval.svg",
+                "value": "oval"
             },
             {
-                "label": "♦️"
+                "cover": "../img/shapes/diamond.svg",
+                "value": "diamond"
             }
       ],
-        "answer": "⬛️"
+        "answer": "square"
       },
       {
         "title": "Rombo",
         "options": [
             {
-                "label": "🔴"
+                "cover": "../img/shapes/circle.svg",
+                "value": "circle"
             },
             {
-                "label": "⬛️"
+                "cover": "../img/shapes/square.svg",
+                "value": "square"
             },
             {
-                "label": "🔺"
+                "cover": "../img/shapes/triangle.svg",
+                "value": "triangle"
             },
             {
-              "label": "✉️"
+                "cover": "../img/shapes/rectangle.svg",
+                "value": "rectangle"
             },
             {
-                "label": "🏈"
+                "cover": "../img/shapes/oval.svg",
+                "value": "oval"
             },
             {
-                "label": "♦️"
+                "cover": "../img/shapes/diamond.svg",
+                "value": "diamond"
             }
       ],
-        "answer": "♦️"
+        "answer": "diamond"
       }
     ]
 }

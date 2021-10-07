@@ -10,9 +10,9 @@
                 <div class="levelstars"><span v-if="levelData.levelStars[idx]>=1">⭐️</span><span v-if="levelData.levelStars[idx]>=2">⭐️</span><span v-if="levelData.levelStars[idx]>=3">⭐️</span></div>
             </div>
         </div>
-        <div v-for="(slide,idx) in currentSlides" :key="slide.title" v-show="idx==position">
+        <div v-for="(slide,idx) in currentSlides" :key="slide.title?slide.title:slide.image" v-show="idx==position">
             <div>
-                <h2 :style="titleStyle">{{slide.title}}</h2>
+                <h2 v-if="slide.title" :style="titleStyle">{{slide.title}}</h2>
                 <div class="title-image" :style="imageStyle(slide)"></div>
                 <div class="option-container">
                     <div class="option" :result="option.result" :key="idx1" @click="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
@@ -24,7 +24,7 @@
         </transition-group>
         <div class="results" v-if="position==-1 && currentLevel>0">
             <h2>Terminado!</h2>
-            <div>
+            <div class="results-content">
                 <div>Correctas<br><span class="correct">{{this.correct}}</span></div>
                 <div>Errores<br><span class="error">{{this.errors}}</span></div>
                 <div class="stars"><span v-if="stars>=1">⭐️</span><span v-if="stars>=2">⭐️</span><span v-if="stars>=3">⭐️</span></div>
@@ -204,7 +204,8 @@ Vue.component('app-content', {
                 }
                 baseStyle.backgroundImage = 'url("'+ bg  + '")'
                 baseStyle.backgroundSize = "cover"
-                baseStyle.backgorundRepeat = "no-repeat"
+                baseStyle.backgroundRepeat = "no-repeat"
+                baseStyle.backgroundPosition = "center bottom"
             }
             if (level.style) {
                 for (var key in level.style) {
@@ -222,9 +223,10 @@ Vue.component('app-content', {
                 if (!bg.startsWith("http")){
                     bg=this.baseurl+bg
                 }
-                baseStyle.backgroundImage = 'url("'+ this.baseurl + bg  + '")'
+                baseStyle.backgroundImage = 'url("'+ bg  + '")'
                 baseStyle.backgroundSize = "cover"
-                baseStyle.backgorundRepeat = "no-repeat"
+                baseStyle.backgroundRepeat = "no-repeat"
+                baseStyle.backgroundPosition = "center bottom"
             }
             if (option.style) {
                 for (var key in option.style) {
@@ -247,7 +249,6 @@ Vue.component('app-content', {
                 style.backgroundSize='contain'
                 style.backgroundRepeat='no-repeat'
                 style.backgroundPosition='center center'
-                style.height="25vh";
             }
             return style
         }
@@ -310,6 +311,15 @@ Vue.component('app-content', {
 .results{
     font-size: 1.2em;
 }
+.results-content{
+    background-color: rgb(255,255,255);
+    color: #222;
+    padding: 12px;
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: 7px;
+    border: 1px solid #eee;
+}
 .stars{
     font-size: 3rem;
 }
@@ -347,6 +357,9 @@ Vue.component('app-content', {
 }
 .levelstars star{
     font-size: 1rem;
+}
+.title-image{
+    height:25vh;
 }
 .error{
     color: #C00;
@@ -396,5 +409,17 @@ Vue.component('app-content', {
     .levels .option{
         font-size: 1rem;
     }
+    .title-image{
+        height: 22vh;
+    }
 }
+@media (max-width: 360px) {
+    .app-content{
+        padding: 6px;
+    }
+    .levels .option, .option-container .option{
+        margin: 1px;
+    }
+}
+
 </style>

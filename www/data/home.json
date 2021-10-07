@@ -2,13 +2,28 @@
     "id": "home",
     "title": "Inicio",
     "description": "",
+    "style": {
+        "backgroundImage": "url(img/bg-learning.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
     "levels": [
         {
             "label": "Local",
+            "cover": "../img/tablet.svg",
+            "style": {
+                "backgroundSize" : "80%"
+            },
             "hash": "apps"
         },
         {
             "label": "Online",
+            "cover": "../img/online.svg",
+            "style": {
+                "backgroundSize" : "80%"
+            },
             "url": "https://fraigo.github.io/learning-games/www/data/apps.json"
         }
     ],

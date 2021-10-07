@@ -12,7 +12,7 @@
     },
     "optionStyle": {
         "backgroundColor": "#FFC",
-        "fontSize": "1.2em"
+        "fontSize": "1em"
     },
     "levels": [
         {
@@ -22,7 +22,7 @@
     ],
     "slides": [
       {
-        "title": "🌞",
+        "image": "../img/shapes/circle.svg",
         "options": [
             {
                 "label": "Circulo"
@@ -46,7 +46,7 @@
         "answer": "Circulo"
       },
       {
-        "title": "🏈",
+        "image": "../img/shapes/oval.svg",
         "options": [
             {
                 "label": "Circulo"
@@ -70,7 +70,7 @@
         "answer": "Ovalo"
       },
       {
-        "title": "🍕",
+        "image": "../img/shapes/triangle.svg",
         "options": [
             {
                 "label": "Circulo"
@@ -94,7 +94,7 @@
         "answer": "Triangulo"
       },
       {
-        "title": "✉️",
+        "image": "../img/shapes/rectangle.svg",
         "options": [
             {
                 "label": "Circulo"
@@ -118,7 +118,7 @@
         "answer": "Rectangulo"
       },
       {
-        "title": "🖼",
+        "image": "../img/shapes/square.svg",
         "options": [
             {
                 "label": "Circulo"
@@ -142,7 +142,7 @@
         "answer": "Cuadrado"
       },
       {
-        "title": "♦️",
+        "image": "../img/shapes/diamond.svg",
         "options": [
             {
                 "label": "Circulo"

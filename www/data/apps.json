@@ -3,13 +3,28 @@
     "title": "Apps",
     "image": "../img/icon.svg",
     "description": "",
+    "style": {
+        "backgroundImage": "url(img/bg-learning.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
     "levels": [
         {
             "label": "Tablas de Multiplicar",
+            "cover": "../img/icon.svg",
+            "style": {
+                "backgroundSize" : "50%"
+            },
             "hash": "tablas"
         },
         {
             "label": "Figuras geométricas",
+            "cover": "../img/shapes/diamond.svg",
+            "style": {
+                "backgroundSize" : "50%"
+            },
             "hash": "figuras"
         }
     ],
