@@ -7,7 +7,8 @@
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1)">
                 <div>{{level.label}}</div>
-                <div class="levelstars"><span v-if="levelData.levelStars[idx]>=1">⭐️</span><span v-if="levelData.levelStars[idx]>=2">⭐️</span><span v-if="levelData.levelStars[idx]>=3">⭐️</span></div>
+                <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
+                <div class="levelstars" is="stars" :stars="levelData.levelStars[idx]"></div>
             </div>
         </div>
         <div v-for="(slide,idx) in currentSlides" :key="slide.title?slide.title:slide.image" v-show="idx==position">
@@ -27,7 +28,7 @@
             <div class="results-content">
                 <div>Correctas<br><span class="correct">{{this.correct}}</span></div>
                 <div>Errores<br><span class="error">{{this.errors}}</span></div>
-                <div class="stars"><span v-if="stars>=1">⭐️</span><span v-if="stars>=2">⭐️</span><span v-if="stars>=3">⭐️</span></div>
+                <div class="stars" is="stars" :stars="stars" :size="33"></div>
             </div>
         </div>
         <div class="status" v-if="position>=0"><span class="timer" :seconds="timerSeconds" v-if="this.timer">{{timerSeconds}}</span></div>
@@ -357,6 +358,11 @@ Vue.component('app-content', {
 }
 .levelstars star{
     font-size: 1rem;
+}
+.level-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .title-image{
     height:25vh;

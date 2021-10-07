@@ -1,0 +1,41 @@
+<!-- text-template -->
+<script type="text/x-template" id="stars-component-template">
+    <div class="stars-component">
+        <img class="star-icon" v-if="stars>=1" src="img/star_prize.svg" :width="size" :height="20">
+        <img class="star-icon" v-if="stars>=2" src="img/star_prize.svg" :width="size" :height="size">
+        <img class="star-icon" v-if="stars>=3" src="img/star_prize.svg" :width="size" :height="size">
+    </div>
+</script>
+<script type="text/javascript">
+Vue.component('stars', {
+    template: '#stars-component-template',
+    data: function(){
+        return {
+        }
+    },
+    props: { 
+        stars: Number,
+        size: {
+            type: Number,
+            default: 20
+        }
+    },
+    mounted:function(){
+        console.log("stars-component mounted");
+        var self = this;
+    },
+    methods: {
+        
+    },
+    computed:{
+        
+    }
+});
+</script>
+<style>
+.star-icon{
+    width: 22px;
+    height:22px;
+}
+</style>
+    
