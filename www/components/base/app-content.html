@@ -5,7 +5,7 @@
         <div class="section-image" :style="imageStyle(section)"></div>
         <transition-group name="fade">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
-            <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1, level)">
+            <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1)">
                 <div>{{level.label}}</div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
                 <div class="levelstars" is="stars" :stars="levelStars(level,idx)"></div>
@@ -228,9 +228,9 @@ Vue.component('app-content', {
                 self.start(self.currentLevel)
             },1000,this)
         },
-        start: function (levelNum, level) {
-            this.play(level.audio,null,level.label)
+        start: function (levelNum) {
             var levelData = this.section.levels[levelNum-1]
+            this.play(levelData.audio,null,levelData.label)
             if (levelData.hash){
                 this.$emit('url',levelData.hash)
                 return

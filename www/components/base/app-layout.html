@@ -173,8 +173,12 @@
                 this.loadUrl(this.baseUrl+id+".json")
             },
             refresh: function () {
+                if (this.currentState==''){
+                    this.setHash(this.parentSection? this.parentSection.id : this.mainSection.id)
+                } else {
+                    this.$refs.content.menu()
+                }
                 this.currentState=''
-                this.setHash(this.parentSection? this.parentSection.id : this.currentState.id)
             },
             restart: function () {
                 this.$refs.content.restart()
