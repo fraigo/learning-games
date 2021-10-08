@@ -277,6 +277,7 @@ Vue.component('app-content', {
                     if (self.timerSeconds==0){
                         self.hide = true
                         self.play("tiempo")
+                        clearInterval(this.timerProc)
                         setTimeout(function(){
                             self.nextSlide()
                         },1100)

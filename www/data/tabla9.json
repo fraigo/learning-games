@@ -17,22 +17,22 @@
         {
             "label": "Nivel 3",
             "sorted": true,
-            "timer": 7
+            "timer": 10
         },
         {
             "label": "Nivel 4",
             "sorted": false,
-            "timer": 7
+            "timer": 10
         },
         {
             "label": "Nivel 5",
             "sorted": true,
-            "timer": 3
+            "timer": 4
         },
         {
             "label": "Nivel 6",
             "sorted": false,
-            "timer": 3
+            "timer": 4
         }
     ],
     "slides": [
