@@ -153,7 +153,7 @@ WebAudio.prototype.load = function (url, id, successCallback, errorCallback) {
 }
 
 
-WebAudio.prototype.play = function (id) {
+WebAudio.prototype.play = function (id, onend) {
     if (WEBAUDIO_DEBUG) console.log('WebAudio Play',id)
     var audio = this.audios[id];
     if (audio) {
@@ -177,6 +177,9 @@ WebAudio.prototype.play = function (id) {
             },500)
         }else{
             audio.play();
+            if (onend) {
+                audio.onended = onend
+            }
         }
     }
 }

@@ -81,6 +81,10 @@ Vue.component('app-content', {
         var audios={}
         this.loadAudio("correcto")
         this.loadAudio("incorrecto")
+        this.loadAudio("lo_lograste")
+        this.loadAudio("dos")
+        this.loadAudio("tres")
+        this.loadAudio("estrellas")
         this.loadAudio(this.section.audio)
         for(var key in this.section.levels){
             this.loadAudio(this.section.levels[key].audio)
@@ -127,8 +131,10 @@ Vue.component('app-content', {
             if (include) {
                 audios.push(include)
             }
+            var time = 0
             for(var idx=0; idx< audios.length; idx++) {
-                setTimeout(function(audio){ audioEngine.play(audio)},idx*500,audios[idx])
+                setTimeout(function(audio){ audioEngine.play(audio)},time,audios[idx])
+                time+=audioEngine.duration(audios[idx])-100
             }
         },
         restart: function() {
@@ -206,6 +212,18 @@ Vue.component('app-content', {
             }
             this.levelData.levelStars[this.currentLevel-1] = Math.max(this.stars, this.levelData.levelStars[this.currentLevel-1])
             this.save()
+            setTimeout(function(self){
+                if (self.stars>0){
+                    if (self.stars==3){
+                    self.play(["lo_lograste","tres","estrellas"])
+                    } else if (self.stars==2){
+                        self.play(["lo_lograste","dos","estrellas"])
+                    } else {
+                        self.play("lo_lograste")
+                    }
+
+                }
+            },1000, this)
             setTimeout(function(self){
                 self.currentLevel = 0
             },3000, this)
