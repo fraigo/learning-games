@@ -1,31 +1,63 @@
 <!-- text-template -->
 <script type="text/x-template" id="stars-component-template">
-    <div class="stars-component">
-        <img class="star-icon" v-if="stars>=1" src="img/star_prize.svg" :width="size" :height="20">
-        <img class="star-icon" v-if="stars>=2" src="img/star_prize.svg" :width="size" :height="size">
-        <img class="star-icon" v-if="stars>=3" src="img/star_prize.svg" :width="size" :height="size">
-    </div>
+    <transition-group tag="div" name="zoom" class="stars-component" :style="{height:size+'px'}">
+        <img class="star-icon" v-if="starCount>=1" :key="1" src="img/star_prize.svg" :style="{width:size+'px', height:size+'px'}" >
+        <img class="star-icon" v-if="starCount>=2" :key="2" src="img/star_prize.svg" :style="{width:size+'px', height:size+'px'}" >
+        <img class="star-icon" v-if="starCount>=3" :key="3" src="img/star_prize.svg" :style="{width:size+'px', height:size+'px'}" >
+    </transition-group>
 </script>
 <script type="text/javascript">
 Vue.component('stars', {
     template: '#stars-component-template',
     data: function(){
         return {
+            starCount: 0
         }
     },
     props: { 
-        stars: Number,
+        stars: {
+            type: Number,
+            default: 0
+        },
+        animated: {
+            type: Boolean,
+            default: false
+        },
         size: {
             type: Number,
             default: 20
         }
     },
     mounted:function(){
-        console.log("stars-component mounted");
+        console.log("stars-component mounted", this.size, this.stars);
         var self = this;
+        this.showStars(this.stars)
     },
     methods: {
-        
+        showStars: function (stars) {
+            var self = this
+            if (this.animated) {
+                self.starCount = -1
+                var proc = setInterval(function(){
+                    if (self.starCount>=stars){
+                        clearTimeout(proc)
+                        return
+                    }
+                    self.starCount++
+                }, 200)
+            } else {
+                self.starCount = stars
+            }
+        }
+    },
+    watch:{
+        size: function (val) {
+            console.log('size', val)
+        },
+        stars: function (val) {
+            console.log('stars', val)
+            this.showStars(val)
+        }
     },
     computed:{
         
@@ -33,9 +65,5 @@ Vue.component('stars', {
 });
 </script>
 <style>
-.star-icon{
-    width: 22px;
-    height:22px;
-}
 </style>
     

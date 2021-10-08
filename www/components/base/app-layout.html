@@ -386,6 +386,19 @@ body[scrolling='1'] .player-top{
   font-size: 8px;
   display: none;
 }
+.zoom-enter-active, .zoom-leave-active {
+  transition: all .5s;
+}
+.zoom-enter{
+  opacity: 0;
+  size: 1px;
+  size: 1px;
+}
+.zoom-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  size: 1px;
+  size: 1px;
+}
 @media (prefers-color-scheme: dark) {
     .app-layout{
         background-color: #333;

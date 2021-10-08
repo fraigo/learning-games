@@ -8,7 +8,7 @@
             <div v-for="(level, idx) in section.levels" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1)">
                 <div>{{level.label}}</div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
-                <div class="levelstars" is="stars" :stars="levelData.levelStars[idx]"></div>
+                <div class="levelstars" is="stars" :stars="levelStars(level,idx)"></div>
             </div>
         </div>
         <div v-for="(slide,idx) in currentSlides" :key="slide.title?slide.title:slide.image" v-show="idx==position">
@@ -28,7 +28,7 @@
             <div class="results-content">
                 <div>Correctas<br><span class="correct">{{this.correct}}</span></div>
                 <div>Errores<br><span class="error">{{this.errors}}</span></div>
-                <div class="stars" is="stars" :stars="stars" :size="33"></div>
+                <div class="stars" is="stars" :stars="stars" :size="40" :animated="true" :key="stars+40"></div>
             </div>
         </div>
         <div class="status" v-if="position>=0"><span class="timer" :seconds="timerSeconds" v-if="this.timer">{{timerSeconds}}</span></div>
@@ -252,6 +252,25 @@ Vue.component('app-content', {
                 style.backgroundPosition='center center'
             }
             return style
+        },
+        levelStars: function(level, idx){
+            if (level.hash){
+                var stars = localStorage.getItem('leveldata_'+level.hash)
+                if (stars && stars!='') {
+                    var data = JSON.parse(stars)
+                    var count = 0
+                    var total = 0
+                    for(var idx in data.levelStars) {
+                        total += 3
+                        count += data.levelStars[idx]
+                    }
+                    console.log('levelstars',level.hash,count,data.levelStars)
+                    if (total>0){
+                        return Math.max(1,Math.floor(count*3/total))
+                    }
+                }
+            }
+            return this.levelData.levelStars[idx]
         }
     },
     computed:{
@@ -285,6 +304,7 @@ Vue.component('app-content', {
     justify-content: center;
 }
 .option-container .option{
+    position: relative;
     min-width: 100px;
     min-height: 100px;
     width: 13vw;
@@ -333,6 +353,12 @@ Vue.component('app-content', {
     justify-content: flex-start;
     width: 16vw;
     height: 16vw;
+}
+.levels .option .levelstars{
+    position: absolute; 
+    bottom: 8px;
+    width: 100%;
+    left: 0;
 }
 .levels[count='6'] .option,
 .levels[count='9'] .option{
