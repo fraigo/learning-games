@@ -101,6 +101,7 @@ Vue.component('app-content', {
         }
         for(var key in this.section.slides){
             this.loadAudio(this.section.slides[key].audio)
+            this.loadAudio(this.wordExpression(this.section.slides[key].title))
             for(var key1 in this.section.slides[key].options){
                 this.loadAudio(this.section.slides[key].options[key1].audio)
                 this.loadAudio(this.wordExpression(this.section.slides[key].options[key1].label))
@@ -204,6 +205,7 @@ Vue.component('app-content', {
                 this.playExpression(expr, include)
                 return
             }
+            this.$emit('status',JSON.stringify(audios))
             if (!audios && !include) return;
             if (include && !audios) {
                 audios = []
@@ -217,7 +219,7 @@ Vue.component('app-content', {
             var time = 0
             for(var idx=0; idx< audios.length; idx++) {
                 setTimeout(function(audio){ audioEngine.play(audio)},time,audios[idx])
-                time+=audioEngine.duration(audios[idx])-200
+                time+=audioEngine.duration(audios[idx])-100
             }
         },
         restart: function() {
@@ -269,6 +271,7 @@ Vue.component('app-content', {
             if (this.timer){
                 this.timerSeconds=this.timer
                 this.timerProc=setInterval(function (self) {
+                    console.log(self.$el)
                     self.play("tick")
                     self.timerSeconds--
                     if (self.timerSeconds==0){
