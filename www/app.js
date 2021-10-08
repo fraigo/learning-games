@@ -38,6 +38,8 @@ function readLocalFile(file, callback, error){
     }
 }
 
+var  audioEngine = new WebAudio();
+
 
 var loadData=function(url,callback, error){
 
