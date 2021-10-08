@@ -333,12 +333,29 @@ Vue.component('app-content', {
 body{
     font-size: 20px;
 }
+*[audio='true']{
+    position: relative;
+}
+*[audio='true']:before{
+    content:" ";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-image: url('img/audio.svg');
+    background-size: contain;
+    right: 4px;
+    top: 4px;
+}
 .app-content{
     text-align: center;
 }
 .app-content h1{
     font-size: 2.5em;
-    margin: 0.2em 0;
+    margin: 0.2em auto;
+    display: inline-block;
+}
+.app-content h1[audio='true']{
+    padding-right: 30px;
 }
 .app-content h2{
     font-size: 2.5em;
@@ -347,6 +364,9 @@ body{
     color: #fff;
     padding: 8px;
     border-radius: 8px;
+}
+.app-content h2[audio='true']{
+    padding-right: 30px;
 }
 .option-container{
     display: flex;
@@ -490,16 +510,6 @@ body{
 .stars .star-icon{
     width: 80px;
     height: 80px;    
-}
-*[audio='true']:before{
-    content:" ";
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    background-image: url('img/audio.svg');
-    background-size: contain;
-    right: 4px;
-    top: 4px;
 }
 @media (max-width: 1023px) {
     body{
