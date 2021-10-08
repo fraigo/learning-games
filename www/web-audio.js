@@ -1,4 +1,4 @@
-var WEBAUDIO_DEBUG = true;
+var WEBAUDIO_DEBUG = false;
 var WEBAUDIO_MULTI = true;
 
 
@@ -21,7 +21,7 @@ WebAudio.prototype.loadList = function (items, successCallback, errorCallback) {
         return
     }
     var audioid = Object.keys(items)[0];
-    console.log('loading', audioid, items[audioid]);
+    if (WEBAUDIO_DEBUG) console.log('loading', audioid, items[audioid]);
     this.load(items[audioid],audioid,
         function(audio,id){
             itemsLoaded++;

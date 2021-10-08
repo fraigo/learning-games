@@ -1,7 +1,7 @@
 <!-- text-template -->
 <script type="text/x-template" id="app-content-template">
     <div class="app-content" :style="sectionStyle()">
-        <h1 v-if="position!=-3" :audio="section.audio!=null" @click="play(section.audio)">{{section.title}}</h1>
+        <h1 v-if="position!=-3" :audio="section.audio!=null" @click="play(section.audio,null,section.title)">{{section.title}}</h1>
         <div class="section-image" :style="imageStyle(section)"></div>
         <transition-group name="fade">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
@@ -11,9 +11,9 @@
                 <div class="levelstars" is="stars" :stars="levelStars(level,idx)"></div>
             </div>
         </div>
-        <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position">
+        <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position && !hide">
             <div>
-                <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio)">{{slide.title}}</h2>
+                <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,slide.title)">{{slide.title}}</h2>
                 <div class="title-image" :style="imageStyle(slide)"></div>
                 <div class="option-container">
                     <div class="option" :result="option.result" :audio="option.audio!=null"  :key="idx1" @click.stop="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
@@ -80,23 +80,37 @@ Vue.component('app-content', {
         }
         var audios={}
         this.loadAudio("correcto")
+        this.loadAudio("nivel")
         this.loadAudio("incorrecto")
         this.loadAudio("lo_lograste")
         this.loadAudio("dos")
         this.loadAudio("tres")
         this.loadAudio("estrellas")
+        this.loadAudio("tick")
+        this.loadAudio("tiempo")
+        if (this.section.preloadAudio){
+            for(var key in this.section.preloadAudio){
+                this.loadAudio(this.section.preloadAudio[key])
+            }
+        }
         this.loadAudio(this.section.audio)
+        this.loadAudio(this.wordExpression(this.section.title))
         for(var key in this.section.levels){
             this.loadAudio(this.section.levels[key].audio)
+            this.loadAudio(this.wordExpression(this.section.levels[key].label))
         }
         for(var key in this.section.slides){
             this.loadAudio(this.section.slides[key].audio)
             for(var key1 in this.section.slides[key].options){
                 this.loadAudio(this.section.slides[key].options[key1].audio)
+                this.loadAudio(this.wordExpression(this.section.slides[key].options[key1].label))
             }
         }
+        console.log(self.audios)
         audioEngine.loadList(this.audios, function(result) {
-            console.log('result',result,self.audios)
+            // console.log('result',result,self.audios)
+        }, function(id, error) {
+            delete self.audios[id]
         })
     },
     methods: {
@@ -120,7 +134,76 @@ Vue.component('app-content', {
             this.currentLevel = 0
             this.position = -1
         },
-        play: function(audios,include) {
+        toWords: function(expr){
+            if (expr == 'x'){
+                return ["por"]
+            }
+            if (typeof expr == 'number'){
+                expr = "" + expr
+            }
+            if (expr && expr.trim() != '' && !isNaN(expr.trim())){
+                var num = Number(expr)
+                var nums = ["cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez",
+                "once","doce","trece","catorce","quince",null,null,null,null,"veinte"]
+                var decs = ["","","veinte","treinta","cuarenta","cincuenta","sesenta","setenta","ochenta","noventa"]
+                var numText = nums[num]
+                if (numText){
+                    return [numText]
+                }else{
+                    if (num>15 && num<20){
+                        return ["dieci"].concat(this.toWords(num-10))
+                    } else
+                    if (num%10==0){
+                        var deci = decs[Math.floor(num/10)]
+                        if (deci){
+                            return [deci]
+                        }
+                    } else
+                    if (num<30){
+                        return ["veinti"].concat(this.toWords(num%10))
+                    } else
+                    if (num<100){
+                        return [decs[Math.floor(num/10)],"y"].concat(this.toWords(num%10))
+                    }
+                }
+            }
+            return [expr]
+        },
+        wordExpression: function(expr, check){
+            if (!expr){
+                return []
+            }
+            if (typeof expr == 'number') {
+                expr = "" + expr
+            }
+            var parts = expr.split(" ")
+            var wordList = []
+            for (var index = 0; index < parts.length; index++) {
+                var words = this.toWords(parts[index].toLowerCase());
+                for (var idx1 = 0; idx1 < words.length; idx1++) {
+                    var word = words[idx1]
+                    if (word!='' && (!check || this.audios[word])){
+                        wordList.push(word)
+                    }
+                }
+            }
+            return wordList
+        },
+        playExpression: function(expr, include){
+            var audios = this.wordExpression(expr, true)
+            if (include) {
+                var includeExpr = this.wordExpression(include, true)
+                console.log('include', include, includeExpr)
+                audios = audios.concat(includeExpr)
+            }
+            this.play(audios)
+        },
+        play: function(audios,include,expr) {
+            console.log('play', audios, include, expr)
+            if ((audios==null || audios.length==0) && expr){
+                this.playExpression(expr, include)
+                return
+            }
             if (!audios && !include) return;
             if (include && !audios) {
                 audios = []
@@ -134,7 +217,7 @@ Vue.component('app-content', {
             var time = 0
             for(var idx=0; idx< audios.length; idx++) {
                 setTimeout(function(audio){ audioEngine.play(audio)},time,audios[idx])
-                time+=audioEngine.duration(audios[idx])-100
+                time+=audioEngine.duration(audios[idx])-200
             }
         },
         restart: function() {
@@ -144,7 +227,7 @@ Vue.component('app-content', {
             },1000,this)
         },
         start: function (levelNum, level) {
-            this.play(level.audio)
+            this.play(level.audio,null,level.label)
             var levelData = this.section.levels[levelNum-1]
             if (levelData.hash){
                 this.$emit('url',levelData.hash)
@@ -173,6 +256,7 @@ Vue.component('app-content', {
         },
         nextSlide: function () {
             clearInterval(this.timerProc)
+            this.hide = false
             if (this.position + 1 == this.currentSlides.length){
                 this.endSection()
                 this.position=-1
@@ -185,9 +269,14 @@ Vue.component('app-content', {
             if (this.timer){
                 this.timerSeconds=this.timer
                 this.timerProc=setInterval(function (self) {
+                    self.play("tick")
                     self.timerSeconds--
                     if (self.timerSeconds==0){
-                        self.nextSlide()
+                        self.hide = true
+                        self.play("tiempo")
+                        setTimeout(function(){
+                            self.nextSlide()
+                        },1100)
                     }
                 },1000, this)
             }
@@ -239,21 +328,20 @@ Vue.component('app-content', {
             if  (slide.locked == true) {
                 return
             }
-            console.log(option.label, option.value, answer)
             var response = option.value ? option.value : option.label
             if (response == answer) {
                 currentOptions[idx].result = 1
                 this.correct++
                 slide.locked = true
                 clearInterval(this.timerProc)
-                this.play(option.audio,"correcto")
+                this.play(option.audio,"correcto",option.label)
                 setTimeout(function () {
                     self.nextSlide()
                 },800)
             } else {
                 this.errors++
                 currentOptions[idx].result = 2
-                this.play(option.audio,"incorrecto")
+                this.play(option.audio,"incorrecto",option.label)
             }
             this.$forceUpdate()
         },

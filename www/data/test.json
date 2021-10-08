@@ -1,8 +1,10 @@
 {
     "id": "test",
     "title": "Test",
-    "audio": "test",
     "description": "Test item",
+    "preloadAudio": [
+        "por"
+    ],
     "style": {
         "backgroundImage": "url(img/bg-math.jpg)",
         "color": "#444"
@@ -15,7 +17,6 @@
     "levels": [
         {
             "label": "Nivel 1",
-            "audio": "uno",
             "sorted": true,
             "timer": 0,
             "style": {
@@ -25,7 +26,6 @@
         },
         {
             "label": "Nivel 2",
-            "audio": "dos",
             "sorted": false,
             "timer": 0
         },
@@ -58,19 +58,15 @@
     "slides": [
         {
             "title": "2 x 1",
-            "audio": ["dos","por","uno"],
             "options": [
                 {
-                    "label": 1,
-                    "audio": "uno"
+                    "label": 12
                 },
                 {
-                    "label": 2,
-                    "audio": "dos"
+                    "label": 2
                 },
                 {
-                    "label": 4,
-                    "audio": "cuatro"
+                    "label": 16
                 }
             ],
             "answer": 2
@@ -79,10 +75,10 @@
             "title": "2 x 2",
             "options": [
                 {
-                    "label": 2
+                    "label": 24
                 },
                 {
-                    "label": 3
+                    "label": 20
                 },
                 {
                     "label": "Cuatro",
@@ -98,10 +94,10 @@
                     "label": 6
                 },
                 {
-                    "label": 5
+                    "label": 99
                 },
                 {
-                    "label": 2
+                    "label": 80
                 }
             ],
             "answer": 6
