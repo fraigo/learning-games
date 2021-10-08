@@ -16,38 +16,47 @@
     "levels": [
         {
             "label": "Tabla del 2",
+            "audio": "dos",
             "hash": "tabla2"
         },
         {
             "label": "Tabla del 3",
+            "audio": "tres",
             "hash": "tabla3"
         },
         {
             "label": "Tabla del 4",
+            "audio": "cuatro",
             "hash": "tabla4"
         },
         {
             "label": "Tabla del 5",
+            "audio": "cinco",
             "hash": "tabla5"
         },
         {
             "label": "Tabla del 6",
+            "audio": "seis",
             "hash": "tabla6"
         },
         {
             "label": "Tabla del 7",
+            "audio": "siete",
             "hash": "tabla7"
         },
         {
             "label": "Tabla del 8",
+            "audio": "ocho",
             "hash": "tabla8"
         },
         {
             "label": "Tabla del 9",
+            "audio": "nueve",
             "hash": "tabla9"
         },
         {
             "label": "Tabla del 10",
+            "audio": "diez",
             "hash": "tabla10"
         }
     ],

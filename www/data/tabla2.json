@@ -38,9 +38,11 @@
     "slides": [
         {
             "title": "2 x 1",
+            "audio": ["dos","por","uno"],
             "options": [
                 {
-                    "label": 1
+                    "label": 1,
+                    "audio":"uno"
                 },
                 {
                     "label": 2
@@ -53,9 +55,11 @@
         },
         {
             "title": "2 x 2",
+            "audio": ["dos","por","dos"],
             "options": [
                 {
-                    "label": 2
+                    "label": 2,
+                    "audio":"dos"
                 },
                 {
                     "label": 3
@@ -68,6 +72,7 @@
         },
         {
             "title": "2 x 3",
+            "audio": ["dos","por","tres"],
             "options": [
                 {
                     "label": 6
@@ -83,6 +88,7 @@
         },
         {
             "title": "2 x 4",
+            "audio": ["dos","por","cuatro"],
             "options": [
                 {
                     "label": 6
@@ -98,6 +104,7 @@
         },
         {
             "title": "2 x 5",
+            "audio": ["dos","por","cinco"],
             "options": [
                 {
                     "label": 7
@@ -113,6 +120,7 @@
         },
         {
             "title": "2 x 6",
+            "audio": ["dos","por","seis"],
             "options": [
                 {
                     "label": 16
@@ -128,6 +136,7 @@
         },
         {
             "title": "2 x 7",
+            "audio": ["dos","por","siete"],
             "options": [
                 {
                     "label": 9
@@ -143,6 +152,7 @@
         },
         {
             "title": "2 x 8",
+            "audio": ["dos","por","ocho"],
             "options": [
                 {
                     "label": 16
@@ -158,6 +168,7 @@
         },
         {
             "title": "2 x 9",
+            "audio": ["dos","por","nueve"],
             "options": [
                 {
                     "label": 12
@@ -173,6 +184,7 @@
         },
         {
             "title": "2 x 10",
+            "audio": ["dos","por","diez"],
             "options": [
                 {
                     "label": 20
