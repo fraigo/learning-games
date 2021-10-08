@@ -18,6 +18,10 @@
         {
             "label": "Nivel 1",
             "sorted": true
+        },
+        {
+            "label": "Nivel 2",
+            "timer": 7
         }
     ],
     "slides": [

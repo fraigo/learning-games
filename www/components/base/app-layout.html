@@ -215,11 +215,11 @@
 }
 .app-main{
     flex:1;
-    padding-top: 2em;
-    padding-bottom: 2em;
 }
 .app-main > div{
     min-height: 100vh;
+    box-sizing: border-box;
+    padding: 36px 12px;
 }
 .app-toolbar{
     display: flex;
@@ -302,12 +302,12 @@ body[scrolling='1'] .player-top{
     position: relative;
 }
 .app-footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    height: 2em;
+    height: 1.6em;
 }
 *[inactive='true']{
     opacity: 0.4;
@@ -400,7 +400,7 @@ body[scrolling='1'] .player-top{
   size: 1px;
 }
 @media (prefers-color-scheme: dark) {
-    .app-layout{
+    .app-layout, .app-footer, .app-header{
         background-color: #333;
         color: #fff;
     }

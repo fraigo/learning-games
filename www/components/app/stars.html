@@ -1,9 +1,9 @@
 <!-- text-template -->
 <script type="text/x-template" id="stars-component-template">
-    <transition-group tag="div" name="zoom" class="stars-component" :style="{height:size+'px'}">
-        <img class="star-icon" v-if="starCount>=1" :key="1" src="img/star_prize.svg" :style="{width:size+'px', height:size+'px'}" >
-        <img class="star-icon" v-if="starCount>=2" :key="2" src="img/star_prize.svg" :style="{width:size+'px', height:size+'px'}" >
-        <img class="star-icon" v-if="starCount>=3" :key="3" src="img/star_prize.svg" :style="{width:size+'px', height:size+'px'}" >
+    <transition-group tag="div" name="zoom" class="stars-component" >
+        <img class="star-icon" v-if="starCount>=1" :key="1" src="img/star_prize.svg" >
+        <img class="star-icon" v-if="starCount>=2" :key="2" src="img/star_prize.svg" >
+        <img class="star-icon" v-if="starCount>=3" :key="3" src="img/star_prize.svg" >
     </transition-group>
 </script>
 <script type="text/javascript">
@@ -22,14 +22,9 @@ Vue.component('stars', {
         animated: {
             type: Boolean,
             default: false
-        },
-        size: {
-            type: Number,
-            default: 20
         }
     },
     mounted:function(){
-        console.log("stars-component mounted", this.size, this.stars);
         var self = this;
         this.showStars(this.stars)
     },
@@ -51,9 +46,6 @@ Vue.component('stars', {
         }
     },
     watch:{
-        size: function (val) {
-            console.log('size', val)
-        },
         stars: function (val) {
             console.log('stars', val)
             this.showStars(val)
@@ -65,5 +57,9 @@ Vue.component('stars', {
 });
 </script>
 <style>
+.star-icon{
+    width: 24px;
+    height: 24px;    
+}
 </style>
     
