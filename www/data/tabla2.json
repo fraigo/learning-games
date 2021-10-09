@@ -1,6 +1,11 @@
 {
     "id": "tabla2",
-    "title": "Tabla del 2",
+    "title": "2 Times Table",
+    "lang" : {
+        "es" : {
+            "2_times_table" : "Tabla del 2"
+        }
+    },
     "description": "Ejercicios de la tabla del 2",
     "parent": "tablas",
     "levels": [
@@ -38,7 +43,6 @@
     "slides": [
         {
             "title": "2 x 1",
-            "audio": ["dos","mult","uno"],
             "options": [
                 {
                     "label": 1
@@ -54,7 +58,6 @@
         },
         {
             "title": "2 x 2",
-            "audio": ["dos","mult","dos"],
             "options": [
                 {
                     "label": 2
@@ -70,7 +73,6 @@
         },
         {
             "title": "2 x 3",
-            "audio": ["dos","mult","tres"],
             "options": [
                 {
                     "label": 6
@@ -86,7 +88,6 @@
         },
         {
             "title": "2 x 4",
-            "audio": ["dos","mult","cuatro"],
             "options": [
                 {
                     "label": 6
@@ -102,7 +103,6 @@
         },
         {
             "title": "2 x 5",
-            "audio": ["dos","mult","cinco"],
             "options": [
                 {
                     "label": 7
@@ -118,7 +118,6 @@
         },
         {
             "title": "2 x 6",
-            "audio": ["dos","mult","seis"],
             "options": [
                 {
                     "label": 16
@@ -134,7 +133,6 @@
         },
         {
             "title": "2 x 7",
-            "audio": ["dos","mult","siete"],
             "options": [
                 {
                     "label": 9
@@ -150,7 +148,6 @@
         },
         {
             "title": "2 x 8",
-            "audio": ["dos","mult","ocho"],
             "options": [
                 {
                     "label": 16
@@ -166,7 +163,6 @@
         },
         {
             "title": "2 x 9",
-            "audio": ["dos","mult","nueve"],
             "options": [
                 {
                     "label": 12
@@ -182,7 +178,6 @@
         },
         {
             "title": "2 x 10",
-            "audio": ["dos","mult","diez"],
             "options": [
                 {
                     "label": 20

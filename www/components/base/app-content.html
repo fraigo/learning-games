@@ -88,15 +88,12 @@ Vue.component('app-content', {
             }
         }
         var audios={}
-        this.loadAudio("correcto")
-        this.loadAudio("nivel")
-        this.loadAudio("incorrecto")
-        this.loadAudio("lo_lograste")
-        this.loadAudio("dos")
-        this.loadAudio("tres")
-        this.loadAudio("estrellas")
+        this.loadAudio(this.lang("correct"))
+        this.loadAudio(this.lang("try_again"))
+        this.loadAudio(this.lang("you_win"))
+        this.loadAudio(this.lang("stars"))
         this.loadAudio("tick")
-        this.loadAudio("tiempo")
+        this.loadAudio(this.lang("timeout"))
         if (this.section.preloadAudio){
             for(var key in this.section.preloadAudio){
                 this.loadAudio(this.section.preloadAudio[key])
@@ -126,8 +123,8 @@ Vue.component('app-content', {
     methods: {
         lang: function(content) {
             if (!content) return content
+            if (typeof content == 'number') content = '' + content
             var key=content.toLowerCase().replace(/ /g,'_').replace('?','')
-            console.log('key', content, key)
             if (this.section.lang && this.section.lang[this.language.lang] && this.section.lang[this.language.lang][key]){
                 return this.section.lang[this.language.lang][key]
             }
@@ -144,10 +141,12 @@ Vue.component('app-content', {
                 return
             }
             if (typeof audios == 'string') {
-                this.audios[audios]="audio/"+audios+".wav"
+                var audio1=audios.toLowerCase().replace(/ /g,'_')
+                this.audios[audio1]="audio/"+this.language.lang+"/"+audio1+".wav"
             } else {
                 for (var idx in audios){
-                    this.audios[audios[idx]]="audio/"+audios[idx]+".wav"
+                    var audio1=audios[idx].toLowerCase().replace(/ /g,'_')
+                    this.audios[audio1]="audio/"+this.language.lang+"/"+audio1+".wav"
                 }
             }
         },
@@ -168,10 +167,17 @@ Vue.component('app-content', {
             }
             if (expr && expr.trim() != '' && !isNaN(expr.trim())){
                 var num = Number(expr)
-                var nums = ["cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez",
-                "once","doce","trece","catorce","quince",null,null,null,null,"veinte"]
-                var decs = ["","","veinte","treinta","cuarenta","cincuenta","sesenta","setenta","ochenta","noventa"]
-                var numText = nums[num]
+                var nums = {
+                    "es" : ["cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve","diez",
+                "once","doce","trece","catorce","quince",null,null,null,null,"veinte"],
+                    "en" : ["zero","one","two","three","four","five","six","seven","eight","nine","ten",
+                "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","veinte"]
+                }
+                var decs = {
+                    "es" : ["","","veinte","treinta","cuarenta","cincuenta","sesenta","setenta","ochenta","noventa"],
+                    "en" : ["","","twenty","thirty","forty","fifty","sixty","senventy","eighty","ninety"]
+                }
+                var numText = nums[this.language.lang][num]
                 if (numText){
                     return [numText]
                 }else{
@@ -179,7 +185,7 @@ Vue.component('app-content', {
                         return ["dieci"].concat(this.toWords(num-10))
                     } else
                     if (num%10==0){
-                        var deci = decs[Math.floor(num/10)]
+                        var deci = decs[this.language.lang][Math.floor(num/10)]
                         if (deci){
                             return [deci]
                         }
@@ -188,7 +194,7 @@ Vue.component('app-content', {
                         return ["veinti"].concat(this.toWords(num%10))
                     } else
                     if (num<100){
-                        return [decs[Math.floor(num/10)],"y"].concat(this.toWords(num%10))
+                        return [decs[this.language.lang][Math.floor(num/10)],"y"].concat(this.toWords(num%10))
                     }
                 }
             }
@@ -238,15 +244,15 @@ Vue.component('app-content', {
                 audios = []
             }
             if (typeof audios == 'string') {
-                audios = [audios]
+                audios = [audios.toLowerCase()]
             }
             if (include) {
                 audios.push(include)
             }
             var time = 0
             for(var idx=0; idx< audios.length; idx++) {
-                setTimeout(function(audio){ audioEngine.play(audio)},time,audios[idx])
-                time+=audioEngine.duration(audios[idx])-100
+                setTimeout(function(audio){ audioEngine.play(audio)},time,audios[idx].toLowerCase())
+                time+=audioEngine.duration(audios[idx].toLowerCase())-100
             }
         },
         restart: function() {
@@ -315,7 +321,7 @@ Vue.component('app-content', {
                     self.timerSeconds--
                     if (self.timerSeconds==0){
                         self.hide = true
-                        self.play("tiempo")
+                        self.play(this.lang("timeout"))
                         clearInterval(this.timerProc)
                         setTimeout(function(){
                             self.nextSlide()
@@ -347,11 +353,11 @@ Vue.component('app-content', {
             setTimeout(function(self){
                 if (self.stars>0){
                     if (self.stars==3){
-                    self.play(["lo_lograste","tres","estrellas"])
+                        self.play([self.lang("You win"),self.lang("three"),self.lang("stars")])
                     } else if (self.stars==2){
-                        self.play(["lo_lograste","dos","estrellas"])
+                        self.play([self.lang("You win"),self.lang("two"),self.lang("stars")])
                     } else {
-                        self.play("lo_lograste")
+                        self.play(self.lang("You win"))
                     }
 
                 }
@@ -377,14 +383,14 @@ Vue.component('app-content', {
                 this.correct++
                 slide.locked = true
                 clearInterval(this.timerProc)
-                this.play(option.audio,"correcto",this.lang(option.label))
+                this.play(option.audio,this.lang("correct"),this.lang(option.label))
                 setTimeout(function () {
                     self.nextSlide()
                 },800)
             } else {
                 this.errors++
                 currentOptions[idx].result = 2
-                this.play(option.audio,"incorrecto",this.lang(option.label))
+                this.play(option.audio,this.lang("try_again"),this.lang(option.label))
             }
             this.$forceUpdate()
         },

@@ -1,19 +1,27 @@
 if [ "$1" == "" ]; then
-  echo "Usage: $0 expr folder"
-  echo "Example: $0 hello /tmp"
+  echo "Usage: $0 lang expr folder"
+  echo "Example: $0 lang hello /tmp"
 fi
-WORD=$1
-TARGET=$2
-FILE=$1
+VOICE=Samantha
+LANG=$1
+if [ "$LANG" == "es" ]; then
+  LANG=Paulina
+fi
+WORD=$2
+TARGET=$3
+if [ "$TARGET" == "" ]; then
+  TARGET=www/audio/$LANG/
+fi
+FILE=$2
 FILE=${FILE/á/a}
 FILE=${FILE/é/e}
 FILE=${FILE/í/i}
 FILE=${FILE/ó/o}
 FILE=${FILE/ú/u}
-say -v paulina "$WORD" 
-say -v paulina "$WORD" -o "$FILE"
+say -v $VOICE "$WORD" 
+say -v $VOICE "$WORD" -o "$FILE"
+echo ffmpeg -i "$FILE.aiff" "$FILE.wav"
 ffmpeg -i "$FILE.aiff" "$FILE.wav"
 rm -f "$FILE.aiff"
-if [ ! "$2" == "" ]; then
-  mv "$FILE.wav" $TARGET
-fi
+echo "Move to $TARGET"
+mv "$FILE.wav" $TARGET

@@ -2,6 +2,11 @@
     "id": "tabla5",
     "title": "Tabla del 5",
     "description": "Ejercicios de la tabla del 5",
+    "lang" : {
+        "es" : {
+            "5_times_table" : "Tabla del 5"
+        }
+    },
     "parent": "tablas",
     "levels": [
         {
