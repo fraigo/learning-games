@@ -5,7 +5,7 @@ fi
 VOICE=Samantha
 LANG=$1
 if [ "$LANG" == "es" ]; then
-  LANG=Paulina
+  VOICE=Paulina
 fi
 WORD=$2
 TARGET=$3
