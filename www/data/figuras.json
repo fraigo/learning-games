@@ -10,7 +10,8 @@
         "en" : {
             "shapes": "Shapes",
             "what_shape": "What shape is?",
-            "what_shape_words": "What shape is (words)?"
+            "what_shape_words": "What shape is (words)?",
+            "circle" : "circle"
         }
     },
     "description": "",

@@ -30,32 +30,32 @@
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
-                "audio": "circulo",
+                "audio": "circle",
                 "value": "circle"
             },
             {
                 "cover": "../img/shapes/square.svg",
-                "audio": "cuadrado",
+                "audio": "square",
                 "value": "square"
             },
             {
                 "cover": "../img/shapes/triangle.svg",
-                "audio": "triangulo",
+                "audio": "triangle",
                 "value": "triangle"
             },
             {
                 "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangulo",
+                "audio": "rectangle",
                 "value": "rectangle"
             },
             {
                 "cover": "../img/shapes/oval.svg",
-                "audio": "ovalo",
+                "audio": "oval",
                 "value": "oval"
             },
             {
                 "cover": "../img/shapes/diamond.svg",
-                "audio": "rombo",
+                "audio": "diamond",
                 "value": "diamond"
             }
       ],
@@ -66,32 +66,32 @@
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
-                "audio": "circulo",
+                "audio": "circle",
                 "value": "circle"
             },
             {
                 "cover": "../img/shapes/square.svg",
-                "audio": "cuadrado",
+                "audio": "square",
                 "value": "square"
             },
             {
                 "cover": "../img/shapes/triangle.svg",
-                "audio": "triangulo",
+                "audio": "triangle",
                 "value": "triangle"
             },
             {
                 "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangulo",
+                "audio": "rectangle",
                 "value": "rectangle"
             },
             {
                 "cover": "../img/shapes/oval.svg",
-                "audio": "ovalo",
+                "audio": "oval",
                 "value": "oval"
             },
             {
                 "cover": "../img/shapes/diamond.svg",
-                "audio": "rombo",
+                "audio": "diamond",
                 "value": "diamond"
             }
       ],
@@ -102,32 +102,32 @@
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
-                "audio": "circulo",
+                "audio": "circle",
                 "value": "circle"
             },
             {
                 "cover": "../img/shapes/square.svg",
-                "audio": "cuadrado",
+                "audio": "square",
                 "value": "square"
             },
             {
                 "cover": "../img/shapes/triangle.svg",
-                "audio": "triangulo",
+                "audio": "triangle",
                 "value": "triangle"
             },
             {
                 "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangulo",
+                "audio": "rectangle",
                 "value": "rectangle"
             },
             {
                 "cover": "../img/shapes/oval.svg",
-                "audio": "ovalo",
+                "audio": "oval",
                 "value": "oval"
             },
             {
                 "cover": "../img/shapes/diamond.svg",
-                "audio": "rombo",
+                "audio": "diamond",
                 "value": "diamond"
             }
       ],
@@ -138,32 +138,32 @@
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
-                "audio": "circulo",
+                "audio": "circle",
                 "value": "circle"
             },
             {
                 "cover": "../img/shapes/square.svg",
-                "audio": "cuadrado",
+                "audio": "square",
                 "value": "square"
             },
             {
                 "cover": "../img/shapes/triangle.svg",
-                "audio": "triangulo",
+                "audio": "triangle",
                 "value": "triangle"
             },
             {
                 "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangulo",
+                "audio": "rectangle",
                 "value": "rectangle"
             },
             {
                 "cover": "../img/shapes/oval.svg",
-                "audio": "ovalo",
+                "audio": "oval",
                 "value": "oval"
             },
             {
                 "cover": "../img/shapes/diamond.svg",
-                "audio": "rombo",
+                "audio": "diamond",
                 "value": "diamond"
             }
       ],
@@ -174,32 +174,32 @@
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
-                "audio": "circulo",
+                "audio": "circle",
                 "value": "circle"
             },
             {
                 "cover": "../img/shapes/square.svg",
-                "audio": "cuadrado",
+                "audio": "square",
                 "value": "square"
             },
             {
                 "cover": "../img/shapes/triangle.svg",
-                "audio": "triangulo",
+                "audio": "triangle",
                 "value": "triangle"
             },
             {
                 "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangulo",
+                "audio": "rectangle",
                 "value": "rectangle"
             },
             {
                 "cover": "../img/shapes/oval.svg",
-                "audio": "ovalo",
+                "audio": "oval",
                 "value": "oval"
             },
             {
                 "cover": "../img/shapes/diamond.svg",
-                "audio": "rombo",
+                "audio": "diamond",
                 "value": "diamond"
             }
       ],
@@ -210,32 +210,32 @@
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
-                "audio": "circulo",
+                "audio": "circle",
                 "value": "circle"
             },
             {
                 "cover": "../img/shapes/square.svg",
-                "audio": "cuadrado",
+                "audio": "square",
                 "value": "square"
             },
             {
                 "cover": "../img/shapes/triangle.svg",
-                "audio": "triangulo",
+                "audio": "triangle",
                 "value": "triangle"
             },
             {
                 "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangulo",
+                "audio": "rectangle",
                 "value": "rectangle"
             },
             {
                 "cover": "../img/shapes/oval.svg",
-                "audio": "ovalo",
+                "audio": "oval",
                 "value": "oval"
             },
             {
                 "cover": "../img/shapes/diamond.svg",
-                "audio": "rombo",
+                "audio": "diamond",
                 "value": "diamond"
             }
       ],

@@ -251,8 +251,9 @@ Vue.component('app-content', {
             }
             var time = 0
             for(var idx=0; idx< audios.length; idx++) {
-                setTimeout(function(audio){ audioEngine.play(audio)},time,audios[idx].toLowerCase())
-                time+=audioEngine.duration(audios[idx].toLowerCase())-100
+                var audio1 = audios[idx].toLowerCase()
+                setTimeout(function(audio){ audioEngine.play(audio)},time,audio1)
+                time+=audioEngine.duration(audio1)-100
             }
         },
         restart: function() {
