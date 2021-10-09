@@ -224,6 +224,7 @@ Vue.component('app-content', {
         },
         restart: function() {
             this.position = -3
+            clearInterval(this.timerProc)
             setTimeout(function(self){
                 self.start(self.currentLevel)
             },1000,this)

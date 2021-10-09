@@ -140,6 +140,7 @@
                 this.currentState=state
             },
             home: function() {
+                this.$refs.content.menu()
                 document.location="#home"
                 this.currentState=''
                 this.currentStatus = ''
@@ -174,6 +175,7 @@
             },
             refresh: function () {
                 if (this.currentState==''){
+                    this.$refs.content.menu()
                     this.setHash(this.parentSection? this.parentSection.id : this.mainSection.id)
                 } else {
                     this.$refs.content.menu()
