@@ -1,12 +1,15 @@
 <!-- text-template -->
 <script type="text/x-template" id="app-content-template">
     <div class="app-content" :style="sectionStyle()">
-        <h1 v-if="position!=-3" :audio="section.audio!=null" @click="play(section.audio,null,section.title)">{{section.title}}</h1>
+        <h1 v-if="position!=-3" :audio="section.audio!=null" :title="section.description"
+            @click="play(section.audio,null,section.title)">{{section.title}}</h1>
         <div class="section-image" :style="imageStyle(section)"></div>
         <transition-group name="fade">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
-            <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" class="option" :style="levelStyle(level)" @click="start(idx+1)">
+            <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" 
+                class="option" :style="levelStyle(level)" @click="start(idx+1)" :title="level.description">
                 <div>{{level.label}}</div>
+                <div v-if="level.icon" class="level-icon"><span class="material-icons">{{level.icon}}</span></div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
                 <div class="levelstars" is="stars" :stars="levelStars(level,idx)"></div>
             </div>
@@ -55,6 +58,8 @@ Vue.component('app-content', {
             levelData: {
                 levelStars: []
             },
+            actions: {
+            },
             audios: {}
         }
     },
@@ -65,6 +70,9 @@ Vue.component('app-content', {
     },
     mounted:function(){
         var self = this
+        if (!this.section.slides){
+            this.section.slides = []
+        }
         this.total = this.section.slides.length
         for (var index = 0; index < 10; index++) {
             this.orders.push(Math.floor(Math.random() * 10))
@@ -200,11 +208,14 @@ Vue.component('app-content', {
             this.play(audios)
         },
         play: function(audios,include,expr) {
-            console.log('play', audios, include, expr)
             if ((audios==null || audios.length==0) && expr){
                 this.playExpression(expr, include)
                 return
             }
+            if ((audios==null || audios.length==0) && !expr){
+                return
+            }
+            console.log('play', audios, include, expr)
             this.$emit('status',JSON.stringify(audios))
             if (!audios && !include) return;
             if (include && !audios) {
@@ -229,6 +240,13 @@ Vue.component('app-content', {
                 self.start(self.currentLevel)
             },1000,this)
         },
+        action: function (action, data) {
+            if (this.actions[action]){
+                this[action](data)
+            } else {
+                this.$emit('action', {action:action, data:data})
+            }
+        },
         start: function (levelNum) {
             var levelData = this.section.levels[levelNum-1]
             this.play(levelData.audio,null,levelData.label)
@@ -238,6 +256,10 @@ Vue.component('app-content', {
             }
             if (levelData.url){
                 this.$emit('url',levelData.url)
+                return
+            }
+            if (levelData.action){
+                this.action(levelData.action,levelData)
                 return
             }
             this.position = -1
@@ -363,9 +385,15 @@ Vue.component('app-content', {
                     bg=this.baseurl+bg
                 }
                 baseStyle.backgroundImage = 'url("'+ bg  + '")'
-                baseStyle.backgroundSize = "cover"
-                baseStyle.backgroundRepeat = "no-repeat"
-                baseStyle.backgroundPosition = "center bottom"
+                if (!section.levelStyle.backgroundSize) {
+                    baseStyle.backgroundSize = "cover"
+                }
+                if (!section.levelStyle.backgroundRepeat) {
+                    baseStyle.backgroundRepeat = "no-repeat"
+                }
+                if (!section.levelStyle.backgroundPosition) {
+                    baseStyle.backgroundPosition = "center bottom"
+                }
             }
             if (level.style) {
                 for (var key in level.style) {
@@ -486,8 +514,8 @@ body{
 }
 .option-container .option{
     position: relative;
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 105px;
+    min-height: 105px;
     width: 13vw;
     height: 13vw;
     display: flex;
@@ -614,6 +642,9 @@ body{
     width: 40px;
     height: 40px;    
 }
+.level-icon{
+    font-size: 2em;
+}
 .stars{
     height: 60px;
     margin-bottom: 20px;
@@ -665,7 +696,7 @@ body{
         height: 17vw;
     }
 }
-@media (max-width: 360px) {
+@media (max-width: 375px) {
     .app-content{
         padding: 6px;
     }

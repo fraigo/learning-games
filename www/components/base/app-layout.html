@@ -9,6 +9,7 @@
                 </div>
                 <div class="app-title">Learning games</div>
                 <div class="app-buttons">
+                    <div class="app-menu" @click="toggleSound()" ><span v-if="soundOn()" class="material-icons">volume_up</span><span v-if="!soundOn()" class="material-icons">volume_off</span></div>
                     <div class="app-menu" @click="restart()" v-if="canBack"><span class="material-icons">refresh</span></div>
                     <div @click="home()"><span class="material-icons">home</span></div>
                 </div>
@@ -16,7 +17,7 @@
         </div>
         <transition-group name="fade" tag="div" class="app-main">
             <div is="app-content" v-if="mainSection" 
-                @state="state($event)" @status="status($event)" @url="setHash($event)"
+                @state="state($event)" @status="status($event)" @url="setHash($event)" @action="action($event)"
                 :appdata="appData" :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
                 ref="content" :key="current"></div>
             <div class="app-message" v-if="message" :key="message"><div >{{message}}</div></div>
@@ -48,6 +49,7 @@
             return {
                 size: 1.2,
                 menu: false,
+                lang: "es",
                 level: 0,
                 appData: {},
                 currentState: '',
@@ -59,7 +61,11 @@
                 popup: {},
                 mainSection: null,
                 cacheId: (new Date()).getTime(),
-                parentSection: null
+                parentSection: null,
+                actions: {
+                    'toggleSound' : true,
+                    'setLanguage' : true
+                }
             }
         },
         props: { 
@@ -129,6 +135,15 @@
                     this.load(this.current)
                 }
             },
+            toggleSound: function(){
+                audioEngine.muted = !audioEngine.muted
+                console.log('sound', audioEngine.muted)
+                this.$forceUpdate()
+            },
+            setLanguage: function(options) {
+                console.log('lang', options.value)
+                this.lang = options.value
+            },
             status: function(status){
                 this.currentStatus = status
             },
@@ -173,6 +188,13 @@
                 var self = this
                 this.loadUrl(this.baseUrl+id+".json")
             },
+            action: function (event) {
+                var action = event.action
+                console.log('baseaction', action)
+                if (this.actions[action]){
+                    this[action](event.data)
+                }
+            },
             refresh: function () {
                 if (this.currentState==''){
                     this.$refs.content.menu()
@@ -184,6 +206,9 @@
             },
             restart: function () {
                 this.$refs.content.restart()
+            },
+            soundOn: function () {
+                return !audioEngine.muted
             }
         },
         computed:{

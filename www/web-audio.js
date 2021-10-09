@@ -7,6 +7,7 @@ function WebAudio() {
     this.audios = {};
     this.currentAudio = null;
     this.device = null;
+    this.muted == false;
 
 }
 
@@ -155,6 +156,7 @@ WebAudio.prototype.load = function (url, id, successCallback, errorCallback) {
 
 WebAudio.prototype.play = function (id, onend) {
     if (WEBAUDIO_DEBUG) console.log('WebAudio Play',id)
+    if (this.muted) return
     var audio = this.audios[id];
     if (audio) {
         if (this.device!=null){

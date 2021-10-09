@@ -1,0 +1,20 @@
+{
+    "id": "language",
+    "title": "Idioma",
+    "description": "Configuración de idioma",
+    "parent": "setup",
+    "levels": [
+        {
+            "label": "Español",
+            "value": "es",
+            "action": "setLanguage"
+        },
+        {
+            "label": "English",
+            "action": "setLanguage",
+            "value": "en"
+        }
+    ],
+    "slides": [
+    ]
+}

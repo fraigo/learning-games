@@ -2,9 +2,6 @@
     "id": "test",
     "title": "Test",
     "description": "Test item",
-    "preloadAudio": [
-        "por"
-    ],
     "style": {
         "backgroundImage": "url(img/bg-math.jpg)",
         "color": "#444"
