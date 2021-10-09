@@ -1,19 +1,26 @@
 {
     "id": "setup",
     "title": "Setup",
-    "description": "Configuración",
+    "lang" : {
+        "es" : {
+            "setup" : "Configuración",
+            "sound" : "Sonido",
+            "language" : "Idioma"
+        }
+    },
+    "description": "Setup",
     "levelStyle": {
         "backgroundColor": "#EEE",
         "color": "#200"
     },
     "levels": [
         {
-            "label": "Sonido",
+            "label": "Sound",
             "icon": "volume_up",
             "action": "toggleSound"
         },
         {
-            "label": "Idioma",
+            "label": "Language",
             "icon": "translate",
             "hash": "language"
         }

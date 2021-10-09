@@ -7,7 +7,7 @@
                 <div class="app-menu" v-if="menu">
                     <span class="material-icons" @click="showPlaylists()">menu</span>
                 </div>
-                <div class="app-title">Learning games</div>
+                <div class="app-title">{{language['title']}}</div>
                 <div class="app-buttons">
                     <div class="app-menu" @click="toggleSound()" ><span v-if="soundOn()" class="material-icons">volume_up</span><span v-if="!soundOn()" class="material-icons">volume_off</span></div>
                     <div class="app-menu" @click="restart()" v-if="canBack"><span class="material-icons">refresh</span></div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <transition-group name="fade" tag="div" class="app-main">
-            <div is="app-content" v-if="mainSection" 
+            <div is="app-content" v-if="mainSection" :language="language"
                 @state="state($event)" @status="status($event)" @url="setHash($event)" @action="action($event)"
                 :appdata="appData" :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
                 ref="content" :key="current"></div>
@@ -42,6 +42,21 @@
     }
     window.addEventListener("error",errorHandler);
     Vue.config.errorHandler = errorHandler;
+
+    var language = {
+        "es" : {
+            "lang" : "es",
+            "title" : "Aprendizaje",
+            "level" : "Nivel",
+            "times" : "por"
+        },
+        "en" : {
+            "lang" : "en",
+            "title" : "Learning Games",
+            "level" : "Level",
+            "times" : "times"
+        }
+    }
     
     Vue.component('app-layout', {
         template: '#app-layout-template',
@@ -50,6 +65,7 @@
                 size: 1.2,
                 menu: false,
                 lang: "es",
+                language: {},
                 level: 0,
                 appData: {},
                 currentState: '',
@@ -75,6 +91,13 @@
             window.addEventListener('hashchange', function(){
                 self.loadHash()
             })
+            var appLang = localStorage.getItem('applang')
+            console.log('lang', appLang)
+            if (appLang && appLang != '') {
+                this.setLanguage({value:appLang})
+            }else {
+                this.setLanguage({value:'es'})
+            }
         },
         mounted:function(){
             window.app=this
@@ -143,6 +166,8 @@
             setLanguage: function(options) {
                 console.log('lang', options.value)
                 this.lang = options.value
+                this.language = language[this.lang]
+                localStorage.setItem('applang', options.value)
             },
             status: function(status){
                 this.currentStatus = status

@@ -16,11 +16,11 @@
     },
     "levels": [
         {
-            "label": "Nivel 1",
+            "label": "Level 1",
             "sorted": true
         },
         {
-            "label": "Nivel 2",
+            "label": "Level 2",
             "timer": 10
         }
     ],

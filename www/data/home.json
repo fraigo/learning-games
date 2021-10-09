@@ -1,6 +1,13 @@
 {
     "id": "home",
-    "title": "Inicio",
+    "title": "Home",
+    "lang": {
+        "es" : {
+            "inicio" : "Inicio",
+            "local" : "Local",
+            "online" : "En Línea"
+        }
+    },
     "description": "",
     "style": {
         "backgroundImage": "url(img/bg-learning.jpg)",
@@ -25,6 +32,11 @@
                 "backgroundSize" : "80%"
             },
             "url": "https://fraigo.github.io/learning-games/www/data/apps.json"
+        },
+        {
+            "label": "Configuracion",
+            "icon": "settings",
+            "hash": "setup"
         }
     ],
     "slides": []

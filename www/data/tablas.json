@@ -1,7 +1,21 @@
 {
     "id": "tablas",
-    "title": "Tablas de multiplicar",
+    "title": "Multiplication tables",
     "description": "",
+    "lang" : {
+        "es" : {
+            "multiplication_tables" : "Tablas de multiplicar",
+            "2_times_table" : "Tabla del 2",
+            "3_times_table" : "Tabla del 3",
+            "4_times_table" : "Tabla del 4",
+            "5_times_table" : "Tabla del 5",
+            "6_times_table" : "Tabla del 6",
+            "7_times_table" : "Tabla del 7",
+            "8_times_table" : "Tabla del 8",
+            "9_times_table" : "Tabla del 9",
+            "10_times_table" : "Tabla del 10"
+        }
+    },
     "parent" : "apps",
     "style": {
         "backgroundImage": "url(img/bg-math.jpg)",
@@ -15,39 +29,39 @@
     },
     "levels": [
         {
-            "label": "Tabla del 2",
+            "label": "2 Times Table",
             "hash": "tabla2"
         },
         {
-            "label": "Tabla del 3",
+            "label": "3 Times Table",
             "hash": "tabla3"
         },
         {
-            "label": "Tabla del 4",
+            "label": "4 Times Table",
             "hash": "tabla4"
         },
         {
-            "label": "Tabla del 5",
+            "label": "5 Times Table",
             "hash": "tabla5"
         },
         {
-            "label": "Tabla del 6",
+            "label": "6 Times Table",
             "hash": "tabla6"
         },
         {
-            "label": "Tabla del 7",
+            "label": "7 Times Table",
             "hash": "tabla7"
         },
         {
-            "label": "Tabla del 8",
+            "label": "8 Times Table",
             "hash": "tabla8"
         },
         {
-            "label": "Tabla del 9",
+            "label": "9 Times Table",
             "hash": "tabla9"
         },
         {
-            "label": "Tabla del 10",
+            "label": "10 Times Table",
             "hash": "tabla10"
         }
     ],

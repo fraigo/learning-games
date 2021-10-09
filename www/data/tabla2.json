@@ -5,32 +5,32 @@
     "parent": "tablas",
     "levels": [
         {
-            "label": "Nivel 1",
+            "label": "Level 1",
             "sorted": true,
             "timer": 0
         },
         {
-            "label": "Nivel 2",
+            "label": "Level 2",
             "sorted": false,
             "timer": 0
         },
         {
-            "label": "Nivel 3",
+            "label": "Level 3",
             "sorted": true,
             "timer": 10
         },
         {
-            "label": "Nivel 4",
+            "label": "Level 4",
             "sorted": false,
             "timer": 10
         },
         {
-            "label": "Nivel 5",
+            "label": "Level 5",
             "sorted": true,
             "timer": 4
         },
         {
-            "label": "Nivel 6",
+            "label": "Level 6",
             "sorted": false,
             "timer": 4
         }
@@ -38,11 +38,10 @@
     "slides": [
         {
             "title": "2 x 1",
-            "audio": ["dos","por","uno"],
+            "audio": ["dos","mult","uno"],
             "options": [
                 {
-                    "label": 1,
-                    "audio":"uno"
+                    "label": 1
                 },
                 {
                     "label": 2
@@ -55,11 +54,10 @@
         },
         {
             "title": "2 x 2",
-            "audio": ["dos","por","dos"],
+            "audio": ["dos","mult","dos"],
             "options": [
                 {
-                    "label": 2,
-                    "audio":"dos"
+                    "label": 2
                 },
                 {
                     "label": 3
@@ -72,7 +70,7 @@
         },
         {
             "title": "2 x 3",
-            "audio": ["dos","por","tres"],
+            "audio": ["dos","mult","tres"],
             "options": [
                 {
                     "label": 6
@@ -88,7 +86,7 @@
         },
         {
             "title": "2 x 4",
-            "audio": ["dos","por","cuatro"],
+            "audio": ["dos","mult","cuatro"],
             "options": [
                 {
                     "label": 6
@@ -104,7 +102,7 @@
         },
         {
             "title": "2 x 5",
-            "audio": ["dos","por","cinco"],
+            "audio": ["dos","mult","cinco"],
             "options": [
                 {
                     "label": 7
@@ -120,7 +118,7 @@
         },
         {
             "title": "2 x 6",
-            "audio": ["dos","por","seis"],
+            "audio": ["dos","mult","seis"],
             "options": [
                 {
                     "label": 16
@@ -136,7 +134,7 @@
         },
         {
             "title": "2 x 7",
-            "audio": ["dos","por","siete"],
+            "audio": ["dos","mult","siete"],
             "options": [
                 {
                     "label": 9
@@ -152,7 +150,7 @@
         },
         {
             "title": "2 x 8",
-            "audio": ["dos","por","ocho"],
+            "audio": ["dos","mult","ocho"],
             "options": [
                 {
                     "label": 16
@@ -168,7 +166,7 @@
         },
         {
             "title": "2 x 9",
-            "audio": ["dos","por","nueve"],
+            "audio": ["dos","mult","nueve"],
             "options": [
                 {
                     "label": 12
@@ -184,7 +182,7 @@
         },
         {
             "title": "2 x 10",
-            "audio": ["dos","por","diez"],
+            "audio": ["dos","mult","diez"],
             "options": [
                 {
                     "label": 20

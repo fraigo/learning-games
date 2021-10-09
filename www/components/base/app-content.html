@@ -2,13 +2,13 @@
 <script type="text/x-template" id="app-content-template">
     <div class="app-content" :style="sectionStyle()">
         <h1 v-if="position!=-3" :audio="section.audio!=null" :title="section.description"
-            @click="play(section.audio,null,section.title)">{{section.title}}</h1>
+            @click="play(section.audio,null,lang(section.title))">{{lang(section.title)}}</h1>
         <div class="section-image" :style="imageStyle(section)"></div>
         <transition-group name="fade">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" 
                 class="option" :style="levelStyle(level)" @click="start(idx+1)" :title="level.description">
-                <div>{{level.label}}</div>
+                <div>{{lang(level.label)}}</div>
                 <div v-if="level.icon" class="level-icon"><span class="material-icons">{{level.icon}}</span></div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
                 <div class="levelstars" is="stars" :stars="levelStars(level,idx)"></div>
@@ -16,7 +16,7 @@
         </div>
         <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position && !hide">
             <div>
-                <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,slide.title)">{{slide.title}}</h2>
+                <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
                 <div class="title-image" :style="imageStyle(slide)"></div>
                 <div class="option-container">
                     <div class="option" :result="option.result" :audio="option.audio!=null"  :key="idx1" @click.stop="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
@@ -66,7 +66,8 @@ Vue.component('app-content', {
     props: { 
         section: Object,
         parent: Object,
-        baseurl: String
+        baseurl: String,
+        language: Object
     },
     mounted:function(){
         var self = this
@@ -123,6 +124,21 @@ Vue.component('app-content', {
         })
     },
     methods: {
+        lang: function(content) {
+            if (!content) return content
+            var key=content.toLowerCase().replace(/ /g,'_').replace('?','')
+            console.log('key', content, key)
+            if (this.section.lang && this.section.lang[this.language.lang] && this.section.lang[this.language.lang][key]){
+                return this.section.lang[this.language.lang][key]
+            }
+            if (this.parent && this.parent.lang && this.parent.lang[this.parent.lang] && this.parent.lang[this.parent.lang][key]){
+                return this.parent.lang[this.language.lang][key]
+            }
+            if (this.language[key]){
+                return this.language[key]
+            }
+            return content
+        },
         loadAudio: function(audios) {
             if (!audios) {
                 return
@@ -145,7 +161,7 @@ Vue.component('app-content', {
         },
         toWords: function(expr){
             if (expr == 'x'){
-                return ["por"]
+                return [this.lang('times')]
             }
             if (typeof expr == 'number'){
                 expr = "" + expr
@@ -192,7 +208,7 @@ Vue.component('app-content', {
                 for (var idx1 = 0; idx1 < words.length; idx1++) {
                     var word = words[idx1]
                     if (word!='' && (!check || this.audios[word])){
-                        wordList.push(word)
+                        wordList.push(this.lang(word))
                     }
                 }
             }
@@ -249,7 +265,7 @@ Vue.component('app-content', {
         },
         start: function (levelNum) {
             var levelData = this.section.levels[levelNum-1]
-            this.play(levelData.audio,null,levelData.label)
+            this.play(levelData.audio,null,this.lang(levelData.label))
             if (levelData.hash){
                 this.$emit('url',levelData.hash)
                 return
@@ -361,14 +377,14 @@ Vue.component('app-content', {
                 this.correct++
                 slide.locked = true
                 clearInterval(this.timerProc)
-                this.play(option.audio,"correcto",option.label)
+                this.play(option.audio,"correcto",this.lang(option.label))
                 setTimeout(function () {
                     self.nextSlide()
                 },800)
             } else {
                 this.errors++
                 currentOptions[idx].result = 2
-                this.play(option.audio,"incorrecto",option.label)
+                this.play(option.audio,"incorrecto",this.lang(option.label))
             }
             this.$forceUpdate()
         },

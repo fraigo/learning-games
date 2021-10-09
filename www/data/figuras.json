@@ -1,6 +1,18 @@
 {
     "id": "figuras",
-    "title": "Figuras Geométricas",
+    "title": "Shapes",
+    "lang" : {
+        "es" : {
+            "shapes": "Figuras geométricas",
+            "what_shape": "Qué figura es?",
+            "what_shape_words": "Qué figura es (palabras)?"
+        },
+        "en" : {
+            "shapes": "Shapes",
+            "what_shape": "What shape is?",
+            "what_shape_words": "What shape is (words)?"
+        }
+    },
     "description": "",
     "parent": "apps",
     "style": {
@@ -15,11 +27,11 @@
     },
     "levels": [
         {
-            "label": "Que figura es?",
+            "label": "What Shape",
             "hash": "quefigura1"
         },
         {
-            "label": "Que figura es (palabras)?",
+            "label": "What Shape Words",
             "hash": "quefigura2"
         }
     ],

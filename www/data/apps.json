@@ -1,6 +1,13 @@
 {
     "id": "apps",
     "title": "Apps",
+    "lang" : {
+        "es" : {
+            "apps" : "Aplicaciones",
+            "multiplication_tables": "Tablas de Multiplicar",
+            "shapes": "Figuras geométricas"
+        }
+    },
     "image": "../img/icon.svg",
     "description": "",
     "style": {
@@ -13,19 +20,14 @@
     },
     "levels": [
         {
-            "label": "Tablas de Multiplicar",
+            "label": "Multiplication Tables",
             "cover": "../img/icon.svg",
             "hash": "tablas"
         },
         {
-            "label": "Figuras geométricas",
+            "label": "Shapes",
             "cover": "../img/shapes/diamond.svg",
             "hash": "figuras"
-        },
-        {
-            "label": "Configuracion",
-            "cover": "../img/setup.svg",
-            "hash": "setup"
         }
     ],
     "slides": []

@@ -1,7 +1,13 @@
 {
     "id": "language",
-    "title": "Idioma",
-    "description": "Configuración de idioma",
+    "title": "Language",
+    "lang" : {
+        "es" : {
+            "language" : "Lenguaje",
+            "lanugage_setup" : "Configuración de Idioma"
+        }
+    },
+    "description": "Language setup",
     "parent": "setup",
     "levels": [
         {
