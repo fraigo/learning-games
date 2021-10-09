@@ -3,9 +3,10 @@
     "title": "Home",
     "lang": {
         "es" : {
-            "inicio" : "Inicio",
+            "home" : "Inicio",
             "local" : "Local",
-            "online" : "En Línea"
+            "online" : "En Línea",
+            "settings": "Configuración"
         }
     },
     "description": "",
@@ -34,7 +35,7 @@
             "url": "https://fraigo.github.io/learning-games/www/data/apps.json"
         },
         {
-            "label": "Configuracion",
+            "label": "Settings",
             "icon": "settings",
             "hash": "setup"
         }
