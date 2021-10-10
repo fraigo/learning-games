@@ -153,6 +153,10 @@ WebAudio.prototype.load = function (url, id, successCallback, errorCallback) {
 
 }
 
+WebAudio.prototype.playFromStart = function (id, onend) {
+    this.setCurrentTime(id, 0)
+    this.play(id, onend)
+}
 
 WebAudio.prototype.play = function (id, onend) {
     if (WEBAUDIO_DEBUG) console.log('WebAudio Play',id)

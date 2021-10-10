@@ -4,14 +4,25 @@
     "lang" : {
         "es" : {
             "shapes": "Figuras geométricas",
-            "what_shape": "Qué figura es?",
-            "what_shape_words": "Qué figura es (palabras)?"
+            "what_shape_is": "Qué figura es?",
+            "what_shape_words": "Qué figura es (palabras)?",
+            "circle": "Círculo",
+            "square": "Cuadrado",
+            "rectangle": "Rectángulo",
+            "triangle": "Triángulo",
+            "oval": "Ovalo",
+            "diamond": "Rombo"
         },
         "en" : {
             "shapes": "Shapes",
-            "what_shape": "What shape is?",
+            "what_shape_is": "What shape is?",
             "what_shape_words": "What shape is (words)?",
-            "circle" : "circle"
+            "circle" : "circle",
+            "square": "square",
+            "rectangle": "rectangle",
+            "triangle": "triangle",
+            "oval": "Oval",
+            "diamond": "Diamond"
         }
     },
     "description": "",
@@ -28,7 +39,7 @@
     },
     "levels": [
         {
-            "label": "What Shape",
+            "label": "What Shape Is",
             "hash": "quefigura1"
         },
         {

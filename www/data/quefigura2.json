@@ -16,38 +16,39 @@
     },
     "levels": [
         {
-            "label": "Level 1",
+            "label": "{Level} 1",
             "sorted": true
         },
         {
-            "label": "Level 2",
+            "label": "{Level} 2",
             "timer": 10
         }
     ],
     "slides": [
       {
         "image": "../img/shapes/circle.svg",
+        "audio": "circle",
         "options": [
             {
-                "label": "Circulo"
+                "label": "Circle"
             },
             {
-                "label": "Cuadrado"
+                "label": "Square"
             },
             {
-                "label": "Triangulo"
+                "label": "Triangle"
             },
             {
-              "label": "Rectangulo"
+              "label": "Rectangle"
             },
             {
-                "label": "Ovalo"
+                "label": "Oval"
             },
             {
-                "label": "Rombo"
+                "label": "Diamond"
             }
       ],
-        "answer": "Circulo"
+        "answer": "Circle"
       },
       {
         "image": "../img/shapes/oval.svg",

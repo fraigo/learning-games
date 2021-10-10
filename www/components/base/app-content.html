@@ -1,9 +1,9 @@
 <!-- text-template -->
 <script type="text/x-template" id="app-content-template">
-    <div class="app-content" :style="sectionStyle()">
+    <div class="app-content" :style="sectionStyle()" >
         <h1 v-if="position!=-3" :audio="section.audio!=null" :title="section.description"
             @click="play(section.audio,null,lang(section.title))">{{lang(section.title)}}</h1>
-        <div class="section-image" :style="imageStyle(section)"></div>
+        <div v-if="section.image" class="section-image" :style="imageStyle(section)"></div>
         <transition-group name="fade">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" 
@@ -17,10 +17,11 @@
         <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position && !hide">
             <div>
                 <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
-                <div class="title-image" :style="imageStyle(slide)"></div>
+                <div v-if="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
+                <div v-if="slide.image" class="title-image" :style="imageStyle(slide)"></div>
                 <div class="option-container">
                     <div class="option" :result="option.result" :audio="option.audio!=null"  :key="idx1" @click.stop="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
-                        {{option.label}}
+                        {{lang(option.label)}}
                     </div>
                 </div>
             </div>
@@ -71,6 +72,7 @@ Vue.component('app-content', {
     },
     mounted:function(){
         var self = this
+        console.log('mounted1', this.parent && this.parent.lang!=null, this.language.lang)
         if (!this.section.slides){
             this.section.slides = []
         }
@@ -113,22 +115,42 @@ Vue.component('app-content', {
                 this.loadAudio(this.wordExpression(this.section.slides[key].options[key1].label))
             }
         }
-        console.log(self.audios)
         audioEngine.loadList(this.audios, function(result) {
             // console.log('result',result,self.audios)
         }, function(id, error) {
+            console.warn(id,self.audios[id])
             delete self.audios[id]
         })
+        console.log(self.audios)
     },
     methods: {
+        getId: function(expr){
+            var id=expr.toLowerCase().replace(/ /g,'_').replace('?','')
+            var replaced="áéíóū"
+            var replacing="aeiou"
+            for (let index = 0; index < replaced.length; index++) {
+                id = id.replace(replaced.charAt(index), replacing.charAt(index));
+            }
+            return id
+        },
         lang: function(content) {
             if (!content) return content
             if (typeof content == 'number') content = '' + content
-            var key=content.toLowerCase().replace(/ /g,'_').replace('?','')
+            if (content.indexOf('{')>=0){
+                var elements = content.match(/{[^{]+}/g)
+                console.log('elem', elements)
+                for (var idx = 0; idx < elements.length; idx++) {
+                    var reemp = elements[idx].substring(1,elements[idx].length-1)
+                    content=content.replace(elements[idx],this.lang(reemp))
+                }
+            }
+            var key=this.getId(content)
             if (this.section.lang && this.section.lang[this.language.lang] && this.section.lang[this.language.lang][key]){
+                console.log('section',this.language.lang,content,key)
                 return this.section.lang[this.language.lang][key]
             }
-            if (this.parent && this.parent.lang && this.parent.lang[this.parent.lang] && this.parent.lang[this.parent.lang][key]){
+            if (this.parent && this.parent.lang && this.parent.lang[this.language.lang] && this.parent.lang[this.language.lang][key]){
+                console.log('parent',this.language.lang,content,key)
                 return this.parent.lang[this.language.lang][key]
             }
             if (this.language[key]){
@@ -141,11 +163,11 @@ Vue.component('app-content', {
                 return
             }
             if (typeof audios == 'string') {
-                var audio1=audios.toLowerCase().replace(/ /g,'_')
+                var audio1=this.getId(audios)
                 this.audios[audio1]="audio/"+this.language.lang+"/"+audio1+".wav"
             } else {
                 for (var idx in audios){
-                    var audio1=audios[idx].toLowerCase().replace(/ /g,'_')
+                    var audio1=this.getId(audios[idx])
                     this.audios[audio1]="audio/"+this.language.lang+"/"+audio1+".wav"
                 }
             }
@@ -212,7 +234,7 @@ Vue.component('app-content', {
             for (var index = 0; index < parts.length; index++) {
                 var words = this.toWords(parts[index].toLowerCase());
                 for (var idx1 = 0; idx1 < words.length; idx1++) {
-                    var word = words[idx1]
+                    var word = this.getId(words[idx1])
                     if (word!='' && (!check || this.audios[word])){
                         wordList.push(this.lang(word))
                     }
@@ -252,8 +274,10 @@ Vue.component('app-content', {
             var time = 0
             for(var idx=0; idx< audios.length; idx++) {
                 var audio1 = audios[idx].toLowerCase()
-                setTimeout(function(audio){ audioEngine.play(audio)},time,audio1)
-                time+=audioEngine.duration(audio1)-100
+                setTimeout(function(audio){ 
+                    audioEngine.playFromStart(audio)
+                },time,audio1)
+                time+=audioEngine.duration(audio1)+100
             }
         },
         restart: function() {
@@ -317,13 +341,12 @@ Vue.component('app-content', {
             if (this.timer){
                 this.timerSeconds=this.timer
                 this.timerProc=setInterval(function (self) {
-                    console.log(self.$el)
                     self.play("tick")
                     self.timerSeconds--
-                    if (self.timerSeconds==0){
+                    if (self.timerSeconds<=0){
                         self.hide = true
-                        self.play(this.lang("timeout"))
-                        clearInterval(this.timerProc)
+                        self.play(self.lang("timeout"))
+                        clearInterval(self.timerProc)
                         setTimeout(function(){
                             self.nextSlide()
                         },1100)
@@ -408,14 +431,14 @@ Vue.component('app-content', {
                     bg=this.baseurl+bg
                 }
                 baseStyle.backgroundImage = 'url("'+ bg  + '")'
-                if (!section.levelStyle.backgroundSize) {
+                if (!section.levelStyle || !section.levelStyle.backgroundSize) {
                     baseStyle.backgroundSize = "cover"
                 }
-                if (!section.levelStyle.backgroundRepeat) {
+                if (!section.levelStyle || !section.levelStyle.backgroundRepeat) {
                     baseStyle.backgroundRepeat = "no-repeat"
                 }
-                if (!section.levelStyle.backgroundPosition) {
-                    baseStyle.backgroundPosition = "center bottom"
+                if (!section.levelStyle || !section.levelStyle.backgroundPosition) {
+                    baseStyle.backgroundPosition = "center 90%"
                 }
             }
             if (level.style) {
@@ -487,6 +510,13 @@ Vue.component('app-content', {
         
     },
     watch:{
+        section: function (newValue) {
+            console.log('section', newValue.title)
+        },
+        parent: function (newValue) {
+            console.log('parent',this.parent.lang[this.language.lang])
+            this.$forceUpdate()
+        }
     }
 
 });
@@ -665,8 +695,10 @@ body{
     width: 40px;
     height: 40px;    
 }
-.level-icon{
+.level-icon, .slide-icon{
     font-size: 2em;
+    display: inline-block;
+    margin: 8px 0;
 }
 .stars{
     height: 60px;

@@ -107,6 +107,10 @@
             window.addEventListener('hashchange', function(){
                 self.loadHash()
             })
+        },
+        mounted:function(){
+            window.app=this
+            var self = this
             var appLang = localStorage.getItem('applang')
             console.log('lang', appLang)
             if (appLang && appLang != '') {
@@ -114,10 +118,6 @@
             }else {
                 this.setLanguage({value:'es'})
             }
-        },
-        mounted:function(){
-            window.app=this
-            var self = this
             this.loadHash()
             var applayout=document.getElementById('applayout');
             window.addEventListener("keyup",function(ev){
@@ -206,19 +206,24 @@
                 var self = this
                 this.loading = true
                 loadData(url+"?"+this.cacheId, function(data){
-                    self.mainSection = JSON.parse(data)
+                    var mainSection = JSON.parse(data)
                     self.parentSection = null
                     var urlParts = url.split("/")
                     urlParts.pop()
                     self.baseUrl = urlParts.join("/")+"/"
-                    self.current = self.mainSection.id
                     self.level=0
                     self.loading = false
-                    if (self.mainSection.parent){
-                        console.log('loading',self.baseUrl+self.mainSection.parent+".json")
-                        loadData(self.baseUrl+self.mainSection.parent+".json", function (data) {
+                    if (mainSection.parent){
+                        console.log('loading',self.baseUrl+mainSection.parent+".json")
+                        loadData(self.baseUrl+mainSection.parent+".json", function (data) {
                             self.parentSection = JSON.parse(data)
+                            self.mainSection = mainSection
+                            self.current = self.mainSection.id+self.parentSection.id
+                            self.$forceUpdate()
                         })                            
+                    } else {
+                        self.mainSection = mainSection
+                        self.current = self.mainSection.id
                     }
                 }, function(err){
                     self.showMessage("Connection error")

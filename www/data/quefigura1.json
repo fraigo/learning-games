@@ -1,6 +1,6 @@
 {
     "id": "quefigura1",
-    "title": "Shapes",
+    "title": "What Shape Is",
     "description": "",
     "parent": "figuras",
     "style": {
@@ -16,17 +16,17 @@
     },
     "levels": [
         {
-            "label": "Level 1",
+            "label": "{Level} 1",
             "sorted": true
         },
         {
-            "label": "Level 2",
+            "label": "{Level} 2",
             "timer": 10
         }
     ],
     "slides": [
       {
-        "title": "Circulo",
+        "title": "Circle",
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
@@ -62,7 +62,7 @@
         "answer": "circle"
       },
       {
-        "title": "Ovalo",
+        "title": "Oval",
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
@@ -98,7 +98,7 @@
         "answer": "oval"
       },
       {
-        "title": "Triangulo",
+        "title": "Triangle",
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
@@ -134,7 +134,7 @@
         "answer": "triangle"
       },
       {
-        "title": "Rectangulo",
+        "title": "Rectangle",
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
@@ -170,7 +170,7 @@
         "answer": "rectangle"
       },
       {
-        "title": "Cuadrado",
+        "title": "Square",
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",
@@ -206,7 +206,7 @@
         "answer": "square"
       },
       {
-        "title": "Rombo",
+        "title": "Diamond",
         "options": [
             {
                 "cover": "../img/shapes/circle.svg",

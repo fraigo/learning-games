@@ -13,11 +13,19 @@
         {
             "label": "Español",
             "value": "es",
+            "cover": "../img/es.svg",
+            "style": {
+                "backgroundSize" : "50%"
+            },
             "action": "setLanguage"
         },
         {
             "label": "English",
             "action": "setLanguage",
+            "cover": "../img/en.svg",
+            "style": {
+                "backgroundSize" : "50%"
+            },
             "value": "en"
         }
     ],

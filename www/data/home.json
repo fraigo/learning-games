@@ -20,18 +20,12 @@
     "levels": [
         {
             "label": "Local",
-            "cover": "../img/tablet.svg",
-            "style": {
-                "backgroundSize" : "80%"
-            },
+            "icon": "smartphone",
             "hash": "apps"
         },
         {
             "label": "Online",
-            "cover": "../img/online.svg",
-            "style": {
-                "backgroundSize" : "80%"
-            },
+            "icon": "cloud",
             "url": "https://fraigo.github.io/learning-games/www/data/apps.json"
         },
         {

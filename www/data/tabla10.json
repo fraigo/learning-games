@@ -5,32 +5,32 @@
     "parent": "tablas",
     "levels": [
         {
-            "label": "Level 1",
+            "label": "{Level} 1",
             "sorted": true,
             "timer": 0
         },
         {
-            "label": "Level 2",
+            "label": "{Level} 2",
             "sorted": false,
             "timer": 0
         },
         {
-            "label": "Level 3",
+            "label": "{Level} 3",
             "sorted": true,
             "timer": 10
         },
         {
-            "label": "Level 4",
+            "label": "{Level} 4",
             "sorted": false,
             "timer": 10
         },
         {
-            "label": "Level 5",
+            "label": "{Level} 5",
             "sorted": true,
             "timer": 4
         },
         {
-            "label": "Level 6",
+            "label": "{Level} 6",
             "sorted": false,
             "timer": 4
         }
