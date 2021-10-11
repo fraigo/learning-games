@@ -1,0 +1,42 @@
+{
+    "id": "colors",
+    "title": "Colors",
+    "lang" : {
+        "es" : {
+            "colors": "Colores",
+            "what_color_is": "Qué color es?"
+        }
+    },
+    "description": "",
+    "parent": "apps",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC"
+    },
+    "levels": [
+        {
+            "label": "What Color Is?",
+            "icon": "palette",
+            "hash": "whatcolor1"
+        }
+    ],
+    "defaultOptions" : [
+        {
+            "icon" : "circle",
+            "style" : {
+                "color" : "red"
+            }
+        }
+    ],
+    "slides": [
+        {
+            "title": "Red"
+        }
+    ]
+}

@@ -5,7 +5,8 @@
         "es" : {
             "apps" : "Aplicaciones",
             "multiplication_tables": "Tablas de Multiplicar",
-            "shapes": "Figuras geométricas"
+            "shapes": "Figuras geométricas",
+            "colors": "Colores"
         }
     },
     "image": "../img/icon.svg",
@@ -21,13 +22,18 @@
     "levels": [
         {
             "label": "Multiplication Tables",
-            "cover": "../img/icon.svg",
+            "icon": "calculate",
             "hash": "tablas"
         },
         {
             "label": "Shapes",
-            "cover": "../img/shapes/diamond.svg",
+            "icon": "category",
             "hash": "figuras"
+        },
+        {
+            "label": "Colors",
+            "icon": "palette",
+            "hash": "colors"
         }
     ],
     "slides": []

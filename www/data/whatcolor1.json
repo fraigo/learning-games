@@ -1,0 +1,116 @@
+{
+    "id": "whatcolor1",
+    "title": "Colors",
+    "lang" : {
+        "es" : {
+            "colors": "Colores",
+            "what_color_is": "Qué color es?",
+            "red": "Rojo",
+            "green": "",
+            "yellow": "",
+            "blue": "",
+            "pink": "",
+            "orange": "",
+            "black": "",
+            "white": ""
+        }
+    },
+    "description": "",
+    "parent": "apps",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#DDD"
+    },
+    "levels": [
+        {
+            "label": "{Level} 1",
+            "sorted": true
+        }
+    ],
+    "defaultOptions" : [
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "red",
+                "color" : "red",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "yellow",
+                "color" : "yellow",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "green",
+                "color" : "green",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "blue",
+                "color" : "Blue",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "orange",
+                "color" : "orange",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "red",
+                "color" : "red",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "red",
+                "color" : "red",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        },
+        {
+            "icon" : "circle",
+            "style" : {
+                "value": "red",
+                "color" : "red",
+                "fontSize" : "2.5em",
+                "alignItems" : "center"
+            }
+        }
+    ],
+    "slides": [
+        {
+            "title": "Red",
+            "answer" : "red"
+        }
+    ]
+}

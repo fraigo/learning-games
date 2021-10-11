@@ -19,9 +19,10 @@
                 <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
                 <div v-if="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
                 <div v-if="slide.image" class="title-image" :style="imageStyle(slide)"></div>
-                <div class="option-container">
+                <div class="option-container" :count="slide.options.length">
                     <div class="option" :result="option.result" :audio="option.audio!=null"  :key="idx1" @click.stop="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
                         {{lang(option.label)}}
+                        <div v-if="option.icon" class="option-icon"><span class="material-icons">{{option.icon}}</span></div>
                     </div>
                 </div>
             </div>
@@ -599,6 +600,10 @@ body{
     color: red;
     background-color: #fdd;
 }
+.option-container[count='8']{
+    max-width: 550px;
+    margin: 12px auto;
+}
 .results{
     font-size: 1.2em;
 }
@@ -702,10 +707,13 @@ body{
     width: 40px;
     height: 40px;    
 }
-.level-icon, .slide-icon{
+.level-icon, .slide-icon, .option-icon{
     font-size: 2em;
     display: inline-block;
     margin: 8px 0;
+}
+.option-icon .material-icons{
+    display: block;
 }
 .stars{
     height: 60px;
