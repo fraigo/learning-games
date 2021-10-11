@@ -132,7 +132,7 @@ Vue.component('app-content', {
             var id=expr.toLowerCase().replace(/ /g,'_').replace('?','')
             var replaced="áéíóū"
             var replacing="aeiou"
-            for (let index = 0; index < replaced.length; index++) {
+            for (var index = 0; index < replaced.length; index++) {
                 id = id.replace(replaced.charAt(index), replacing.charAt(index));
             }
             return id
