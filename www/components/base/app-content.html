@@ -110,9 +110,12 @@ Vue.component('app-content', {
         for(var key in this.section.slides){
             this.loadAudio(this.section.slides[key].audio)
             this.loadAudio(this.wordExpression(this.section.slides[key].title))
-            for(var key1 in this.section.slides[key].options){
-                this.loadAudio(this.section.slides[key].options[key1].audio)
-                this.loadAudio(this.wordExpression(this.section.slides[key].options[key1].label))
+            if (!this.section.slides[key].options) {
+                this.section.slides[key].options = JSON.parse(JSON.stringify(this.section.defaultOptions))
+            }
+            for(var key1 in this.slideOptions(key)){
+                this.loadAudio(this.slideOptions(key)[key1].audio)
+                this.loadAudio(this.wordExpression(this.slideOptions(key)[key1].label))
             }
         }
         audioEngine.loadList(this.audios, function(result) {
@@ -138,7 +141,6 @@ Vue.component('app-content', {
             if (typeof content == 'number') content = '' + content
             if (content.indexOf('{')>=0){
                 var elements = content.match(/{[^{]+}/g)
-                console.log('elem', elements)
                 for (var idx = 0; idx < elements.length; idx++) {
                     var reemp = elements[idx].substring(1,elements[idx].length-1)
                     content=content.replace(elements[idx],this.lang(reemp))
@@ -146,11 +148,9 @@ Vue.component('app-content', {
             }
             var key=this.getId(content)
             if (this.section.lang && this.section.lang[this.language.lang] && this.section.lang[this.language.lang][key]){
-                console.log('section',this.language.lang,content,key)
                 return this.section.lang[this.language.lang][key]
             }
             if (this.parent && this.parent.lang && this.parent.lang[this.language.lang] && this.parent.lang[this.language.lang][key]){
-                console.log('parent',this.language.lang,content,key)
                 return this.parent.lang[this.language.lang][key]
             }
             if (this.language[key]){
@@ -259,7 +259,6 @@ Vue.component('app-content', {
             if ((audios==null || audios.length==0) && !expr){
                 return
             }
-            console.log('play', audios, include, expr)
             this.$emit('status',JSON.stringify(audios))
             if (!audios && !include) return;
             if (include && !audios) {
@@ -272,9 +271,11 @@ Vue.component('app-content', {
                 audios.push(include)
             }
             var time = 0
+            console.log('play', audios, include, expr)
             for(var idx=0; idx< audios.length; idx++) {
-                var audio1 = audios[idx].toLowerCase()
+                var audio1 = this.getId(this.lang(audios[idx]))
                 setTimeout(function(audio){ 
+                    console.log('playing', audio)
                     audioEngine.playFromStart(audio)
                 },time,audio1)
                 time+=audioEngine.duration(audio1)+100
@@ -504,6 +505,12 @@ Vue.component('app-content', {
                 }
             }
             return this.levelData.levelStars[idx]
+        },
+        slideOptions: function (position) {
+            if (!this.currentSlides[position]) {
+                return []
+            }
+            return this.currentSlides[position].options ? this.currentSlides[position].options : this.section.defaultOptions
         }
     },
     computed:{

@@ -24,221 +24,61 @@
             "timer": 10
         }
     ],
+    "defaultOptions": [
+        {
+            "cover": "../img/shapes/circle.svg",
+            "audio": "circle",
+            "value": "circle"
+        },
+        {
+            "cover": "../img/shapes/square.svg",
+            "audio": "square",
+            "value": "square"
+        },
+        {
+            "cover": "../img/shapes/triangle.svg",
+            "audio": "triangle",
+            "value": "triangle"
+        },
+        {
+            "cover": "../img/shapes/rectangle.svg",
+            "audio": "rectangle",
+            "value": "rectangle"
+        },
+        {
+            "cover": "../img/shapes/oval.svg",
+            "audio": "oval",
+            "value": "oval"
+        },
+        {
+            "cover": "../img/shapes/diamond.svg",
+            "audio": "diamond",
+            "value": "diamond"
+        }
+  ],
     "slides": [
       {
         "title": "Circle",
-        "options": [
-            {
-                "cover": "../img/shapes/circle.svg",
-                "audio": "circle",
-                "value": "circle"
-            },
-            {
-                "cover": "../img/shapes/square.svg",
-                "audio": "square",
-                "value": "square"
-            },
-            {
-                "cover": "../img/shapes/triangle.svg",
-                "audio": "triangle",
-                "value": "triangle"
-            },
-            {
-                "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangle",
-                "value": "rectangle"
-            },
-            {
-                "cover": "../img/shapes/oval.svg",
-                "audio": "oval",
-                "value": "oval"
-            },
-            {
-                "cover": "../img/shapes/diamond.svg",
-                "audio": "diamond",
-                "value": "diamond"
-            }
-      ],
         "answer": "circle"
       },
       {
         "title": "Oval",
-        "options": [
-            {
-                "cover": "../img/shapes/circle.svg",
-                "audio": "circle",
-                "value": "circle"
-            },
-            {
-                "cover": "../img/shapes/square.svg",
-                "audio": "square",
-                "value": "square"
-            },
-            {
-                "cover": "../img/shapes/triangle.svg",
-                "audio": "triangle",
-                "value": "triangle"
-            },
-            {
-                "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangle",
-                "value": "rectangle"
-            },
-            {
-                "cover": "../img/shapes/oval.svg",
-                "audio": "oval",
-                "value": "oval"
-            },
-            {
-                "cover": "../img/shapes/diamond.svg",
-                "audio": "diamond",
-                "value": "diamond"
-            }
-      ],
         "answer": "oval"
       },
       {
         "title": "Triangle",
-        "options": [
-            {
-                "cover": "../img/shapes/circle.svg",
-                "audio": "circle",
-                "value": "circle"
-            },
-            {
-                "cover": "../img/shapes/square.svg",
-                "audio": "square",
-                "value": "square"
-            },
-            {
-                "cover": "../img/shapes/triangle.svg",
-                "audio": "triangle",
-                "value": "triangle"
-            },
-            {
-                "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangle",
-                "value": "rectangle"
-            },
-            {
-                "cover": "../img/shapes/oval.svg",
-                "audio": "oval",
-                "value": "oval"
-            },
-            {
-                "cover": "../img/shapes/diamond.svg",
-                "audio": "diamond",
-                "value": "diamond"
-            }
-      ],
         "answer": "triangle"
       },
       {
         "title": "Rectangle",
-        "options": [
-            {
-                "cover": "../img/shapes/circle.svg",
-                "audio": "circle",
-                "value": "circle"
-            },
-            {
-                "cover": "../img/shapes/square.svg",
-                "audio": "square",
-                "value": "square"
-            },
-            {
-                "cover": "../img/shapes/triangle.svg",
-                "audio": "triangle",
-                "value": "triangle"
-            },
-            {
-                "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangle",
-                "value": "rectangle"
-            },
-            {
-                "cover": "../img/shapes/oval.svg",
-                "audio": "oval",
-                "value": "oval"
-            },
-            {
-                "cover": "../img/shapes/diamond.svg",
-                "audio": "diamond",
-                "value": "diamond"
-            }
-      ],
         "answer": "rectangle"
       },
       {
         "title": "Square",
-        "options": [
-            {
-                "cover": "../img/shapes/circle.svg",
-                "audio": "circle",
-                "value": "circle"
-            },
-            {
-                "cover": "../img/shapes/square.svg",
-                "audio": "square",
-                "value": "square"
-            },
-            {
-                "cover": "../img/shapes/triangle.svg",
-                "audio": "triangle",
-                "value": "triangle"
-            },
-            {
-                "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangle",
-                "value": "rectangle"
-            },
-            {
-                "cover": "../img/shapes/oval.svg",
-                "audio": "oval",
-                "value": "oval"
-            },
-            {
-                "cover": "../img/shapes/diamond.svg",
-                "audio": "diamond",
-                "value": "diamond"
-            }
-      ],
         "answer": "square"
       },
       {
         "title": "Diamond",
-        "options": [
-            {
-                "cover": "../img/shapes/circle.svg",
-                "audio": "circle",
-                "value": "circle"
-            },
-            {
-                "cover": "../img/shapes/square.svg",
-                "audio": "square",
-                "value": "square"
-            },
-            {
-                "cover": "../img/shapes/triangle.svg",
-                "audio": "triangle",
-                "value": "triangle"
-            },
-            {
-                "cover": "../img/shapes/rectangle.svg",
-                "audio": "rectangle",
-                "value": "rectangle"
-            },
-            {
-                "cover": "../img/shapes/oval.svg",
-                "audio": "oval",
-                "value": "oval"
-            },
-            {
-                "cover": "../img/shapes/diamond.svg",
-                "audio": "diamond",
-                "value": "diamond"
-            }
-      ],
         "answer": "diamond"
       }
     ]
