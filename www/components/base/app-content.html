@@ -565,6 +565,7 @@ body{
     color: #fff;
     padding: 8px;
     border-radius: 8px;
+    margin: 3vh auto;
 }
 .app-content h2[audio='true']{
     padding-right: 30px;
@@ -769,11 +770,22 @@ body{
 }
 @media (max-width: 375px) {
     .app-content{
-        padding: 6px;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
     }
     .levels .option, .option-container .option{
-        margin: 1px;
+        margin: 1vh 1px;
     }
+    .option-container{
+        max-width: 100% !important;
+        margin: 2vh auto !important;
+    }
+    .option-container .option{
+        position: relative;
+        min-width: 95px;
+        min-height: 95px;
+    }
+
 }
 
 </style>
