@@ -404,6 +404,7 @@ Vue.component('app-content', {
                 return
             }
             var response = option.value ? option.value : option.label
+            console.log('response', response, answer)
             if (response == answer) {
                 currentOptions[idx].result = 1
                 this.correct++

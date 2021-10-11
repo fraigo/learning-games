@@ -36,8 +36,8 @@
     "defaultOptions" : [
         {
             "icon" : "circle",
+            "value": "red",
             "style" : {
-                "value": "red",
                 "color" : "red",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -45,8 +45,8 @@
         },
         {
             "icon" : "circle",
+            "value": "yellow",
             "style" : {
-                "value": "yellow",
                 "color" : "yellow",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -54,8 +54,8 @@
         },
         {
             "icon" : "circle",
+            "value": "green",
             "style" : {
-                "value": "green",
                 "color" : "green",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -63,17 +63,17 @@
         },
         {
             "icon" : "circle",
+            "value": "blue",
             "style" : {
-                "value": "blue",
-                "color" : "Blue",
+                "color" : "blue",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
             }
         },
         {
             "icon" : "circle",
+            "value": "orange",
             "style" : {
-                "value": "orange",
                 "color" : "orange",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -81,8 +81,8 @@
         },
         {
             "icon" : "circle",
+            "value": "red",
             "style" : {
-                "value": "red",
                 "color" : "red",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -90,8 +90,8 @@
         },
         {
             "icon" : "circle",
+            "value": "red",
             "style" : {
-                "value": "red",
                 "color" : "red",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -99,8 +99,8 @@
         },
         {
             "icon" : "circle",
+            "value": "red",
             "style" : {
-                "value": "red",
                 "color" : "red",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
@@ -111,6 +111,10 @@
         {
             "title": "Red",
             "answer" : "red"
+        },
+        {
+            "title": "Yellow",
+            "answer" : "yellow"
         }
     ]
 }
