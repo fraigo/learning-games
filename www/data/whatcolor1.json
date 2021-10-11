@@ -81,27 +81,27 @@
         },
         {
             "icon" : "circle",
-            "value": "red",
+            "value": "black",
             "style" : {
-                "color" : "red",
+                "color" : "black",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
             }
         },
         {
             "icon" : "circle",
-            "value": "red",
+            "value": "white",
             "style" : {
-                "color" : "red",
+                "color" : "white",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
             }
         },
         {
             "icon" : "circle",
-            "value": "red",
+            "value": "pink",
             "style" : {
-                "color" : "red",
+                "color" : "pink",
                 "fontSize" : "2.5em",
                 "alignItems" : "center"
             }
@@ -111,6 +111,30 @@
         {
             "title": "Red",
             "answer" : "red"
+        },
+        {
+            "title": "Yellow",
+            "answer" : "yellow"
+        },
+        {
+            "title": "Orange",
+            "answer" : "orange"
+        },
+        {
+            "title": "Yellow",
+            "answer" : "yellow"
+        },
+        {
+            "title": "Yellow",
+            "answer" : "yellow"
+        },
+        {
+            "title": "Yellow",
+            "answer" : "yellow"
+        },
+        {
+            "title": "Yellow",
+            "answer" : "yellow"
         },
         {
             "title": "Yellow",
