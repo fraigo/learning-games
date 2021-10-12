@@ -73,7 +73,6 @@ Vue.component('app-content', {
     },
     mounted:function(){
         var self = this
-        console.log('mounted1', this.parent && this.parent.lang!=null, this.language.lang)
         if (!this.section.slides){
             this.section.slides = []
         }
@@ -225,7 +224,6 @@ Vue.component('app-content', {
                     }
                 }
             }
-            console.log('towords',expr)
             return [expr]
         },
         wordExpression: function(expr, check){
