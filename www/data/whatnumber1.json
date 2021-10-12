@@ -1,0 +1,94 @@
+{
+    "id": "whatnumber1",
+    "title": "What Number Is",
+    "description": "",
+    "parent": "numbers",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#444"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC",
+        "fontSize": "3em"
+    },
+    "levels": [
+        {
+            "label": "{Level} 1",
+            "sorted": true
+        },
+        {
+            "label": "{Level} 2",
+            "timer": 10
+        }
+    ],
+    "defaultOptions": [
+        {
+            "label": "1"
+        },
+        {
+            "label": "2"
+        },
+        {
+            "label": "3"
+        },
+        {
+            "label": "4"
+        },
+        {
+            "label": "5"
+        },
+        {
+            "label": "6"
+        },
+        {
+            "label": "7"
+        },
+        {
+            "label": "8"
+        },
+        {
+            "label": "9"
+        }
+    ],
+    "slides": [
+      {
+        "title": "One",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      },
+      {
+        "title": "Uno",
+        "answer": "1"
+      }
+    ]
+}

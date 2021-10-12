@@ -1,0 +1,35 @@
+{
+    "id": "numbers",
+    "title": "Numbers",
+    "lang" : {
+        "es" : {
+            "numbers": "Números",
+            "what_number_is": "Qué número es?",
+            "one": "Uno",
+            "two": "Dos"
+        },
+        "en" : {
+            "shapes": "Shapes",
+            "what_number_is": "What number is?"
+        }
+    },
+    "description": "",
+    "parent": "apps",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC"
+    },
+    "levels": [
+        {
+            "label": "What Number Is",
+            "hash": "whatnumber1"
+        }
+    ],
+    "slides": []
+}

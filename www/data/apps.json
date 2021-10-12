@@ -6,7 +6,8 @@
             "apps" : "Aplicaciones",
             "multiplication_tables": "Tablas de Multiplicar",
             "shapes": "Figuras geométricas",
-            "colors": "Colores"
+            "colors": "Colores",
+            "numbers": "Números"
         }
     },
     "image": "../img/icon.svg",
@@ -29,6 +30,11 @@
             "label": "Colors",
             "icon": "palette",
             "hash": "colors"
+        },
+        {
+            "label": "Numbers",
+            "icon": "calculate",
+            "hash": "numbers"
         },
         {
             "label": "Multiplication Tables",
