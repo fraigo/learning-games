@@ -26,13 +26,13 @@
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
         </transition-group>
         <div class="results" v-if="position==-1 && currentLevel>0">
-            <h2>Terminado!</h2>
+            <h2>{{lang('You win')}}!</h2>
             <div class="results-content">
-                <div>Correctas<br><span class="correct">{{this.correct}}</span></div>
-                <div>Errores<br><span class="error">{{this.errors}}</span></div>
+                <div>{{lang('Corrects')}}<br><span class="correct">{{this.correct}}</span></div>
+                <div>{{lang('Errors')}}<br><span class="error">{{this.errors}}</span></div>
                 <div class="stars" is="stars" :stars="stars" :size="40" :animated="true" :key="stars+40"></div>
             </div>
         </div>
@@ -390,12 +390,11 @@ Vue.component('app-content', {
                     } else {
                         self.play(self.lang("You win"))
                     }
-
                 }
             },1000, this)
             setTimeout(function(self){
                 self.currentLevel = 0
-            },3000, this)
+            },4000, this)
         },
         verifyOption: function(slide, idx){
             var option = slide.options[idx]
