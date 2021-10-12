@@ -92,21 +92,21 @@ Vue.component('app-content', {
         }
         var audios={}
         this.loadAudio(this.lang("correct"))
-        this.loadAudio(this.lang("try_again"))
+        this.loadAudio(this.getId(this.lang("try_again")))
         this.loadAudio(this.lang("you_win"))
         this.loadAudio(this.lang("stars"))
-        this.loadAudio("tick")
         this.loadAudio(this.lang("timeout"))
+        this.loadAudio("tick")
         if (this.section.preloadAudio){
             for(var key in this.section.preloadAudio){
                 this.loadAudio(this.section.preloadAudio[key])
             }
         }
         this.loadAudio(this.section.audio)
-        this.loadAudio(this.wordExpression(this.section.title))
+        this.loadAudio(this.wordExpression(this.lang(this.section.title)))
         for(var key in this.section.levels){
             this.loadAudio(this.section.levels[key].audio)
-            this.loadAudio(this.wordExpression(this.section.levels[key].label))
+            this.loadAudio(this.wordExpression(this.lang(this.section.levels[key].label)))
         }
         for(var key in this.section.slides){
             this.loadAudio(this.section.slides[key].audio)
@@ -114,9 +114,10 @@ Vue.component('app-content', {
             if (!this.section.slides[key].options) {
                 this.section.slides[key].options = JSON.parse(JSON.stringify(this.section.defaultOptions))
             }
-            for(var key1 in this.slideOptions(key)){
-                this.loadAudio(this.slideOptions(key)[key1].audio)
-                this.loadAudio(this.wordExpression(this.slideOptions(key)[key1].label))
+            var options=this.section.slides[key].options
+            for(var key1 in options){
+                this.loadAudio(options[key1].audio)
+                this.loadAudio(this.wordExpression(options[key1].label))
             }
         }
         audioEngine.loadList(this.audios, function(result) {
@@ -162,6 +163,9 @@ Vue.component('app-content', {
         loadAudio: function(audios) {
             if (!audios) {
                 return
+            }
+            if (typeof audios == 'string' && audios.indexOf(' ')>0){
+                audios=this.wordExpression(audios)
             }
             if (typeof audios == 'string') {
                 var audio1=this.getId(audios)
@@ -221,6 +225,7 @@ Vue.component('app-content', {
                     }
                 }
             }
+            console.log('towords',expr)
             return [expr]
         },
         wordExpression: function(expr, check){
@@ -417,7 +422,7 @@ Vue.component('app-content', {
             } else {
                 this.errors++
                 currentOptions[idx].result = 2
-                this.play(option.audio,this.lang("try_again"),this.lang(option.label))
+                this.play(option.audio,this.getId(this.lang("try_again")),this.lang(option.label))
             }
             this.$forceUpdate()
         },
@@ -628,8 +633,9 @@ body{
     font-size: 1.5em;
     flex-direction: column;
     justify-content: flex-start;
-    width: 19vw;
-    height: 19vw;
+    width: 25vw;
+    height: 25vw;
+    max-width: 200px;
 }
 .levels .option .levelstars{
     position: absolute; 
@@ -706,8 +712,7 @@ body{
     z-index: 2;
 }
 .levelstars .star-icon{
-    width: 40px;
-    height: 40px;    
+    width: 30%;    
 }
 .level-icon, .slide-icon, .option-icon{
     font-size: 2em;
@@ -722,8 +727,7 @@ body{
     margin-bottom: 20px;
 }
 .stars .star-icon{
-    width: 80px;
-    height: 80px;    
+    width: 80px;   
 }
 @media (max-width: 1023px) {
     body{
@@ -733,8 +737,7 @@ body{
         font-size: 1.2em;
     }
     .stars .star-icon{
-        width: 60px;
-        height: 60px;    
+        width: 60px;   
     }
 }
 @media (max-width: 767px) {
@@ -745,20 +748,16 @@ body{
         font-size: 1.5em;
     }
     .levels .option{
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
 @media (max-width: 400px) {
     .levelstars .star-icon{
-        width: 22px;
-        height: 22px;    
+        width: 22px;   
     }
     .levels{
         max-width: 380px;
         margin: 0 auto;
-    }
-    .levels .option{
-        font-size: 1rem;
     }
     .title-image{
         height: 22vh;

@@ -24,151 +24,50 @@
             "timer": 10
         }
     ],
+    "defaultOptions": [
+        {
+            "label": "Circle"
+        },
+        {
+            "label": "Square"
+        },
+        {
+            "label": "Triangle"
+        },
+        {
+          "label": "Rectangle"
+        },
+        {
+            "label": "Oval"
+        },
+        {
+            "label": "Diamond"
+        }
+    ],
     "slides": [
       {
         "image": "../img/shapes/circle.svg",
-        "audio": "circle",
-        "options": [
-            {
-                "label": "Circle"
-            },
-            {
-                "label": "Square"
-            },
-            {
-                "label": "Triangle"
-            },
-            {
-              "label": "Rectangle"
-            },
-            {
-                "label": "Oval"
-            },
-            {
-                "label": "Diamond"
-            }
-      ],
         "answer": "Circle"
       },
       {
         "image": "../img/shapes/oval.svg",
-        "options": [
-            {
-                "label": "Circulo"
-            },
-            {
-                "label": "Cuadrado"
-            },
-            {
-                "label": "Triangulo"
-            },
-            {
-              "label": "Rectangulo"
-            },
-            {
-                "label": "Ovalo"
-            },
-            {
-                "label": "Rombo"
-            }
-      ],
-        "answer": "Ovalo"
+        "answer": "Oval"
       },
       {
         "image": "../img/shapes/triangle.svg",
-        "options": [
-            {
-                "label": "Circulo"
-            },
-            {
-                "label": "Cuadrado"
-            },
-            {
-                "label": "Triangulo"
-            },
-            {
-              "label": "Rectangulo"
-            },
-            {
-                "label": "Ovalo"
-            },
-            {
-                "label": "Rombo"
-            }
-      ],
-        "answer": "Triangulo"
+        "answer": "Triangle"
       },
       {
         "image": "../img/shapes/rectangle.svg",
-        "options": [
-            {
-                "label": "Circulo"
-            },
-            {
-                "label": "Cuadrado"
-            },
-            {
-                "label": "Triangulo"
-            },
-            {
-              "label": "Rectangulo"
-            },
-            {
-                "label": "Ovalo"
-            },
-            {
-                "label": "Rombo"
-            }
-      ],
-        "answer": "Rectangulo"
+        "answer": "Rectangle"
       },
       {
         "image": "../img/shapes/square.svg",
-        "options": [
-            {
-                "label": "Circulo"
-            },
-            {
-                "label": "Cuadrado"
-            },
-            {
-                "label": "Triangulo"
-            },
-            {
-              "label": "Rectangulo"
-            },
-            {
-                "label": "Ovalo"
-            },
-            {
-                "label": "Rombo"
-            }
-      ],
-        "answer": "Cuadrado"
+        "answer": "Square"
       },
       {
         "image": "../img/shapes/diamond.svg",
-        "options": [
-            {
-                "label": "Circulo"
-            },
-            {
-                "label": "Cuadrado"
-            },
-            {
-                "label": "Triangulo"
-            },
-            {
-              "label": "Rectangulo"
-            },
-            {
-                "label": "Ovalo"
-            },
-            {
-                "label": "Rombo"
-            }
-      ],
-        "answer": "Rombo"
+        "answer": "Diamond"
       }
     ]
 }

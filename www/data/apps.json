@@ -21,11 +21,6 @@
     },
     "levels": [
         {
-            "label": "Multiplication Tables",
-            "icon": "calculate",
-            "hash": "tablas"
-        },
-        {
             "label": "Shapes",
             "icon": "category",
             "hash": "figuras"
@@ -34,6 +29,11 @@
             "label": "Colors",
             "icon": "palette",
             "hash": "colors"
+        },
+        {
+            "label": "Multiplication Tables",
+            "icon": "calculate",
+            "hash": "tablas"
         }
     ],
     "slides": []

@@ -1,0 +1,1 @@
+find www/audio | grep -o -E en.+ | sed s/.wav// > www/audio/audio.txt
