@@ -11,14 +11,14 @@
                 <div>{{lang(level.label)}}</div>
                 <div v-if="level.icon" class="level-icon"><span class="material-icons">{{level.icon}}</span></div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
-                <div class="levelstars" is="stars" :stars="levelStars(level,idx)"></div>
+                <div class="levelstars" is="stars" :icon="level.icon" :stars="levelStars(level,idx)"></div>
             </div>
         </div>
         <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position && !hide">
             <div>
                 <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
                 <div v-if="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
-                <div v-if="slide.image" class="title-image" :style="imageStyle(slide)"></div>
+                <div v-if="slide.image" class="title-image" @click="play(slide.audio,null,lang(slide.title))":style="imageStyle(slide)"></div>
                 <div class="option-container" :count="slide.options.length">
                     <div class="option" :result="option.result" :audio="option.audio!=null"  :key="idx1" @click.stop="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
                         {{lang(option.label)}}
@@ -73,6 +73,7 @@ Vue.component('app-content', {
     },
     mounted:function(){
         var self = this
+        console.log('lang',this.language.lang)
         if (!this.section.slides){
             this.section.slides = []
         }
@@ -80,7 +81,7 @@ Vue.component('app-content', {
         for (var index = 0; index < 10; index++) {
             this.orders.push(Math.floor(Math.random() * 10))
         }
-        var levelData = localStorage.getItem('leveldata_'+this.section.id)
+        var levelData = localStorage.getItem('leveldata_'+this.language.lang+'_'+this.section.id)
         if (levelData && levelData != '') {
             this.levelData = JSON.parse(levelData)
         }
@@ -167,8 +168,13 @@ Vue.component('app-content', {
                 audios=this.wordExpression(audios)
             }
             if (typeof audios == 'string') {
-                var audio1=this.getId(audios)
-                this.audios[audio1]="audio/"+this.language.lang+"/"+audio1+".wav"
+                if (audios.indexOf('/')>=0) {
+                    console.log('loadAudio', audios)
+                    this.audios[audios]=this.baseurl+audios
+                } else {
+                    var audio1=this.getId(audios)
+                    this.audios[audio1]="audio/"+this.language.lang+"/"+audio1+".wav"
+                }
             } else {
                 for (var idx in audios){
                     var audio1=this.getId(audios[idx])
@@ -177,7 +183,7 @@ Vue.component('app-content', {
             }
         },
         save: function() {
-            localStorage.setItem('leveldata_'+this.section.id, JSON.stringify(this.levelData))
+            localStorage.setItem('leveldata_'+this.language.lang+'_'+this.section.id, JSON.stringify(this.levelData))
         },
         menu: function() {
             clearInterval(this.timerProc)
@@ -256,6 +262,7 @@ Vue.component('app-content', {
             this.play(audios)
         },
         play: function(audios,include,expr) {
+            console.log('play',audios)
             if ((audios==null || audios.length==0) && expr){
                 this.playExpression(expr, include)
                 return
@@ -263,7 +270,7 @@ Vue.component('app-content', {
             if ((audios==null || audios.length==0) && !expr){
                 return
             }
-            this.$emit('status',JSON.stringify(audios))
+            this.$emit('status',JSON.stringify(audios).replace(/["\[\]]/g,'').replace(/,/g,' '))
             if (!audios && !include) return;
             if (include && !audios) {
                 audios = []
@@ -279,7 +286,6 @@ Vue.component('app-content', {
             for(var idx=0; idx< audios.length; idx++) {
                 var audio1 = this.getId(this.lang(audios[idx]))
                 setTimeout(function(audio){ 
-                    console.log('playing', audio)
                     audioEngine.playFromStart(audio)
                 },time,audio1)
                 time+=audioEngine.duration(audio1)+10
@@ -415,7 +421,7 @@ Vue.component('app-content', {
                 this.play(option.audio,this.lang("correct"),this.lang(option.label))
                 setTimeout(function () {
                     self.nextSlide()
-                },800)
+                },1000)
             } else {
                 this.errors++
                 currentOptions[idx].result = 2
@@ -493,7 +499,7 @@ Vue.component('app-content', {
         },
         levelStars: function(level, idx){
             if (level.hash){
-                var stars = localStorage.getItem('leveldata_'+level.hash)
+                var stars = localStorage.getItem('leveldata_'+this.language.lang+'_'+level.hash)
                 if (stars && stars!='') {
                     var data = JSON.parse(stars)
                     var count = 0
@@ -568,6 +574,7 @@ body{
     padding: 8px;
     border-radius: 8px;
     margin: 3vh auto;
+    white-space: pre-wrap;
 }
 .app-content h2[audio='true']{
     padding-right: 30px;
@@ -604,9 +611,44 @@ body{
     color: red;
     background-color: #fdd;
 }
-.option-container[count='7'], .option-container[count='8']{
-    max-width: 74vw;
+.option-container[count='4']{
+    max-width: 89vw;
     margin: 12px auto;
+}
+.option-container[count='4'] .option{
+    width: 30vw;
+    height: 30vw;
+}
+.option-container[count='5'], .option-container[count='6']{
+    max-width: 90vw;
+    margin: 12px auto;
+}
+.option-container[count='5'] .option, .option-container[count='6'] .option{
+    width: 26vw;
+    height: 26vw;
+}
+.option-container[count='7'], .option-container[count='8']{
+    max-width: 95vw;
+    margin: 12px auto;
+}
+.option-container[count='7'] .option,
+.option-container[count='8'] .option{
+    width: 20vw;
+    height: 20vw;
+}
+.option-container[count='9'], .option-container[count='10']{
+    max-width: 95vw;
+    margin: 12px auto;
+}
+.option-container[count='9'] .option{
+    width: 26vw;
+    height: 26vw;
+    max-height: 20vh;
+    max-width: 20vh;
+}
+.option-container[count='10'] .option{
+    width: 19vw;
+    height: 19vw;
 }
 .results{
     font-size: 1.2em;
@@ -633,30 +675,13 @@ body{
     width: 25vw;
     height: 25vw;
     max-width: 200px;
+    max-height: 200px;
 }
 .levels .option .levelstars{
     position: absolute; 
     bottom: 8px;
     width: 100%;
     left: 0;
-}
-.levels[count='6'] .option{
-    width: 26vw;
-    height: 26vw;
-}
-.levels[count='7'] .option,
-.levels[count='8'] .option{
-    width: 20vw;
-    height: 20vw;
-}
-.levels[count='9'] .option{
-    width: 26vw;
-    height: 26vw;
-    max-height: 30vh;
-}
-.levels[count='10'] .option{
-    width: 19vw;
-    height: 19vw;
 }
 .levels .option > div:first-child{
     padding-top: 8%;
@@ -711,10 +736,18 @@ body{
 .levelstars .star-icon{
     width: 30%;    
 }
+.levelstars[icon] .star-icon{
+    width: 22px;    
+}
+
 .level-icon, .slide-icon, .option-icon{
-    font-size: 2em;
+    font-size: 3em;
     display: inline-block;
     margin: 8px 0;
+}
+.level-icon{
+    position: absolute;
+    bottom: 16px;
 }
 .option-icon .material-icons{
     display: block;
@@ -759,9 +792,12 @@ body{
     .title-image{
         height: 22vh;
     }
-    .levels[count='9'] .option{
+    .option-container[count='9'] .option{
         width: 17vw;
         height: 17vw;
+    }
+    .level-icon, .slide-icon, .option-icon{
+        font-size: 2em;
     }
 }
 @media (max-width: 375px) {
@@ -782,6 +818,24 @@ body{
         min-height: 95px;
     }
 
+}
+@media (max-height: 400px){
+    .app-content h2{
+        margin: 2px auto;
+    }
+    .option-container{
+        margin: 0 auto;
+    }
+    .option-container .option{
+        margin: 2px;
+        min-width: 100px !important;
+        min-height: 100px !important;
+    }
+    .app-footer{
+        height:12px;
+        font-size: 10px;
+        padding: 2px;
+    }
 }
 
 </style>

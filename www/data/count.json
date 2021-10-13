@@ -1,6 +1,6 @@
 {
-    "id": "whatnumber1",
-    "title": "What Number Is",
+    "id": "count",
+    "title": "Count",
     "description": "",
     "parent": "numbers",
     "style": {
@@ -65,39 +65,39 @@
     ],
     "slides": [
       {
-        "title": "One",
+        "title": "🍏",
         "answer": "1"
       },
       {
-        "title": "Two",
+        "title": "🍎🍎",
         "answer": "2"
       },
       {
-        "title": "Three",
+        "title": "🍊🍊🍊",
         "answer": "3"
       },
       {
-        "title": "Four",
+        "title": "🍓🍓🍓🍓",
         "answer": "4"
       },
       {
-        "title": "Five",
+        "title": "🍌🍌🍌\n🍌🍌",
         "answer": "5"
       },
       {
-        "title": "Six",
+        "title": "🍉🍉🍉\n🍉🍉🍉",
         "answer": "6"
       },
       {
-        "title": "Seven",
+        "title": "🍍🍍🍍🍍\n🍍🍍🍍",
         "answer": "7"
       },
       {
-        "title": "Eight",
+        "title": "🍋🍋🍋🍋\n🍋🍋🍋🍋",
         "answer": "8"
       },
       {
-        "title": "Nine",
+        "title": "🍐🍐🍐\n🍐🍐🍐\n🍐🍐🍐",
         "answer": "9"
       }
     ]

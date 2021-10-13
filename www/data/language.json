@@ -14,6 +14,7 @@
             "label": "Español",
             "value": "es",
             "cover": "../img/es.svg",
+            "audio": "../audio/es/español.wav",
             "style": {
                 "backgroundSize" : "50%"
             },
@@ -23,6 +24,7 @@
             "label": "English",
             "action": "setLanguage",
             "cover": "../img/en.svg",
+            "audio": "../audio/en/english.wav",
             "style": {
                 "backgroundSize" : "50%"
             },

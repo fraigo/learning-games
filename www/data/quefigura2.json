@@ -47,10 +47,12 @@
     "slides": [
       {
         "image": "../img/shapes/circle.svg",
+        "audio": "circle",
         "answer": "Circle"
       },
       {
         "image": "../img/shapes/oval.svg",
+        "audio": "oval",
         "answer": "Oval"
       },
       {
@@ -59,14 +61,17 @@
       },
       {
         "image": "../img/shapes/rectangle.svg",
+        "audio": "rectangle",
         "answer": "Rectangle"
       },
       {
         "image": "../img/shapes/square.svg",
+        "audio": "square",
         "answer": "Square"
       },
       {
         "image": "../img/shapes/diamond.svg",
+        "audio": "diamond",
         "answer": "Diamond"
       }
     ]

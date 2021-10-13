@@ -5,8 +5,7 @@
         "es" : {
             "numbers": "Números",
             "what_number_is": "Qué número es?",
-            "one": "Uno",
-            "two": "Dos"
+            "count": "Contar"
         },
         "en" : {
             "shapes": "Shapes",
@@ -28,7 +27,13 @@
     "levels": [
         {
             "label": "What Number Is",
+            "icon": "help_center",
             "hash": "whatnumber1"
+        },
+        {
+            "label": "Count",
+            "icon": "casino",
+            "hash": "count"
         }
     ],
     "slides": []

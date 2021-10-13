@@ -1,6 +1,7 @@
 {
     "id": "apps",
     "title": "Apps",
+    "home": "home",
     "lang" : {
         "es" : {
             "apps" : "Aplicaciones",

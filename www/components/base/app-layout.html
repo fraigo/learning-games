@@ -36,9 +36,8 @@
 </script>
 <script type="text/javascript">
 
-    var errorHandler=function(err){
-        console.error(err);
-        //alert(err);
+    var errorHandler=function(err, data){
+        console.log(err, data);
     }
     window.addEventListener("error",errorHandler);
     Vue.config.errorHandler = errorHandler;
@@ -53,6 +52,7 @@
             "correct": "Correcto",
             "corrects": "Correctas",
             "errors": "Errors",
+            "one": "Uno",
             "two": "Dos",
             "three": "Tres",
             "four": "Cuatro",
@@ -74,6 +74,7 @@
             "times" : "times",
             "timeout" : "Timeout",
             "correct": "Correct",
+            "one": "One",
             "two": "Two",
             "three": "Three",
             "stars": "Stars",
@@ -121,7 +122,6 @@
             window.app=this
             var self = this
             var appLang = localStorage.getItem('applang')
-            console.log('lang', appLang)
             if (appLang && appLang != '') {
                 this.setLanguage({value:appLang})
             }else {
@@ -206,10 +206,12 @@
             },
             home: function() {
                 this.$refs.content.menu()
-                document.location="#home"
+                var home = this.mainSection.home ? this.mainSection.home : 'apps' 
+                var base = this.mainSection.home == 'home' ? 'data/' : this.baseUrl
+                document.location="#"+home
                 this.currentState=''
                 this.currentStatus = ''
-                this.baseUrl="data/"
+                this.baseUrl=base
             },
             loadUrl: function(url) {
                 var self = this
