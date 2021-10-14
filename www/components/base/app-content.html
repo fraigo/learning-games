@@ -3,8 +3,8 @@
     <div class="app-content" :style="sectionStyle()" >
         <h1 v-if="position!=-3" :audio="section.audio!=null" :title="section.description"
             @click="play(section.audio,null,lang(section.title))">{{lang(section.title)}}</h1>
-        <div v-if="section.image" class="section-image" :style="imageStyle(section)"></div>
-        <transition-group name="fade">
+        <div v-show="section.image" class="section-image" :style="imageStyle(section)"></div>
+        <transition-group name="fade" tag="div">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" 
                 class="option" :style="levelStyle(level)" @click="start(idx+1)" :title="level.description">
@@ -17,8 +17,8 @@
         <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position && !hide">
             <div>
                 <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
-                <div v-if="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
-                <div v-if="slide.image" class="title-image" @click="play(slide.audio,null,lang(slide.title))":style="imageStyle(slide)"></div>
+                <div v-show="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
+                <div v-show="slide.image" class="title-image" @click="play(slide.audio,null,lang(slide.title))":style="imageStyle(slide)"></div>
                 <div class="option-container" :count="slide.options.length">
                     <div class="option" :result="option.result" :audio="option.audio!=null"  :key="idx1" @click.stop="verifyOption(slide,idx1)" v-for="(option,idx1) in slide.options" :style="optionStyle(option,idx1)">
                         {{lang(option.label)}}
@@ -567,13 +567,15 @@ body{
     padding-right: 30px;
 }
 .app-content h2{
-    font-size: 2.5em;
+    -webkit-transform: scale(2);
+    transform: scale(2);
     display: inline-block;
     background-color: #44C;
     color: #fff;
     padding: 8px;
+    line-height: 1em;
     border-radius: 8px;
-    margin: 3vh auto;
+    margin: 6vh auto;
     white-space: pre-wrap;
 }
 .app-content h2[audio='true']{
@@ -628,7 +630,7 @@ body{
     height: 26vw;
 }
 .option-container[count='7'], .option-container[count='8']{
-    max-width: 95vw;
+    max-width: 98vw;
     margin: 12px auto;
 }
 .option-container[count='7'] .option,
@@ -637,12 +639,12 @@ body{
     height: 20vw;
 }
 .option-container[count='9'], .option-container[count='10']{
-    max-width: 95vw;
+    max-width: 99vw;
     margin: 12px auto;
 }
 .option-container[count='9'] .option{
-    width: 26vw;
-    height: 26vw;
+    width: 25vw;
+    height: 25vw;
     max-height: 20vh;
     max-width: 20vh;
 }
@@ -672,6 +674,7 @@ body{
     font-size: 1.5em;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     width: 25vw;
     height: 25vw;
     max-width: 200px;
@@ -742,12 +745,16 @@ body{
 
 .level-icon, .slide-icon, .option-icon{
     font-size: 3em;
-    display: inline-block;
+    display: block;
+    height: 1em;
+    text-align: center;
     margin: 8px 0;
 }
 .level-icon{
     position: absolute;
-    bottom: 16px;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
 }
 .option-icon .material-icons{
     display: block;
@@ -775,13 +782,21 @@ body{
         font-size: 16px;
     }
     .app-content h1, .app-content h2{
-        font-size: 1.5em;
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
     }
     .levels .option{
         font-size: 1rem;
     }
+    .level-icon, .slide-icon, .option-icon{
+        font-size: 3em;
+    }
 }
-@media (max-width: 400px) {
+@media (max-width: 440px) {
+    .app-content h1, .app-content h2{
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
     .levelstars .star-icon{
         width: 22px;   
     }
@@ -797,7 +812,10 @@ body{
         height: 17vw;
     }
     .level-icon, .slide-icon, .option-icon{
-        font-size: 2em;
+        font-size: 1.75em;
+    }
+    .levels .option .levelstars{
+        bottom: 4px;
     }
 }
 @media (max-width: 375px) {
@@ -814,6 +832,7 @@ body{
     }
     .option-container .option{
         position: relative;
+        font-size: 14px;
         min-width: 95px;
         min-height: 95px;
     }

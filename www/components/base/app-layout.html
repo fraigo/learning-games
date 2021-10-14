@@ -18,7 +18,7 @@
         <transition-group name="fade" tag="div" class="app-main">
             <div is="app-content" v-if="mainSection" :language="language"
                 @state="state($event)" @status="status($event)" @url="setHash($event)" @action="action($event)"
-                :appdata="appData" :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
+                :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
                 ref="content" :key="current"></div>
             <div class="app-message" v-if="message" :key="message"><div >{{message}}</div></div>
             <div class="loading" v-if="loading" :key="loading"><img src="img/loading.png"></div>
