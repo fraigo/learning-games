@@ -76,30 +76,37 @@
       },
       {
         "title": "🍊 🍊 🍊",
+        "audio": "count_elements",
         "answer": "3"
       },
       {
         "title": "🍓 🍓 🍓 🍓",
+        "audio": "count_elements",
         "answer": "4"
       },
       {
         "title": "🍌 🍌 🍌\n🍌 🍌",
+        "audio": "count_elements",
         "answer": "5"
       },
       {
         "title": "🍉 🍉 🍉\n🍉 🍉 🍉",
+        "audio": "count_elements",
         "answer": "6"
       },
       {
         "title": "🍍 🍍 🍍 🍍\n🍍 🍍 🍍",
+        "audio": "count_elements",
         "answer": "7"
       },
       {
         "title": "🍋 🍋 🍋 🍋\n🍋 🍋 🍋 🍋",
+        "audio": "count_elements",
         "answer": "8"
       },
       {
         "title": "🍐 🍐 🍐\n🍐 🍐 🍐\n🍐 🍐 🍐",
+        "audio": "count_elements",
         "answer": "9"
       }
     ]
