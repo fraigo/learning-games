@@ -4,6 +4,7 @@
         <div class="app-header">
             <div class="app-toolbar">
                 <div class="app-menu" @click="refresh()" :title="parentSection? parentSection.title : currentState.title" v-if="canBack"><span class="material-icons">arrow_back</span></div>
+                <div class="app-menu account-menu" v-if="false" @click="userProfile()" :title="user.name" ><span class="material-icons">account_circle</span></div>
                 <div class="app-menu" v-if="menu">
                     <span class="material-icons" @click="showPlaylists()">menu</span>
                 </div>
@@ -16,18 +17,17 @@
             </div>
         </div>
         <transition-group name="fade" tag="div" class="app-main">
-            <div is="app-content" v-if="mainSection" :language="language"
+            <div is="app-content" v-if="mainSection" :language="language" class="main-content"
                 @state="state($event)" @status="status($event)" @url="setHash($event)" @action="action($event)"
-                :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl"
+                :section="mainSection" :parent="parentSection" :level="level" :baseurl="baseUrl" :user="user"
                 ref="content" :key="current"></div>
-            <div class="app-message" v-if="message" :key="message"><div >{{message}}</div></div>
+            <div class="app-message" v-if="message" :key="message?message:''"><div >{{message}}</div></div>
             <div class="loading" v-if="loading" :key="loading"><img src="img/loading.png"></div>
-            <div class="app-popup" :key="popup.title" v-if="popup.title">
+            <div class="app-popup" :key="popup.title?popup.title:''" v-if="popup.title">
                 <div class="app-popup-content">
                     <div class="close-popup" @click="popup={}"><span class="material-icons">close</span></div>
                     <h3>{{popup.title}}</h3>
-                    <div>
-                    </div>
+                    <div v-if="popup.user" is="user" :user="user" :users="users" @save="saveUser($event)" @select="selUser($event)"></div>
                 </div>
             </div>
         </transition-group>
@@ -65,6 +65,10 @@
             "stars": "Estrellas",
             "is": "es",
             "try_again": "Intenta denuevo",
+            "user_profile": "Perfil usuario",
+            "name": "Nombre",
+            "age": "Edad",
+            "save": "Guardar",
             "you_win" : "Terminado"
         },
         "en" : {
@@ -104,8 +108,16 @@
                 mainSection: null,
                 cacheId: (new Date()).getTime(),
                 parentSection: null,
+                user:{
+                    id: 1,
+                    name: 'Guest',
+                    avatar: 'account_circle',
+                    age: 0
+                },
+                users: {},
                 actions: {
                     'toggleSound' : true,
+                    'userProfile' : true,
                     'setLanguage' : true
                 }
             }
@@ -126,6 +138,16 @@
                 this.setLanguage({value:appLang})
             }else {
                 this.setLanguage({value:'es'})
+            }
+            var userData = localStorage.getItem('appuser')
+            if (userData && userData != '') {
+                this.user = JSON.parse(userData)
+            }
+            var usersData = localStorage.getItem('appusers')
+            if (usersData && usersData != '') {
+                this.users = JSON.parse(usersData)
+            }else {
+                this.users[this.user.id]=JSON.parse(JSON.stringify(this.user))
             }
             this.loadHash()
             var applayout=document.getElementById('applayout');
@@ -154,12 +176,33 @@
             }
         },
         methods: {
+            userProfile: function() {
+                console.log('Profile',this.user)
+                this.popup.title = 'User profile'
+                this.popup.user = this.user
+                this.$forceUpdate()
+            },
+            selUser: function (user) {
+                console.log('sel', user)
+                this.user = JSON.parse(JSON.stringify(user))
+                this.$forceUpdate()
+            },
+            saveUser: function (close) {
+                console.log('save')
+                localStorage.setItem('appuser', JSON.stringify(this.user))
+                this.users[this.user.id]=JSON.parse(JSON.stringify(this.user))
+                localStorage.setItem('appusers', JSON.stringify(this.users))
+                if (close) {
+                    this.popup.title = null
+                }
+                this.$forceUpdate()
+            },
             showMessage: function(msg, timeout){
                 clearTimeout(window.messageTimeout)
                 this.message = msg;
                 window.messageTimeout = setTimeout(function(self){
                     self.message = null
-                }, 5000, this)
+                }, timeout?timeout:5000, this)
                 this.$forceUpdate()
             },
             setHash: function(url){
@@ -288,8 +331,12 @@
     -webkit-overflow-scrolling: touch;
 }
 .app-menu{
-    padding-right: 8px;
+    margin-left: 2vw;
+    margin-right: 2vw;
     cursor: pointer;
+}
+.account-menu{
+    font-size: 1.3em;
 }
 .app-header{
     width: 100%;
@@ -304,7 +351,7 @@
 .app-main{
     flex:1;
 }
-.app-main > div{
+.app-main > .main-content{
     min-height: 100vh;
     box-sizing: border-box;
     padding: 36px 12px;
@@ -333,8 +380,8 @@ body[scrolling='1'] .player-top{
     flex: 1;
 }
 .app-buttons > div{
-    margin-left: 12px;
-    margin-right: 8px;
+    margin-left: 2vw;
+    margin-right: 2vw;
     cursor: pointer;
 }
 .app-message{
@@ -369,11 +416,15 @@ body[scrolling='1'] .player-top{
     z-index: 20;
     display: flex;
 }
+.app-popup h3{
+    margin: 3vh auto;
+}
 .close-popup{
     position: absolute;
     right: 12px;
     top: 12px;
     color: #222;
+    cursor: pointer;
 }
 .app-popup-content{
     background-color: #eee;

@@ -9,10 +9,14 @@ if [ "$LANG" == "es" ]; then
 fi
 WORD=$2
 TARGET=$3
+TARGETNAME=$4
 if [ "$TARGET" == "" ]; then
   TARGET=www/audio/$LANG/
 fi
 FILE=$2
+if [ ! "$TARGETNAME" == "" ]; then
+  FILE=$TARGETNAME
+fi
 FILE=${FILE/á/a}
 FILE=${FILE/é/e}
 FILE=${FILE/í/i}

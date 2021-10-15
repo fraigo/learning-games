@@ -66,10 +66,12 @@
     "slides": [
       {
         "title": "🍏",
+        "audio": "count_elements",
         "answer": "1"
       },
       {
         "title": "🍎 🍎",
+        "audio": "count_elements",
         "answer": "2"
       },
       {

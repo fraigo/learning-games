@@ -2,6 +2,7 @@ var components=[
     "base/app-layout",
     "base/app-content",
     "app/stars",
+    "app/user",
 ]
 
 function listDir(path) {

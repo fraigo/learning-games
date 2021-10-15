@@ -1,0 +1,135 @@
+<!-- text-template -->
+<script type="text/x-template" id="user-component-template">
+    <div class="user-component" >
+        <div class="user-avatar"><span class="material-icons">{{user.avatar}}</span></div>
+        <h3 >Name:
+            <span v-if="!editable" @click="editable=true">{{user.name}} <span class="material-icons">edit</span></span>
+            <input v-if="editable" type="text" maxlength="16" placeholder="Enter name" v-model="user.name" @click="edit($event)" @keyup="keyup($event)">
+        </h3>
+        <div>
+            Age:
+            <span v-if="!editable" @click="editable=true">{{user.age}}</span>
+            <input v-if="editable" type="number" min="1" max="99" v-model="user.age" @click="edit($event)" @keyup="keyup($event)">
+        </div>
+        <div class="user-buttons">
+            <button @click="save(true)" :disabled="!editable">Save</button>
+        </div>
+        <hr>
+        <div class="user-list">
+            <div  class="user-select" :selected="user1.id==user.id" v-for="user1 in users" :key="user1.id" @click="select(user1, true)">
+                <div class="user-avatar"><span class="material-icons">{{user1.avatar}}</span></div>
+                <div>{{user1.name}}</div>
+            </div>
+            <div class="user-select" @click="newUser()">
+                <div class="user-avatar"><span class="material-icons">account_circle</span></div>
+                <div>[New]</div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/javascript">
+Vue.component('user', {
+    template: '#user-component-template',
+    data: function(){
+        return {
+            editable: false
+        }
+    },
+    props: { 
+        user: Object,
+        users: Object
+    },
+    mounted:function(){
+        console.log("user-component mounted");
+        var self = this;
+    },
+    methods: {
+        keyup: function(ev) {
+            if (ev.keyCode==13){
+                this.save()
+            }
+        },
+        save: function (close) {
+            this.editable=false
+            this.$emit('save',close)
+        },
+        edit: function (ev) {
+            setTimeout(function(){
+                ev.target.focus()
+                ev.target.select()
+            }, 200)
+        },
+        newUser: function (){
+            this.select({
+                name: 'New',
+                avatar: 'account_circle',
+                age: '8',
+                id: Math.round(Math.random()*10000)
+            }, false)
+            this.editable = true
+            this.$forceUpdate()
+        },
+        select: function(user, save){
+            this.user.id = user.id
+            this.user.name = user.name
+            this.user.avatar = user.avatar
+            this.user.age = user.age
+            this.$emit('select', this.user)
+            if (save) {
+                this.save(false)
+            }
+        }
+    },
+    computed:{
+        
+    }
+});
+</script>
+<style>
+.user-component{
+    font-size: 16px;
+    line-height: 1.5em;
+}
+.user-avatar{
+    font-size: 3em;
+}
+.user-component input{
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-width: 60%;
+}
+.user-buttons{
+    text-align: center;
+    margin: 12px auto;
+}
+.user-buttons button{
+    background-color: #444;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 1.25em;
+    border-radius: 5px;
+    border: 0px;
+}
+.user-buttons button[disabled] {
+    background-color: #ccc;
+}
+.user-list{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.user-select{
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 8px;
+    font-size: 12px;
+    width: 80px;
+}
+.user-select[selected]{
+    border: 1px solid #aaa;
+    background-color: #ffe;
+}
+</style>
+    

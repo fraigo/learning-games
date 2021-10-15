@@ -5,7 +5,8 @@
         "es" : {
             "numbers": "Números",
             "what_number_is": "Qué número es?",
-            "count": "Contar"
+            "count": "Contar",
+            "elements": "Elementos"
         },
         "en" : {
             "shapes": "Shapes",

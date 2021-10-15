@@ -68,6 +68,7 @@ Vue.component('app-content', {
     props: { 
         section: Object,
         parent: Object,
+        user: Object,
         baseurl: String,
         language: Object
     },
@@ -81,7 +82,7 @@ Vue.component('app-content', {
         for (var index = 0; index < 10; index++) {
             this.orders.push(Math.floor(Math.random() * 10))
         }
-        var levelData = localStorage.getItem('leveldata_'+this.language.lang+'_'+this.section.id)
+        var levelData = localStorage.getItem(this.storageId())
         if (levelData && levelData != '') {
             this.levelData = JSON.parse(levelData)
         }
@@ -110,7 +111,9 @@ Vue.component('app-content', {
         }
         for(var key in this.section.slides){
             this.loadAudio(this.section.slides[key].audio)
-            this.loadAudio(this.wordExpression(this.section.slides[key].title))
+            if (!this.section.slides[key].audio){
+                this.loadAudio(this.wordExpression(this.section.slides[key].title))
+            }
             if (!this.section.slides[key].options) {
                 this.section.slides[key].options = JSON.parse(JSON.stringify(this.section.defaultOptions))
             }
@@ -129,6 +132,10 @@ Vue.component('app-content', {
         console.log(self.audios)
     },
     methods: {
+        storageId: function() {
+            console.log('stid', this.language, this.section, this.user)
+            return ['leveldata', this.language.lang, this.section.id, this.user.id].join('_')
+        },
         getId: function(expr){
             var id=expr.toLowerCase().replace(/ /g,'_').replace('?','').replace('(','').replace(')','')
             var replaced="áéíóú"
@@ -183,7 +190,7 @@ Vue.component('app-content', {
             }
         },
         save: function() {
-            localStorage.setItem('leveldata_'+this.language.lang+'_'+this.section.id, JSON.stringify(this.levelData))
+            localStorage.setItem(this.storageId(), JSON.stringify(this.levelData))
         },
         menu: function() {
             clearInterval(this.timerProc)
@@ -499,7 +506,7 @@ Vue.component('app-content', {
         },
         levelStars: function(level, idx){
             if (level.hash){
-                var stars = localStorage.getItem('leveldata_'+this.language.lang+'_'+level.hash)
+                var stars = localStorage.getItem(this.storageId())
                 if (stars && stars!='') {
                     var data = JSON.parse(stars)
                     var count = 0
@@ -527,6 +534,9 @@ Vue.component('app-content', {
         
     },
     watch:{
+        user: function (newUser) {
+            console.log('new', newUser)
+        },
         section: function (newValue) {
             console.log('section', newValue.title)
         },
@@ -823,6 +833,9 @@ body{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
+    .app-content h1, .app-content h2{
+        font-size: 2rem;
+    }
     .levels .option, .option-container .option{
         margin: 1vh 1px;
     }
@@ -839,16 +852,19 @@ body{
 
 }
 @media (max-height: 400px){
-    .app-content h2{
-        margin: 2px auto;
+    .app-content h1, .app-content h2{
+        font-size: 1.25rem;
+        margin: 8px auto;
     }
     .option-container{
         margin: 0 auto;
     }
-    .option-container .option{
+    .option-container[count] .option{
         margin: 2px;
         min-width: 100px !important;
         min-height: 100px !important;
+        width: 100px;
+        height: 100px;
     }
     .app-footer{
         height:12px;

@@ -5,6 +5,7 @@
         "es" : {
             "setup" : "Configuración",
             "sound" : "Sonido",
+            "users" : "Usuarios",
             "language" : "Idioma"
         }
     },
@@ -23,6 +24,11 @@
             "label": "Language",
             "icon": "translate",
             "hash": "language"
+        },
+        {
+            "label": "Users",
+            "icon": "people",
+            "action": "userProfile"
         }
     ],
     "slides": [
