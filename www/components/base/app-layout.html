@@ -1,6 +1,6 @@
 <!-- text-template -->
 <script type="text/x-template" id="app-layout-template">
-    <div class="app-layout" :style="{fontSize:size+'rem'}">
+    <div class="app-layout" :style="{fontSize:size+'rem'}" ref="layout">
         <div class="app-header">
             <div class="app-toolbar">
                 <div class="app-menu" @click="refresh()" :title="parentSection? parentSection.title : currentState.title" v-if="canBack"><span class="material-icons">arrow_back</span></div>
@@ -156,13 +156,17 @@
                 this.users[this.user.id]=JSON.parse(JSON.stringify(this.user))
             }
             this.loadHash()
-            var applayout=document.getElementById('applayout');
+            var applayout=self.$refs.layout;
             window.addEventListener("keyup",function(ev){
                 console.log('ev',ev.keyCode)
                 if (ev.keyCode == 27) {
                     self.popup = {}
                 }
             })
+            window.addEventListener("resize",function(ev){
+                self.resize()
+            })
+            self.resize()
             applayout.addEventListener("scroll",function(ev){
                 var scrollTop = applayout.scrollTop;
                 var isScrolling = document.body.getAttribute("scrolling")==1;
@@ -182,6 +186,15 @@
             }
         },
         methods: {
+            resize: function() {
+                var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+                var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+                if (vw>vh) {
+                    this.$refs.layout.setAttribute('mode','landscape')
+                } else {
+                    this.$refs.layout.setAttribute('mode','portrait')
+                }
+            },
             userProfile: function() {
                 console.log('Profile',this.user)
                 this.popup.title = 'User profile'
