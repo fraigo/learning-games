@@ -23,15 +23,21 @@
                 ref="content" :key="current"></div>
             <div class="app-message" v-if="message" :key="message?message:''"><div >{{message}}</div></div>
             <div class="loading" v-if="loading" :key="loading"><img src="img/loading.png"></div>
-            <div class="app-popup" :key="popup.title?popup.title:''" v-if="popup.title">
+            <div class="app-popup" :key="popup.title||popup.message||''" v-if="popup.title||popup.message">
                 <div class="app-popup-content">
                     <div class="close-popup" @click="popup={}"><span class="material-icons">close</span></div>
                     <h3>{{popup.title}}</h3>
                     <div v-if="popup.user" is="user" :user="user" :users="users" @save="saveUser($event)" @select="selUser($event)"></div>
+                    <div class="app-popup-buttons" v-if="popup.buttons">
+                        <button @click="popupButton(but)" v-for="but in popup.buttons">{{but}}</button>
+                    </div>
                 </div>
             </div>
         </transition-group>
-        <div class="app-footer">{{currentStatus}}</div>
+        <div class="app-footer">
+            <div @click="userProfile()"><span class="material-icons">{{user.avatar}}</span> {{user.name}}</div>
+            <div>{{currentStatus}}</div>
+        </div>
     </div>
 </script>
 <script type="text/javascript">
@@ -180,12 +186,33 @@
                 console.log('Profile',this.user)
                 this.popup.title = 'User profile'
                 this.popup.user = this.user
+                this.popup.buttons = null
+                this.$forceUpdate()
+            },
+            alert: function(title,message,buttons,callback) {
+                this.popup.title = title
+                this.popup.message = message
+                this.popup.user = null
+                this.popup.callback = callback
+                this.popup.buttons = buttons ? buttons : ["Ok"]
+                this.$forceUpdate()
+            },
+            confirm: function(title,message,callback) {
+                this.alert(title,message,["Cancel","Ok"],callback)
+            },
+            popupButton: function(label) {
+                if (this.popup.callback) {
+                    this.popup.callback(label)
+                }
+                this.popup.title = null
+                this.popup.message = null
                 this.$forceUpdate()
             },
             selUser: function (user) {
                 console.log('sel', user)
                 this.user = JSON.parse(JSON.stringify(user))
                 this.$forceUpdate()
+                this.refresh()
             },
             saveUser: function (close) {
                 console.log('save')
@@ -419,6 +446,19 @@ body[scrolling='1'] .player-top{
 .app-popup h3{
     margin: 3vh auto;
 }
+.app-popup button{
+    background-color: #444;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 1.25em;
+    border-radius: 5px;
+    border: 0px;
+    line-height: 1.5em;
+    margin: 0 8px;
+}
+.app-popup button[disabled] {
+    background-color: #ccc;
+}
 .close-popup{
     position: absolute;
     right: 12px;
@@ -446,7 +486,12 @@ body[scrolling='1'] .player-top{
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+}
+.app-footer > div {
     height: 1.6em;
+    line-height: 1.6em;
 }
 *[inactive='true']{
     opacity: 0.4;

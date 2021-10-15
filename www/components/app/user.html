@@ -3,7 +3,7 @@
     <div class="user-component" >
         <div class="user-avatar"><span class="material-icons">{{user.avatar}}</span></div>
         <h3 >Name:
-            <span v-if="!editable" @click="editable=true">{{user.name}} <span class="material-icons">edit</span></span>
+            <span v-if="!editable" @click="editable=true">{{user.name}}</span>
             <input v-if="editable" type="text" maxlength="16" placeholder="Enter name" v-model="user.name" @click="edit($event)" @keyup="keyup($event)">
         </h3>
         <div>
@@ -12,7 +12,9 @@
             <input v-if="editable" type="number" min="1" max="99" v-model="user.age" @click="edit($event)" @keyup="keyup($event)">
         </div>
         <div class="user-buttons">
-            <button @click="save(true)" :disabled="!editable">Save</button>
+            <button @click="clean()"><span class="material-icons">cleaning_services</span> Reset</button>
+            <button @click="editable=true" v-if="!editable"><span class="material-icons">edit</span> Edit</button>
+            <button @click="save(true)" v-if="editable"><span class="material-icons">check_circle</span> Save</button>
         </div>
         <hr>
         <div class="user-list">
@@ -78,6 +80,21 @@ Vue.component('user', {
             if (save) {
                 this.save(false)
             }
+        },
+        clean: function () {
+            var self = this
+            var parent = this.$parent.$parent
+            parent.confirm('Reset','Reset all scores?', function(label){
+                if (label=="Ok"){
+                    for (var i = localStorage.length - 1; i >= 0; i--){
+                        var keys = localStorage.key(i).split('_');
+                        if (keys[0]=='leveldata' && keys[keys.length-1]*1==self.user.id){
+                            localStorage.removeItem(localStorage.key(i))
+                        }
+                    }
+                    parent.home()
+                }
+            })
         }
     },
     computed:{
@@ -102,17 +119,6 @@ Vue.component('user', {
 .user-buttons{
     text-align: center;
     margin: 12px auto;
-}
-.user-buttons button{
-    background-color: #444;
-    color: #fff;
-    padding: 6px 12px;
-    font-size: 1.25em;
-    border-radius: 5px;
-    border: 0px;
-}
-.user-buttons button[disabled] {
-    background-color: #ccc;
 }
 .user-list{
     display: flex;
