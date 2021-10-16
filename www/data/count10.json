@@ -1,0 +1,199 @@
+{
+    "id": "count",
+    "title": "Count",
+    "description": "",
+    "parent": "numbers",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#444"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC",
+        "fontSize": "3em"
+    },
+    "levels": [
+        {
+            "label": "{Level} 1",
+            "sorted": true
+        },
+        {
+            "label": "{Level} 2",
+            "sorted": true,
+            "timer": 10
+        },
+        {
+            "label": "{Level} 3",
+            "sorted": false
+        },
+        {
+            "label": "{Level} 4",
+            "sorted": false,
+            "timer": 10
+        }
+    ],
+    "slides": [
+      {
+        "component": "tens",
+        "props": {
+          "value" : 12,
+          "item" : "🍏"
+        },
+        "options" : [
+          {
+            "label" : "12"
+          },
+          {
+            "label" : "21"
+          },
+          {
+            "label" : "3"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "12"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 25,
+          "item" : "🥦"
+        },
+        "options" : [
+          {
+            "label" : "25"
+          },
+          {
+            "label" : "52"
+          },
+          {
+            "label" : "35"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "25"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 31,
+          "item" : "🥥"
+        },
+        "options" : [
+          {
+            "label" : "30"
+          },
+          {
+            "label" : "31"
+          },
+          {
+            "label" : "13"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "31"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 47,
+          "item" : "🍕"
+        },
+        "options" : [
+          {
+            "label" : "48"
+          },
+          {
+            "label" : "47"
+          },
+          {
+            "label" : "57"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "47"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 59,
+          "item" : "🍚"
+        },
+        "options" : [
+          {
+            "label" : "59"
+          },
+          {
+            "label" : "58"
+          },
+          {
+            "label" : "69"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "59"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 61,
+          "item" : "🥠"
+        },
+        "options" : [
+          {
+            "label" : "51"
+          },
+          {
+            "label" : "70"
+          },
+          {
+            "label" : "61"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "61"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 72,
+          "item" : "🥗"
+        },
+        "options" : [
+          {
+            "label" : "62"
+          },
+          {
+            "label" : "72"
+          },
+          {
+            "label" : "82"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "72"
+      },
+      {
+        "component": "tens",
+        "props": {
+          "value" : 85,
+          "item" : "🍌"
+        },
+        "options" : [
+          {
+            "label" : "96"
+          },
+          {
+            "label" : "85"
+          },
+          {
+            "label" : "75"
+          }
+        ],
+        "audio": "count_elements",
+        "answer": "85"
+      }
+    ]
+}

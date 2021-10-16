@@ -16,9 +16,10 @@
                 <div class="levelstars" is="stars" :icon="level.icon" :stars="levelStars(level,idx)"></div>
             </div>
         </div>
-        <div v-for="(slide,idx) in currentSlides"  :key="slide.title?slide.title:slide.image" v-show="idx==position && !hide">
+        <div v-for="(slide,idx) in currentSlides"  :key="slideKey(slide)" v-show="idx==position && !hide">
             <div>
                 <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
+                <div v-if="slide.component" class="slide-component" :is="slide.component" :value="slide.props.value" :item="slide.props.item"></div>
                 <div v-show="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
                 <div v-show="slide.image" class="title-image" @click="play(slide.audio,null,lang(slide.title))":style="imageStyle(slide)"></div>
                 <div class="option-container" :count="slide.options.length">
@@ -524,6 +525,9 @@ Vue.component('app-content', {
                 }
             }
             return this.levelData.levelStars[idx]
+        },
+        slideKey: function(slide) {
+            return slide.title || slide.image || slide.component + JSON.stringify(slide.props)
         },
         slideOptions: function (position) {
             if (!this.currentSlides[position]) {

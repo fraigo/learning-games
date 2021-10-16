@@ -6,6 +6,7 @@
             "numbers": "Números",
             "what_number_is": "Qué número es?",
             "count": "Contar",
+            "tens": "Decenas",
             "elements": "Elementos"
         },
         "en" : {
@@ -35,6 +36,11 @@
             "label": "Count",
             "icon": "casino",
             "hash": "count"
+        },
+        {
+            "label": "{Count} {tens}",
+            "icon": "casino",
+            "hash": "count10"
         }
     ],
     "slides": []

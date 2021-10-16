@@ -1,0 +1,63 @@
+<!-- text-template -->
+<script type="text/x-template" id="tens-component-template">
+    <div class="tens-component">
+      <div v-html="tens()" class="ten"></div>
+      <div v-html="ones()" class="one"></div>
+    </div>
+</script>
+<script type="text/javascript">
+Vue.component('tens', {
+    template: '#tens-component-template',
+    data: function(){
+        return {
+        }
+    },
+    props: { 
+      value: Number,
+      item: String
+    },
+    mounted:function(){
+        console.log("tens-component mounted");
+        var self = this;
+    },
+    methods: {
+      tens: function(){
+        var count = Math.floor(this.value / 10)
+        var item = ""
+        var result = []
+        var group = "";
+        for(var i=0; i<10; i++){
+          group+=this.item
+        }
+        for(var i=0; i<count; i++){
+          result.push(group)
+        }
+        return "<div>"+result.join("</div><div>")+"</div>"
+      },
+      ones: function(){
+        var count = (this.value % 10)
+        var result = []
+        for(var i=0; i<count; i++){
+          result.push(this.item)
+        }
+        return result.join(" ")
+      }
+    },
+    computed:{
+    }
+});
+</script>
+<style>
+.tens-component{
+    font-size: 2em;
+    line-height: 1.5em;
+}
+.ten > div, .one{
+  background-color: #fff;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  margin: 0px auto;
+}
+</style>
+    
