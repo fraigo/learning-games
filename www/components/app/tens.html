@@ -1,6 +1,6 @@
 <!-- text-template -->
 <script type="text/x-template" id="tens-component-template">
-    <div class="tens-component">
+    <div class="tens-component" @click="$emit('click', $event)">
       <div v-html="tens()" class="ten"></div>
       <div v-html="ones()" class="one"></div>
     </div>
@@ -57,7 +57,8 @@ Vue.component('tens', {
   padding: 4px 8px;
   border: 1px solid #ddd;
   display: inline-block;
-  margin: 0px auto;
+  margin: 2px;
+  border-radius: 7px;
 }
 </style>
     

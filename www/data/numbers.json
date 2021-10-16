@@ -39,7 +39,7 @@
         },
         {
             "label": "{Count} {tens}",
-            "icon": "casino",
+            "icon": "view_comfy",
             "hash": "count10"
         }
     ],

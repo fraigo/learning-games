@@ -19,7 +19,7 @@
         <div v-for="(slide,idx) in currentSlides"  :key="slideKey(slide)" v-show="idx==position && !hide">
             <div>
                 <h2 v-if="slide.title" :style="titleStyle" :audio="slide.audio!=null"  @click="play(slide.audio,null,lang(slide.title))">{{lang(slide.title)}}</h2>
-                <div v-if="slide.component" class="slide-component" :is="slide.component" :value="slide.props.value" :item="slide.props.item"></div>
+                <div v-if="slide.component" class="slide-component" :is="slide.component" @click="play(slide.audio,null,lang(slide.title))" :value="slide.props.value" :item="slide.props.item"></div>
                 <div v-show="slide.icon" class="slide-icon"><span class="material-icons">{{slide.icon}}</span></div>
                 <div v-show="slide.image" class="title-image" @click="play(slide.audio,null,lang(slide.title))":style="imageStyle(slide)"></div>
                 <div class="option-container" :count="slide.options.length">
