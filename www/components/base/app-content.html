@@ -659,6 +659,7 @@ body{
 .option-container[count='9']{
     width: 75vw;
     max-width: 700px;
+    min-width: 360px;
     margin: 12px auto;
 }
 .option-container[count='9'] .option{
@@ -843,11 +844,11 @@ body{
 }
 @media (max-width: 375px) {
     .app-content{
-        padding-left: 0px !important;
-        padding-right: 0px !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
     }
     .app-content h1, .app-content h2{
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .levels .option, .option-container .option{
         margin: 1vh 1px;
@@ -856,9 +857,11 @@ body{
         max-width: 100% !important;
         margin: 2vh auto !important;
     }
+    .option-container[count='6'], .option-container[count='9'], .option-container[count='10']{
+        width: 99vw;
+    }
     .option-container .option{
         position: relative;
-        font-size: 14px;
         min-width: 95px;
         min-height: 95px;
     }
@@ -870,6 +873,7 @@ body{
         margin: 8px auto;
     }
     .option-container{
+        width: 99vw;
         margin: 0 auto;
     }
     .option-container[count] .option{
@@ -879,11 +883,11 @@ body{
         width: 100px;
         height: 100px;
     }
-    .app-footer{
-        height:12px;
-        font-size: 10px;
-        padding: 2px;
+    .option-container[count='9'] .option, .option-container[count='10'] .option{
+        width: 18vw;
+        height: 18vw;
     }
 }
-
+@media (max-height: 400px) and (max-wi: 400px){
+}
 </style>

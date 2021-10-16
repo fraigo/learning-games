@@ -167,12 +167,13 @@
                 self.resize()
             })
             self.resize()
-            applayout.addEventListener("scroll",function(ev){
-                var scrollTop = applayout.scrollTop;
+            window.addEventListener("scroll",function(ev){
+                var doc = document.documentElement
+                var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
                 var isScrolling = document.body.getAttribute("scrolling")==1;
-                var limit=60;
+                var limit=12;
                 if (isScrolling){
-                    limit=2;
+                    limit=11;
                 }
                 if (scrollTop>limit){
                     document.body.setAttribute("scrolling",1);
@@ -387,6 +388,8 @@
     position: fixed;
     top: -2px;
     z-index: 10;
+    opacity: 1;
+    transition: opacity linear .3s;
 }
 .app-main{
     flex:1;
@@ -613,6 +616,17 @@ body[scrolling='1'] .player-top{
 @media (max-width:480px){
     .app-message{
         font-size: 0.9em;
+    }
+}
+@media (max-height: 400px){
+    .app-footer{
+        height:15px;
+        font-size: 10px;
+        padding: 2px;
+    }
+    body[scrolling='1'] .app-header{
+        opacity: 0;
+        pointer-events: none;
     }
 }
 </style>
