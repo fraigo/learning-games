@@ -76,6 +76,7 @@ var loadData=function(url,callback, error){
     }
     req.send(null)
 }
+var sass = new Sass();
 
 var vueData={
     el: '#app',
@@ -114,12 +115,27 @@ var vueData={
         loadComponent:function(id, callback){
             var suffix = '?' + (new Date()).getTime();
             loadData("components/"+id+".html"+suffix,function(text){
-                callback(text);
                 var e=document.createElement("div");
-                e.id="component-"+id;
-                e.innerHTML=text;
-                document.body.appendChild(e);
+                e.id="component-"+id
+                e.innerHTML=text
+                var loaded = false
                 var scripts=e.querySelectorAll("script[type='text/javascript']");
+                var scssStyles=e.querySelectorAll("style[lang='scss']");
+                for(var i=0; i<scssStyles.length; i++){
+                    var style = scssStyles[i]
+                    var scss = style.innerHTML
+                    style.parentNode.removeChild(style)
+                    sass.compile(scss, function(result) {
+                        var st = document.createElement("style")
+                        st.id="style-"+id
+                        st.innerHTML = result.text
+                        document.body.appendChild(st)
+                        if (!loaded){
+                            callback(text)
+                            loaded = true
+                        }
+                    });
+                }
                 for(var i=0; i<scripts.length; i++){
                     var script=scripts[i];
                     if (script.src){
@@ -130,7 +146,10 @@ var vueData={
                         eval(script.innerHTML);
                     }    
                 }
-                
+                document.body.appendChild(e);
+                if (!scssStyles || scssStyles.length==0){
+                    callback(text);
+                }
             },function(err){
                 console.log('load error', err);
             })

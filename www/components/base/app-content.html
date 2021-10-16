@@ -10,7 +10,7 @@
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" 
                 class="option" :style="levelStyle(level)" @click="start(idx+1)" :title="level.description">
-                <div>{{lang(level.label)}}</div>
+                <div class="option-label">{{lang(level.label)}}</div>
                 <div v-if="level.icon" class="level-icon"><span class="material-icons">{{level.icon}}</span></div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
                 <div class="levelstars" is="stars" :icon="level.icon" :stars="levelStars(level,idx)"></div>
@@ -133,11 +133,14 @@ Vue.component('app-content', {
             delete self.audios[id]
         })
         console.log(self.audios)
+        document.title = this.lang(this.section.title)
     },
     methods: {
-        storageId: function() {
-            console.log('stid', this.language, this.section, this.user)
-            return ['leveldata', this.language.lang, this.section.id, this.user.id].join('_')
+        storageId: function(id) {
+            if (!id) id = this.section.id
+            var data = ['leveldata', this.language.lang, id, this.user.id]
+            console.log(data)
+            return data.join('_')
         },
         getId: function(expr){
             var id=expr.toLowerCase().replace(/ /g,'_').replace('?','').replace('(','').replace(')','')
@@ -509,7 +512,7 @@ Vue.component('app-content', {
         },
         levelStars: function(level, idx){
             if (level.hash){
-                var stars = localStorage.getItem(this.storageId())
+                var stars = localStorage.getItem(this.storageId(level.hash))
                 if (stars && stars!='') {
                     var data = JSON.parse(stars)
                     var count = 0
@@ -518,7 +521,6 @@ Vue.component('app-content', {
                         total += 3
                         count += data.levelStars[idx]
                     }
-                    console.log('levelstars',level.hash,count,data.levelStars)
                     if (total>0){
                         return Math.max(1,Math.floor(count*3/total))
                     }
@@ -554,7 +556,7 @@ Vue.component('app-content', {
 
 });
 </script>
-<style>
+<style lang="scss">
 body{
     font-size: 20px;
 }
@@ -673,6 +675,9 @@ body{
     width: 19vw;
     height: 19vw;
 }
+.option .option-label{
+    flex: 1;
+}
 .results{
     font-size: 1.2em;
 }
@@ -700,12 +705,6 @@ body{
     height: 25vw;
     max-width: 200px;
     max-height: 200px;
-}
-.levels .option .levelstars{
-    position: absolute; 
-    bottom: 8px;
-    width: 100%;
-    left: 0;
 }
 .levels .option > div:first-child{
     padding-top: 8%;
@@ -771,12 +770,6 @@ body{
     text-align: center;
     margin: 8px 0;
 }
-.level-icon{
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-}
 .option-icon .material-icons{
     display: block;
 }
@@ -813,10 +806,11 @@ body{
         font-size: 1rem;
     }
     .level-icon, .slide-icon, .option-icon{
-        font-size: 3em;
+        font-size: 2.25em;
+        margin: 3%;
     }
 }
-@media (max-width: 440px) {
+@media (max-width: 459px) {
     .app-content h1, .app-content h2{
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -836,7 +830,7 @@ body{
         height: 17vw;
     }
     .level-icon, .slide-icon, .option-icon{
-        font-size: 1.75em;
+        font-size: 1.5em;
     }
     .levels .option .levelstars{
         bottom: 4px;
