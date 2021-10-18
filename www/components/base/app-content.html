@@ -13,7 +13,7 @@
                 <div class="option-label">{{lang(level.label)}}</div>
                 <div v-if="level.icon" class="level-icon"><span class="material-icons">{{level.icon}}</span></div>
                 <div class="level-info" v-if="level.timer>0"><span class="material-icons">timer</span>{{level.timer}}s</div>
-                <div class="levelstars" is="stars" :icon="level.icon" :stars="levelStars(level,idx)"></div>
+                <div class="levelstars" v-if="levelStars(level,idx)>0" is="stars" :icon="level.icon" :stars="levelStars(level,idx)"></div>
             </div>
         </div>
         <div v-for="(slide,idx) in currentSlides"  :key="slideKey(slide)" v-show="idx==position && !hide">
@@ -556,7 +556,7 @@ Vue.component('app-content', {
 
 });
 </script>
-<style lang="scss">
+<style>
 body{
     font-size: 20px;
 }
@@ -677,6 +677,7 @@ body{
 }
 .option .option-label{
     flex: 1;
+    line-height: 1em;
 }
 .results{
     font-size: 1.2em;
@@ -807,7 +808,10 @@ body{
     }
     .level-icon, .slide-icon, .option-icon{
         font-size: 2.25em;
-        margin: 3%;
+        margin: 2% auto 8% auto;
+    }
+    .level-icon + .levelstars{
+        margin-top: -6%;
     }
 }
 @media (max-width: 459px) {
