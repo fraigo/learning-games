@@ -6,7 +6,7 @@
             <span>{{translate(section.title)}}</span>
         </h1>
         <div v-show="section.image" class="section-image" :style="imageStyle(section)"></div>
-        <transition-group name="fade" tag="div">
+        <transition-group name="fade" tag="div" class="section-options">
         <div class="option-container levels" :count="section.levels.length" :key="'levels'" v-if="currentLevel==0">
             <div v-for="(level, idx) in section.levels" :audio="level.audio!=null" :key="level.label" 
                 class="option" :style="levelStyle(level)" @click="start(idx+1)" :title="level.description">
@@ -34,12 +34,15 @@
         <div class="results" v-if="position==-1 && currentLevel>0">
             <h2>{{translate('You win')}}!</h2>
             <div class="results-content">
-                <div>{{translate('Corrects')}}<br><span class="correct">{{this.correct}}</span></div>
-                <div>{{translate('Errors')}}<br><span class="error">{{this.errors}}</span></div>
+                <div class="results-row">
+                    <div>{{translate('Corrects')}}<br><span class="correct">{{this.correct}}</span></div>
+                    <div>{{translate('Errors')}}<br><span class="error">{{this.errors}}</span></div>
+                </div>
                 <div class="stars" is="stars" :stars="stars" :size="40" :animated="true" :key="stars+40"></div>
                 <div class="result-buttons">
-                    <button @click="restart()"><span class="material-icons">refresh</span></button>
-                    <button @click="menu()"><span class="material-icons">home</span></button>
+                    <button @click="menu()"><span class="material-icons">close</span> {{translate('Close')}}</button>
+                    <button @click="restart()"><span class="material-icons">refresh</span> {{translate('Restart')}}</button>
+                    <button v-if="section.levels.length>currentLevel" @click="start(currentLevel+1)"><span class="material-icons">forward</span> {{translate(section.levels[currentLevel].label)}}</button>
                 </div>
             </div>
         </div>
@@ -65,6 +68,7 @@ Vue.component('app-content', {
             timerLength: 5000,
             timerSeconds: 0,
             errorDetail: [],
+            menuTimeout: null,
             levelData: {
                 levelStars: []
             },
@@ -193,6 +197,7 @@ Vue.component('app-content', {
         },
         menu: function() {
             clearInterval(this.timerProc)
+            clearInterval(this.menuTimeout)
             this.currentLevel = 0
             this.position = -1
         },
@@ -345,6 +350,7 @@ Vue.component('app-content', {
         },
         nextSlide: function () {
             clearInterval(this.timerProc)
+            clearInterval(this.menuTimeout)
             this.hide = false
             if (this.position + 1 == this.currentSlides.length){
                 this.endSection()
@@ -402,7 +408,7 @@ Vue.component('app-content', {
                     }
                 }
             },1000, this)
-            setTimeout(function(self){
+            this.menuTimeout=setTimeout(function(self){
                 self.menu()
             },30000, this)
         },
@@ -591,6 +597,9 @@ body{
 .app-content h2[audio='true']{
     padding-right: 30px;
 }
+.section-options{
+    width: 100%;
+}
 .option-container{
     display: flex;
     flex-wrap: wrap;
@@ -611,6 +620,7 @@ body{
     cursor: pointer;
     font-size: 2em;
     padding: 0 8px;
+    max-width: 200px;
     max-height: 200px;
     transition: transform linear .3s;
     transform: scale(1.0);
@@ -630,7 +640,6 @@ body{
     z-index: 1;    
 }
 .option-container[count='4']{
-    max-width: 500px;
     width: 80vw;
     margin: 12px auto;
 }
@@ -639,7 +648,6 @@ body{
     height: 30vw;
 }
 .option-container[count='5'], .option-container[count='6']{
-    max-width: 700px;
     width: 90vw;
     margin: 12px auto;
 }
@@ -689,6 +697,13 @@ body{
     border-radius: 7px;
     border: 1px solid #eee;
 }
+.results-row{
+    display: flex;
+    justify-content: center;
+}
+.results-row > div{
+    margin: 8px;
+}
 .stars{
     font-size: 3rem;
 }
@@ -702,8 +717,6 @@ body{
     align-items: center;
     width: 25vw;
     height: 25vw;
-    max-width: 200px;
-    max-height: 200px;
 }
 .levels .option > div:first-child{
     padding-top: 8%;
@@ -879,6 +892,16 @@ body{
         min-height: 100px !important;
         width: 100px;
         height: 100px;
+        font-size: 0.9em;
+    }
+    .option-container[count='3'],.option-container[count='6'], .option-container[count='9'], .option-container[count='10']{
+        max-width: 390px;
+    }
+    .option-container[count='4'],.option-container[count='8']{
+        max-width: 490px;
+    }
+    .level-icon, .slide-icon, .option-icon{
+        font-size: 1.2em;
     }
     .option-container[count='9'] .option, .option-container[count='10'] .option{
         width: 18vw;

@@ -78,6 +78,9 @@
                     "label": 20
                 },
                 {
+                    "label": 40
+                },
+                {
                     "label": "Four",
                     "value": 4
                 }
@@ -94,10 +97,82 @@
                     "label": 99
                 },
                 {
+                    "label": 19
+                },
+                {
+                    "label": 89
+                },
+                {
+                    "label": 29
+                },
+                {
                     "label": 80
                 }
             ],
             "answer": 6
+        },
+        {
+            "title": "2 x 4",
+            "options": [
+                {
+                    "label": 8
+                },
+                {
+                    "label": 88
+                },
+                {
+                    "label": 28
+                },
+                {
+                    "label": 81
+                },
+                {
+                    "label": 24
+                },
+                {
+                    "label": 80
+                },
+                {
+                    "label": 22
+                },
+                {
+                    "label": 44
+                }
+            ],
+            "answer": 8
+        },
+        {
+            "title": "2 x 5",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 88
+                },
+                {
+                    "label": 28
+                },
+                {
+                    "label": 81
+                },
+                {
+                    "label": 24
+                },
+                {
+                    "label": 80
+                },
+                {
+                    "label": 22
+                },
+                {
+                    "label": 44
+                },
+                {
+                    "label": 44
+                }
+            ],
+            "answer": 10
         }
     ]
 }
