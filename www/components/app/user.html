@@ -1,15 +1,16 @@
 <!-- text-template -->
 <script type="text/x-template" id="user-component-template">
     <div class="user-component" >
-        <div class="user-avatar"><span class="material-icons">{{user.avatar}}</span></div>
-        <h3 >Name:
+        <h2>{{translate('User profile')}}</h2>
+        <div class="user-avatar"><icon :name="user.avatar"></icon></div>
+        <h3 >{{translate('Name')}}:
             <span v-if="!editable" @click="editable=true">{{user.name}}</span>
-            <input v-if="editable" type="text" maxlength="16" placeholder="Enter name" v-model="user.name" @click="edit($event)" @keyup="keyup($event)">
+            <input v-if="editable" type="text" maxlength="16" size="10" placeholder="Enter name" v-model="user.name" @click="edit($event)" @keyup="keyup($event)">
         </h3>
         <div>
-            Age:
+            {{translate('Age')}}:
             <span v-if="!editable" @click="editable=true">{{user.age}}</span>
-            <input v-if="editable" type="number" min="1" max="99" v-model="user.age" @click="edit($event)" @keyup="keyup($event)">
+            <input v-if="editable" type="number" min="1" max="99" size="3" v-model="user.age" @click="edit($event)" @keyup="keyup($event)">
         </div>
         <div class="user-buttons">
             <button @click="clean()"><span class="material-icons">cleaning_services</span> Reset</button>
@@ -19,11 +20,11 @@
         <hr>
         <div class="user-list">
             <div  class="user-select" :selected="user1.id==user.id" v-for="user1 in users" :key="user1.id" @click="select(user1, true)">
-                <div class="user-avatar"><span class="material-icons">{{user1.avatar}}</span></div>
+                <div class="user-avatar"><icon :name="user1.avatar"></icon></div>
                 <div>{{user1.name}}</div>
             </div>
             <div class="user-select" @click="newUser()">
-                <div class="user-avatar"><span class="material-icons">account_circle</span></div>
+                <div class="user-avatar"><icon :name="defaultIcon"></icon></div>
                 <div>[New]</div>
             </div>
         </div>
@@ -34,10 +35,12 @@ Vue.component('user', {
     template: '#user-component-template',
     data: function(){
         return {
-            editable: false
+            editable: false,
+            defaultIcon: 'fa-user-astronaut'
         }
     },
     props: { 
+        language: Object,
         user: Object,
         users: Object
     },
@@ -46,6 +49,9 @@ Vue.component('user', {
         var self = this;
     },
     methods: {
+        translate: function (expr) {
+            return this.language.translate(expr)
+        },
         keyup: function(ev) {
             if (ev.keyCode==13){
                 this.save()
@@ -64,7 +70,7 @@ Vue.component('user', {
         newUser: function (){
             this.select({
                 name: 'New',
-                avatar: 'account_circle',
+                avatar: this.defaultIcon,
                 age: '8',
                 id: Math.round(Math.random()*10000)
             }, false)
@@ -106,6 +112,9 @@ Vue.component('user', {
 .user-component{
     font-size: 16px;
     line-height: 1.5em;
+    background-color: #ffe;
+    color: #000;
+    text-align: center;
 }
 .user-avatar{
     font-size: 3em;
