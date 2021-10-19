@@ -1,0 +1,48 @@
+<!-- text-template -->
+<script type="text/x-template" id="icon-component-template">
+    <span :class="['icon-component',extraClass,className]">{{content}}</span>
+</script>
+<script type="text/javascript">
+Vue.component('icon', {
+    template: '#icon-component-template',
+    data: function(){
+        return {
+            className: 'material-icons',
+            extraClass: null,
+            content: ''
+        }
+    },
+    props: { 
+        name: String
+    },
+    mounted:function(){
+        console.log("icon-component mounted");
+        this.setIcon(this.name)
+    },
+    methods: {
+        setIcon: function(name) {
+            if (name.indexOf('fa-')==0){
+                this.className = name
+                this.extraClass = 'fas'
+                this.content = ''
+            } else {
+                this.extraClass = null
+                this.className = 'material-icons'
+                this.content = name
+            }
+        }
+    },
+    computed:{
+    },
+    watch:{
+        name: function (newValue) {
+            this.setIcon(newValue)
+        }
+    }
+});
+</script>
+<style>
+.icon-component{
+}
+</style>
+    

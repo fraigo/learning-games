@@ -4,6 +4,7 @@ var components=[
     "app/stars",
     "app/tens",
     "app/user",
+    "app/icon",
 ]
 
 function listDir(path) {
@@ -143,7 +144,15 @@ var vueData={
                         sc.src=script.src;
                         document.body.appendChild(sc);
                     }else{
-                        eval(script.innerHTML);
+                        var prefix="";
+                        var lines = text.split("\n");
+                        for(var i=0; i<lines.length; i++){
+                            prefix+="\n"
+                            if (lines[i].indexOf("text/javascript")>0) {
+                                break;
+                            }
+                        }
+                        eval(prefix+script.innerHTML);
                     }    
                 }
                 document.body.appendChild(e);
