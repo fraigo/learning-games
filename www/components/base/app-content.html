@@ -37,6 +37,10 @@
                 <div>{{lang('Corrects')}}<br><span class="correct">{{this.correct}}</span></div>
                 <div>{{lang('Errors')}}<br><span class="error">{{this.errors}}</span></div>
                 <div class="stars" is="stars" :stars="stars" :size="40" :animated="true" :key="stars+40"></div>
+                <div class="result-buttons">
+                    <button @click="restart()"><span class="material-icons">refresh</span></button>
+                    <button @click="menu()"><span class="material-icons">home</span></button>
+                </div>
             </div>
         </div>
         <div class="status" v-if="position>=0"><span class="timer" :seconds="timerSeconds" v-if="this.timer">{{timerSeconds}}</span></div>
@@ -60,6 +64,7 @@ Vue.component('app-content', {
             currentLevel: 0,
             timerLength: 5000,
             timerSeconds: 0,
+            errorDetail: [],
             levelData: {
                 levelStars: []
             },
@@ -410,8 +415,8 @@ Vue.component('app-content', {
                 }
             },1000, this)
             setTimeout(function(self){
-                self.currentLevel = 0
-            },4000, this)
+                self.menu()
+            },30000, this)
         },
         verifyOption: function(slide, idx){
             var option = slide.options[idx]
@@ -620,16 +625,20 @@ body{
     font-size: 2em;
     padding: 0 8px;
     max-height: 200px;
+    transition: transform linear .3s;
+    transform: scale(1.0);
 }
 .option-container .option[result='1']{
     border: 4px solid green;
     color: green;
     background-color: #dfd;
+    transform: scale(1.1);
 }
 .option-container .option[result='2']{
     border: 4px solid red;
     color: red;
     background-color: #fdd;
+    transform: scale(0.9);
 }
 .option-container[count='4']{
     max-width: 500px;
