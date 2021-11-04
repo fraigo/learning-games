@@ -1,0 +1,152 @@
+{
+    "id": "pattern_objects",
+    "title": "Object Patterns",
+    "lang" : {
+        "es" : {
+        }
+    },
+    "description": "Guess the next object in pattern",
+    "parent": "patterns",
+    "levels": [
+        {
+            "label": "{Level} 1",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "{Level} 2",
+            "sorted": false,
+            "timer": 10
+        },
+        {
+            "label": "{Level} 3",
+            "sorted": false,
+            "timer": 5
+        }
+    ],
+    "slides": [
+        {
+            "title": "🍏 🍎 🍏",
+            "audio": "guess_next",
+            "options": [
+                {
+                    "label": "🍎"
+                },
+                {
+                    "label": "🍏"
+                },
+                {
+                    "label": "🍌"
+                }
+            ],
+            "answer": "🍎"
+        },
+        {
+            "title": "🎱 🏈 🏉 🎱 🏈",
+            "audio": "guess_next",
+            "options": [
+                {
+                    "label": "🎱"
+                },
+                {
+                    "label": "🏈"
+                },
+                {
+                    "label": "🏉"
+                }
+            ],
+            "answer": "🏉"
+        },
+        {
+            "title": "🥇 🥈 🥉 🏅 🥇 🥈 🥉",
+            "audio": "guess_next",
+            "options": [
+                {
+                    "label": "🥇"
+                },
+                {
+                    "label": "🏅"
+                },
+                {
+                    "label": "🥉"
+                }
+            ],
+            "answer": "🏅"
+        },
+        {
+            "title": "🍎 🍐 🍌 🍌 🍎 🍐",
+            "options": [
+                {
+                    "label": "🍌 🍌"
+                },
+                {
+                    "label": "🍐 🍐"
+                },
+                {
+                    "label": "🍎 🍎"
+                }
+            ],
+            "answer": "🍌 🍌"
+        },
+        {
+            "title": "🍐 🍎 🍐 🍌 🍐 🍎",
+            "options": [
+                {
+                    "label": "🍐 🍌"
+                },
+                {
+                    "label": "🍌 🍐"
+                },
+                {
+                    "label": "🍎 🍎"
+                }
+            ],
+            "answer": "🍐 🍌"
+        },
+        {
+            "title": "🍅 🍅 🍓 🍎 🌶 🍅 🍅 🍓",
+            "options": [
+                {
+                    "label": "🍎 🌶"
+                },
+                {
+                    "label": "🍅 🍅"
+                },
+                {
+                    "label": "🍎 🍎"
+                }
+            ],
+            "answer": "🍎 🌶"
+        },
+        {
+            "title": "🍔 🍟 🍟 🌭 🍔 🍟 🍟 ",
+            "options": [
+                {
+                    "label": "🌭"
+                },
+                {
+                    "label": "🍟"
+                },
+                {
+                    "label": "🍔"
+                }
+            ],
+            "answer": "🌭"
+        },
+        {
+            "title": "🍩 🍪 🍦 🍫 🍩 🍪 🍦 ",
+            "options": [
+                {
+                    "label": "🍩"
+                },
+                {
+                    "label": "🍫"
+                },
+                {
+                    "label": "🍦"
+                }
+            ],
+            "answer": "🍫"
+        }
+    ]
+}

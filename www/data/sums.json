@@ -1,0 +1,33 @@
+{
+    "id": "sums",
+    "title": "Sums",
+    "description": "",
+    "lang" : {
+        "es" : {
+            "1_digit_sums" : "Sumas de un dígito",
+            "2_digit_sums" : "Sumas de dos dígito"
+        }
+    },
+    "parent" : "apps",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC"
+    },
+    "levels": [
+        {
+            "label": "1 Digit Sums",
+            "hash": "sum_basic1"
+        },
+        {
+            "label": "2 Digit Sums",
+            "hash": "sum_basic2"
+        }
+    ],
+    "slides": []
+}

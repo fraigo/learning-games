@@ -8,7 +8,9 @@
             "multiplication_tables": "Tablas de Multiplicar",
             "shapes": "Figuras geométricas",
             "colors": "Colores",
-            "numbers": "Números"
+            "numbers": "Números",
+            "sums": "Sumas",
+            "patterns": "Patrones"
         }
     },
     "image": "../img/icon.svg",
@@ -41,6 +43,16 @@
             "label": "Multiplication Tables",
             "icon": "calculate",
             "hash": "tablas"
+        },
+        {
+            "label": "Sums",
+            "icon": "add_box",
+            "hash": "sums"
+        },
+        {
+            "label": "Patterns",
+            "icon": "star_half",
+            "hash": "patterns"
         }
     ],
     "slides": []

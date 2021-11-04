@@ -1,0 +1,183 @@
+{
+    "id": "sum_basic1",
+    "title": "1_digit_sums",
+    "lang" : {
+        "es" : {
+            "1_digit_sums" : "Sumas de un dígito"
+        },
+        "en" : {
+            "1_digit_sums" : "Sumas de un dígito"
+        }
+    },
+    "description": "Ejercicios de la tabla del 2",
+    "parent": "sums",
+    "levels": [
+        {
+            "label": "{Level} 1",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "{Level} 2",
+            "sorted": false,
+            "timer": 10
+        },
+        {
+            "label": "{Level} 3",
+            "sorted": false,
+            "timer": 5
+        }
+    ],
+    "slides": [
+        {
+            "title": "1 + 2",
+            "options": [
+                {
+                    "label": 1
+                },
+                {
+                    "label": 2
+                },
+                {
+                    "label": 3
+                }
+            ],
+            "answer": 3
+        },
+        {
+            "title": "3 + 5",
+            "options": [
+                {
+                    "label": 9
+                },
+                {
+                    "label": 8
+                },
+                {
+                    "label": 4
+                }
+            ],
+            "answer": 8
+        },
+        {
+            "title": "1 + 4",
+            "options": [
+                {
+                    "label": 8
+                },
+                {
+                    "label": 7
+                },
+                {
+                    "label": 9
+                }
+            ],
+            "answer": 8
+        },
+        {
+            "title": "3 + 2",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 8
+                },
+                {
+                    "label": 20
+                }
+            ],
+            "answer": 20
+        },
+        {
+            "title": "4 + 4",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 9
+                },
+                {
+                    "label": 6
+                }
+            ],
+            "answer": 10
+        },
+        {
+            "title": "5 + 4",
+            "options": [
+                {
+                    "label": 36
+                },
+                {
+                    "label": 15
+                },
+                {
+                    "label": 30
+                }
+            ],
+            "answer": 36
+        },
+        {
+            "title": "5 + 5",
+            "options": [
+                {
+                    "label": 39
+                },
+                {
+                    "label": 41
+                },
+                {
+                    "label": 40
+                }
+            ],
+            "answer": 40
+        },
+        {
+            "title": "2 + 2",
+            "options": [
+                {
+                    "label": 12
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 52
+                }
+            ],
+            "answer": 52
+        },
+        {
+            "title": "3 + 3",
+            "options": [
+                {
+                    "label": 12
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 52
+                }
+            ],
+            "answer": 52
+        },
+        {
+            "title": "2 + 4",
+            "options": [
+                {
+                    "label": 12
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 52
+                }
+            ],
+            "answer": 52
+        }
+    ]
+}

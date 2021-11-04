@@ -1,0 +1,164 @@
+{
+    "id": "pattern_numbers",
+    "title": "Number Patterns",
+    "lang" : {
+        "es" : {
+        }
+    },
+    "description": "Guess the next number in pattern",
+    "parent": "patterns",
+    "levels": [
+        {
+            "label": "{Level} 1",
+            "sorted": false,
+            "timer": 0
+        },
+        {
+            "label": "{Level} 2",
+            "sorted": false,
+            "timer": 10
+        },
+        {
+            "label": "{Level} 3",
+            "sorted": false,
+            "timer": 5
+        }
+    ],
+    "slides": [
+        {
+            "title": "4 5 6 ",
+            "options": [
+                {
+                    "label": "7"
+                },
+                {
+                    "label": "8"
+                },
+                {
+                    "label": "9"
+                }
+            ],
+            "answer": "7"
+        },
+        {
+            "title": "1 3 5",
+            "options": [
+                {
+                    "label": "7"
+                },
+                {
+                    "label": "6"
+                },
+                {
+                    "label": "8"
+                }
+            ],
+            "answer": "8"
+        },
+        {
+            "title": "1 4 7",
+            "options": [
+                {
+                    "label": ""
+                },
+                {
+                    "label": ""
+                },
+                {
+                    "label": ""
+                }
+            ],
+            "answer": ""
+        },
+        {
+            "title": "2 5 8",
+            "options": [
+                {
+                    "label": "11"
+                },
+                {
+                    "label": "🍐 🍐"
+                },
+                {
+                    "label": "🍎 🍎"
+                }
+            ],
+            "answer": "🍌 🍌"
+        },
+        {
+            "title": "2 6 10",
+            "options": [
+                {
+                    "label": "14"
+                },
+                {
+                    "label": "🍌 🍐"
+                },
+                {
+                    "label": "🍎 🍎"
+                }
+            ],
+            "answer": "🍐 🍌"
+        },
+        {
+            "title": "8 7 6 ",
+            "options": [
+                {
+                    "label": "5"
+                },
+                {
+                    "label": "🍅 🍅"
+                },
+                {
+                    "label": "🍎 🍎"
+                }
+            ],
+            "answer": "🍎 🌶"
+        },
+        {
+            "title": "9 7 5 ",
+            "options": [
+                {
+                    "label": "3"
+                },
+                {
+                    "label": "🍟"
+                },
+                {
+                    "label": "🍔"
+                }
+            ],
+            "answer": "🌭"
+        },
+        {
+            "title": "12 9 6",
+            "options": [
+                {
+                    "label": "3"
+                },
+                {
+                    "label": "🍫"
+                },
+                {
+                    "label": "🍦"
+                }
+            ],
+            "answer": "🍫"
+        },
+        {
+            "title": "5 10 15 ",
+            "options": [
+                {
+                    "label": "20"
+                },
+                {
+                    "label": "🍟"
+                },
+                {
+                    "label": "🍔"
+                }
+            ],
+            "answer": "🌭"
+        }
+    ]
+}

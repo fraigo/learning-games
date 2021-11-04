@@ -205,6 +205,9 @@ Vue.component('app-content', {
             if (expr == 'x'){
                 return [this.translate('times')]
             }
+            if (expr == '+'){
+                return [this.translate('plus')]
+            }
             if (typeof expr == 'number'){
                 expr = "" + expr
             }

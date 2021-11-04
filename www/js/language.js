@@ -4,6 +4,7 @@ var language = {
         "title" : "Aprendizaje",
         "level" : "Nivel",
         "times" : "por",
+        "plus" : "mas",
         "timeout" : "Tiempo",
         "close": "Cerrar",
         "correct": "Correcto",

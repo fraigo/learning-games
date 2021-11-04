@@ -1,0 +1,36 @@
+{
+    "id": "patterns",
+    "title": "Patterns",
+    "description": "",
+    "lang" : {
+        "es" : {
+            "patterns" : "Patrones",
+            "number" : "Numeros",
+            "objects" : "Objetos",
+            "object_patterns": "Patrones de objetos",
+            "number_patterns": "Patrones de números"
+        }
+    },
+    "parent" : "apps",
+    "style": {
+        "backgroundImage": "url(img/bg-math.jpg)",
+        "color": "#222"
+    },
+    "levelStyle": {
+        "backgroundColor": "#FFE"
+    },
+    "optionStyle": {
+        "backgroundColor": "#FFC"
+    },
+    "levels": [
+        {
+            "label": "Object patterns",
+            "hash": "pattern_objects"
+        },
+        {
+            "label": "Number patterns",
+            "hash": "pattern_numbers"
+        }
+    ],
+    "slides": []
+}

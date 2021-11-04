@@ -1,0 +1,180 @@
+{
+    "id": "sum_basic2",
+    "title": "Basic sums",
+    "lang" : {
+        "es" : {
+            "2_times_table" : "Tabla del 2"
+        }
+    },
+    "description": "Ejercicios de la tabla del 2",
+    "parent": "sums",
+    "levels": [
+      {
+        "label": "{Level} 1",
+        "sorted": false,
+        "timer": 0
+      },
+      {
+          "label": "{Level} 2",
+          "sorted": false,
+          "timer": 10
+      },
+      {
+          "label": "{Level} 3",
+          "sorted": false,
+          "timer": 5
+      }
+    ],
+    "slides": [
+        {
+            "title": "2 + 1",
+            "options": [
+                {
+                    "label": 1
+                },
+                {
+                    "label": 2
+                },
+                {
+                    "label": 3
+                }
+            ],
+            "answer": 3
+        },
+        {
+            "title": "3 + 5",
+            "options": [
+                {
+                    "label": 9
+                },
+                {
+                    "label": 8
+                },
+                {
+                    "label": 4
+                }
+            ],
+            "answer": 8
+        },
+        {
+            "title": "10 + 5",
+            "options": [
+                {
+                    "label": 50
+                },
+                {
+                    "label": 15
+                },
+                {
+                    "label": 16
+                }
+            ],
+            "answer": 15
+        },
+        {
+            "title": "14 + 6",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 8
+                },
+                {
+                    "label": 20
+                }
+            ],
+            "answer": 20
+        },
+        {
+            "title": "23 + 8",
+            "options": [
+                {
+                    "label": 10
+                },
+                {
+                    "label": 30
+                },
+                {
+                    "label": 31
+                }
+            ],
+            "answer": 31
+        },
+        {
+            "title": "31 + 5",
+            "options": [
+                {
+                    "label": 36
+                },
+                {
+                    "label": 15
+                },
+                {
+                    "label": 30
+                }
+            ],
+            "answer": 36
+        },
+        {
+            "title": "37 + 3",
+            "options": [
+                {
+                    "label": 39
+                },
+                {
+                    "label": 41
+                },
+                {
+                    "label": 40
+                }
+            ],
+            "answer": 40
+        },
+        {
+            "title": "45 + 7",
+            "options": [
+                {
+                    "label": 12
+                },
+                {
+                    "label": 25
+                },
+                {
+                    "label": 52
+                }
+            ],
+            "answer": 52
+        },
+        {
+            "title": "76 + 3",
+            "options": [
+                {
+                    "label": 80
+                },
+                {
+                    "label": 89
+                },
+                {
+                    "label": 79
+                }
+            ],
+            "answer": 79
+        },
+        {
+            "title": "80 + 10",
+            "options": [
+                {
+                    "label": 99
+                },
+                {
+                    "label": 89
+                },
+                {
+                    "label": 90
+                }
+            ],
+            "answer": 90
+        }
+    ]
+}
